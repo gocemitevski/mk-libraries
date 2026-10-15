@@ -1,0 +1,1044 @@
+[
+ {
+  "name": "Арачиново",
+  "slug": "arachinovo",
+  "publicCount": 0,
+  "branchCount": 0,
+  "otherCount": 0,
+  "publicNames": [],
+  "culturalHomes": null,
+  "priority": "high",
+  "priorityLabel": "Нема јавна библиотека",
+  "note": "Барање до општината"
+ },
+ {
+  "name": "Боговиње",
+  "slug": "bogovinje",
+  "publicCount": 0,
+  "branchCount": 0,
+  "otherCount": 1,
+  "publicNames": [],
+  "culturalHomes": null,
+  "priority": "high",
+  "priorityLabel": "Нема јавна библиотека",
+  "note": "Барање до општината"
+ },
+ {
+  "name": "Босилово",
+  "slug": "bosilovo",
+  "publicCount": 0,
+  "branchCount": 0,
+  "otherCount": 0,
+  "publicNames": [],
+  "culturalHomes": null,
+  "priority": "high",
+  "priorityLabel": "Нема јавна библиотека",
+  "note": "Барање до општината"
+ },
+ {
+  "name": "Брвеница",
+  "slug": "brvenica",
+  "publicCount": 0,
+  "branchCount": 0,
+  "otherCount": 0,
+  "publicNames": [],
+  "culturalHomes": null,
+  "priority": "high",
+  "priorityLabel": "Нема јавна библиотека",
+  "note": "Барање до општината"
+ },
+ {
+  "name": "Василево",
+  "slug": "vasilevo",
+  "publicCount": 0,
+  "branchCount": 0,
+  "otherCount": 0,
+  "publicNames": [],
+  "culturalHomes": null,
+  "priority": "high",
+  "priorityLabel": "Нема јавна библиотека",
+  "note": "Барање до општината"
+ },
+ {
+  "name": "Вевчани",
+  "slug": "vevchani",
+  "publicCount": 0,
+  "branchCount": 0,
+  "otherCount": 0,
+  "publicNames": [],
+  "culturalHomes": null,
+  "priority": "high",
+  "priorityLabel": "Нема јавна библиотека",
+  "note": "Барање до општината"
+ },
+ {
+  "name": "Врапчиште",
+  "slug": "vrapchishte",
+  "publicCount": 0,
+  "branchCount": 0,
+  "otherCount": 0,
+  "publicNames": [],
+  "culturalHomes": "Општина Врапчиште општинска установа Дом на култура ШОТА с.Неготино Полошко",
+  "priority": "high",
+  "priorityLabel": "Нема јавна библиотека",
+  "note": "Барање до општината; има дом/центар за култура во ЦР"
+ },
+ {
+  "name": "Дебрца",
+  "slug": "debrca",
+  "publicCount": 0,
+  "branchCount": 0,
+  "otherCount": 0,
+  "publicNames": [],
+  "culturalHomes": null,
+  "priority": "high",
+  "priorityLabel": "Нема јавна библиотека",
+  "note": "Барање до општината"
+ },
+ {
+  "name": "Долнени",
+  "slug": "dolneni",
+  "publicCount": 0,
+  "branchCount": 0,
+  "otherCount": 0,
+  "publicNames": [],
+  "culturalHomes": null,
+  "priority": "high",
+  "priorityLabel": "Нема јавна библиотека",
+  "note": "Барање до општината"
+ },
+ {
+  "name": "Дојран",
+  "slug": "dojran",
+  "publicCount": 0,
+  "branchCount": 0,
+  "otherCount": 0,
+  "publicNames": [],
+  "culturalHomes": null,
+  "priority": "high",
+  "priorityLabel": "Нема јавна библиотека",
+  "note": "Барање до општината"
+ },
+ {
+  "name": "Желино",
+  "slug": "zhelino",
+  "publicCount": 0,
+  "branchCount": 0,
+  "otherCount": 0,
+  "publicNames": [],
+  "culturalHomes": null,
+  "priority": "high",
+  "priorityLabel": "Нема јавна библиотека",
+  "note": "Барање до општината"
+ },
+ {
+  "name": "Зелениково",
+  "slug": "zelenikovo",
+  "publicCount": 0,
+  "branchCount": 0,
+  "otherCount": 0,
+  "publicNames": [],
+  "culturalHomes": null,
+  "priority": "high",
+  "priorityLabel": "Нема јавна библиотека",
+  "note": "Барање до општината"
+ },
+ {
+  "name": "Зрновци",
+  "slug": "zrnovci",
+  "publicCount": 0,
+  "branchCount": 0,
+  "otherCount": 0,
+  "publicNames": [],
+  "culturalHomes": null,
+  "priority": "high",
+  "priorityLabel": "Нема јавна библиотека",
+  "note": "Барање до општината"
+ },
+ {
+  "name": "Илинден",
+  "slug": "ilinden",
+  "publicCount": 0,
+  "branchCount": 0,
+  "otherCount": 0,
+  "publicNames": [],
+  "culturalHomes": null,
+  "priority": "high",
+  "priorityLabel": "Нема јавна библиотека",
+  "note": "Барање до општината"
+ },
+ {
+  "name": "Карбинци",
+  "slug": "karbinci",
+  "publicCount": 0,
+  "branchCount": 0,
+  "otherCount": 0,
+  "publicNames": [],
+  "culturalHomes": null,
+  "priority": "high",
+  "priorityLabel": "Нема јавна библиотека",
+  "note": "Барање до општината"
+ },
+ {
+  "name": "Конче",
+  "slug": "konche",
+  "publicCount": 0,
+  "branchCount": 0,
+  "otherCount": 0,
+  "publicNames": [],
+  "culturalHomes": null,
+  "priority": "high",
+  "priorityLabel": "Нема јавна библиотека",
+  "note": "Барање до општината"
+ },
+ {
+  "name": "Кривогаштани",
+  "slug": "krivogashtani",
+  "publicCount": 0,
+  "branchCount": 0,
+  "otherCount": 0,
+  "publicNames": [],
+  "culturalHomes": null,
+  "priority": "high",
+  "priorityLabel": "Нема јавна библиотека",
+  "note": "Барање до општината"
+ },
+ {
+  "name": "Липково",
+  "slug": "lipkovo",
+  "publicCount": 0,
+  "branchCount": 0,
+  "otherCount": 0,
+  "publicNames": [],
+  "culturalHomes": null,
+  "priority": "high",
+  "priorityLabel": "Нема јавна библиотека",
+  "note": "Барање до општината"
+ },
+ {
+  "name": "Лозово",
+  "slug": "lozovo",
+  "publicCount": 0,
+  "branchCount": 0,
+  "otherCount": 0,
+  "publicNames": [],
+  "culturalHomes": null,
+  "priority": "high",
+  "priorityLabel": "Нема јавна библиотека",
+  "note": "Барање до општината"
+ },
+ {
+  "name": "Маврово и Ростуше",
+  "slug": "mavrovo-i-rostushe",
+  "publicCount": 0,
+  "branchCount": 0,
+  "otherCount": 0,
+  "publicNames": [],
+  "culturalHomes": null,
+  "priority": "high",
+  "priorityLabel": "Нема јавна библиотека",
+  "note": "Барање до општината"
+ },
+ {
+  "name": "Македонска Каменица",
+  "slug": "makedonska-kamenica",
+  "publicCount": 0,
+  "branchCount": 0,
+  "otherCount": 0,
+  "publicNames": [],
+  "culturalHomes": "Културно информативен центар РОМАНСА Македонска Каменица",
+  "priority": "high",
+  "priorityLabel": "Нема јавна библиотека",
+  "note": "Барање до општината; има дом/центар за култура во ЦР"
+ },
+ {
+  "name": "Могила",
+  "slug": "mogila",
+  "publicCount": 0,
+  "branchCount": 0,
+  "otherCount": 0,
+  "publicNames": [],
+  "culturalHomes": null,
+  "priority": "high",
+  "priorityLabel": "Нема јавна библиотека",
+  "note": "Барање до општината"
+ },
+ {
+  "name": "Новаци",
+  "slug": "novaci",
+  "publicCount": 0,
+  "branchCount": 0,
+  "otherCount": 0,
+  "publicNames": [],
+  "culturalHomes": null,
+  "priority": "high",
+  "priorityLabel": "Нема јавна библиотека",
+  "note": "Барање до општината"
+ },
+ {
+  "name": "Ново Село",
+  "slug": "novo-selo",
+  "publicCount": 0,
+  "branchCount": 0,
+  "otherCount": 0,
+  "publicNames": [],
+  "culturalHomes": "Општинска установа Дом на културата ЈАНЕ САНДАНСКИ с.Ново Село",
+  "priority": "high",
+  "priorityLabel": "Нема јавна библиотека",
+  "note": "Барање до општината; има дом/центар за култура во ЦР"
+ },
+ {
+  "name": "Петровец",
+  "slug": "petrovec",
+  "publicCount": 0,
+  "branchCount": 0,
+  "otherCount": 0,
+  "publicNames": [],
+  "culturalHomes": null,
+  "priority": "high",
+  "priorityLabel": "Нема јавна библиотека",
+  "note": "Барање до општината"
+ },
+ {
+  "name": "Пласница",
+  "slug": "plasnica",
+  "publicCount": 0,
+  "branchCount": 0,
+  "otherCount": 0,
+  "publicNames": [],
+  "culturalHomes": null,
+  "priority": "high",
+  "priorityLabel": "Нема јавна библиотека",
+  "note": "Барање до општината"
+ },
+ {
+  "name": "Ранковце",
+  "slug": "rankovce",
+  "publicCount": 0,
+  "branchCount": 0,
+  "otherCount": 0,
+  "publicNames": [],
+  "culturalHomes": null,
+  "priority": "high",
+  "priorityLabel": "Нема јавна библиотека",
+  "note": "Барање до општината"
+ },
+ {
+  "name": "Росоман",
+  "slug": "rosoman",
+  "publicCount": 0,
+  "branchCount": 0,
+  "otherCount": 0,
+  "publicNames": [],
+  "culturalHomes": null,
+  "priority": "high",
+  "priorityLabel": "Нема јавна библиотека",
+  "note": "Барање до општината"
+ },
+ {
+  "name": "Сопиште",
+  "slug": "sopishte",
+  "publicCount": 0,
+  "branchCount": 0,
+  "otherCount": 0,
+  "publicNames": [],
+  "culturalHomes": null,
+  "priority": "high",
+  "priorityLabel": "Нема јавна библиотека",
+  "note": "Барање до општината"
+ },
+ {
+  "name": "Старо Нагоричане",
+  "slug": "staro-nagorichane",
+  "publicCount": 0,
+  "branchCount": 0,
+  "otherCount": 0,
+  "publicNames": [],
+  "culturalHomes": null,
+  "priority": "high",
+  "priorityLabel": "Нема јавна библиотека",
+  "note": "Барање до општината"
+ },
+ {
+  "name": "Студеничани",
+  "slug": "studenichani",
+  "publicCount": 0,
+  "branchCount": 0,
+  "otherCount": 0,
+  "publicNames": [],
+  "culturalHomes": null,
+  "priority": "high",
+  "priorityLabel": "Нема јавна библиотека",
+  "note": "Барање до општината"
+ },
+ {
+  "name": "Теарце",
+  "slug": "tearce",
+  "publicCount": 0,
+  "branchCount": 0,
+  "otherCount": 0,
+  "publicNames": [],
+  "culturalHomes": null,
+  "priority": "high",
+  "priorityLabel": "Нема јавна библиотека",
+  "note": "Барање до општината"
+ },
+ {
+  "name": "Центар Жупа",
+  "slug": "centar-zhupa",
+  "publicCount": 0,
+  "branchCount": 0,
+  "otherCount": 0,
+  "publicNames": [],
+  "culturalHomes": null,
+  "priority": "high",
+  "priorityLabel": "Нема јавна библиотека",
+  "note": "Барање до општината"
+ },
+ {
+  "name": "Чашка",
+  "slug": "chashka",
+  "publicCount": 0,
+  "branchCount": 0,
+  "otherCount": 0,
+  "publicNames": [],
+  "culturalHomes": null,
+  "priority": "high",
+  "priorityLabel": "Нема јавна библиотека",
+  "note": "Барање до општината"
+ },
+ {
+  "name": "Чучер-Сандево",
+  "slug": "chucher-sandevo",
+  "publicCount": 0,
+  "branchCount": 0,
+  "otherCount": 0,
+  "publicNames": [],
+  "culturalHomes": null,
+  "priority": "high",
+  "priorityLabel": "Нема јавна библиотека",
+  "note": "Барање до општината"
+ },
+ {
+  "name": "Ѓорче Петров",
+  "slug": "gjorche-petrov",
+  "publicCount": 0,
+  "branchCount": 1,
+  "otherCount": 0,
+  "publicNames": [],
+  "culturalHomes": null,
+  "priority": "medium",
+  "priorityLabel": "Нема потврдена јавна библиотека",
+  "note": "Покриено од ГБСК; да се побара распоред на огранците по општини од Град Скопје/ГБСК"
+ },
+ {
+  "name": "Аеродром",
+  "slug": "aerodrom",
+  "publicCount": 0,
+  "branchCount": 0,
+  "otherCount": 0,
+  "publicNames": [],
+  "culturalHomes": null,
+  "priority": "medium",
+  "priorityLabel": "Нема потврдена јавна библиотека",
+  "note": "Покриено од ГБСК; да се побара распоред на огранците по општини од Град Скопје/ГБСК"
+ },
+ {
+  "name": "Бутел",
+  "slug": "butel",
+  "publicCount": 0,
+  "branchCount": 0,
+  "otherCount": 0,
+  "publicNames": [],
+  "culturalHomes": null,
+  "priority": "medium",
+  "priorityLabel": "Нема потврдена јавна библиотека",
+  "note": "Покриено од ГБСК; да се побара распоред на огранците по општини од Град Скопје/ГБСК"
+ },
+ {
+  "name": "Гази Баба",
+  "slug": "gazi-baba",
+  "publicCount": 0,
+  "branchCount": 0,
+  "otherCount": 0,
+  "publicNames": [],
+  "culturalHomes": null,
+  "priority": "medium",
+  "priorityLabel": "Нема потврдена јавна библиотека",
+  "note": "Покриено од ГБСК; да се побара распоред на огранците по општини од Град Скопје/ГБСК"
+ },
+ {
+  "name": "Градско",
+  "slug": "gradsko",
+  "publicCount": 0,
+  "branchCount": 1,
+  "otherCount": 0,
+  "publicNames": [],
+  "culturalHomes": null,
+  "priority": "medium",
+  "priorityLabel": "Нема потврдена јавна библиотека",
+  "note": "Да се провери статусот на огранокот"
+ },
+ {
+  "name": "Карпош",
+  "slug": "karposh",
+  "publicCount": 0,
+  "branchCount": 1,
+  "otherCount": 0,
+  "publicNames": [],
+  "culturalHomes": null,
+  "priority": "medium",
+  "priorityLabel": "Нема потврдена јавна библиотека",
+  "note": "Покриено од ГБСК; да се побара распоред на огранците по општини од Град Скопје/ГБСК"
+ },
+ {
+  "name": "Кисела Вода",
+  "slug": "kisela-voda",
+  "publicCount": 0,
+  "branchCount": 0,
+  "otherCount": 0,
+  "publicNames": [],
+  "culturalHomes": null,
+  "priority": "medium",
+  "priorityLabel": "Нема потврдена јавна библиотека",
+  "note": "Покриено од ГБСК; да се побара распоред на огранците по општини од Град Скопје/ГБСК"
+ },
+ {
+  "name": "Сарај",
+  "slug": "saraj",
+  "publicCount": 0,
+  "branchCount": 0,
+  "otherCount": 0,
+  "publicNames": [],
+  "culturalHomes": null,
+  "priority": "medium",
+  "priorityLabel": "Нема потврдена јавна библиотека",
+  "note": "Покриено од ГБСК; да се побара распоред на огранците по општини од Град Скопје/ГБСК"
+ },
+ {
+  "name": "Скопје (општина неутврдена)",
+  "slug": "skopje-opshtina-neutvrdena",
+  "publicCount": 0,
+  "branchCount": 13,
+  "otherCount": 53,
+  "publicNames": [],
+  "culturalHomes": "Јавна установа Дом на култура КОЧО РАЦИН Скопје Република Северна Македонија; Јавна Установа КУЛТУРНО ИНФОРМАТИВЕН ЦЕНТАР - Скопје; Национална установа Центар за култура на турската заедница во Република Северна Македонија - Скопје; Јавна општинска установа ДОМ НА КУЛТУРА БИЛЈАНА БЕЛИЧАНЕЦ Скопје",
+  "priority": "medium",
+  "priorityLabel": "Нема потврдена јавна библиотека",
+  "note": "Покриено од ГБСК; да се побара распоред на огранците по општини од Град Скопје/ГБСК"
+ },
+ {
+  "name": "Чешиново-Облешево",
+  "slug": "cheshinovo-obleshevo",
+  "publicCount": 0,
+  "branchCount": 1,
+  "otherCount": 0,
+  "publicNames": [],
+  "culturalHomes": null,
+  "priority": "medium",
+  "priorityLabel": "Нема потврдена јавна библиотека",
+  "note": "Да се провери статусот на огранокот"
+ },
+ {
+  "name": "Шуто Оризари",
+  "slug": "shuto-orizari",
+  "publicCount": 0,
+  "branchCount": 0,
+  "otherCount": 0,
+  "publicNames": [],
+  "culturalHomes": null,
+  "priority": "medium",
+  "priorityLabel": "Нема потврдена јавна библиотека",
+  "note": "Покриено од ГБСК; да се побара распоред на огранците по општини од Град Скопје/ГБСК"
+ },
+ {
+  "name": "Јегуновце",
+  "slug": "jegunovce",
+  "publicCount": 1,
+  "branchCount": 0,
+  "otherCount": 0,
+  "publicNames": [
+   "ЈУ Библиотека „Светлина“ – „Drita“"
+  ],
+  "culturalHomes": null,
+  "priority": "none",
+  "priorityLabel": "Има јавна библиотека",
+  "note": null
+ },
+ {
+  "name": "Берово",
+  "slug": "berovo",
+  "publicCount": 1,
+  "branchCount": 0,
+  "otherCount": 0,
+  "publicNames": [
+   "Дом на култура Димитар Беровски, Берово / Библиотека"
+  ],
+  "culturalHomes": "Дом на културата ДИМИТАР БЕРОВСКИ п.о. Берово",
+  "priority": "none",
+  "priorityLabel": "Има јавна библиотека",
+  "note": null
+ },
+ {
+  "name": "Битола",
+  "slug": "bitola",
+  "publicCount": 1,
+  "branchCount": 0,
+  "otherCount": 3,
+  "publicNames": [
+   "НУУБ „Св. Климент Охридски“"
+  ],
+  "culturalHomes": "Национална установа Центар за култура - Битола; Јавна општинска установа КУЛТУРЕН И ИНФОРМАТИВЕН ЦЕНТАР Битола",
+  "priority": "none",
+  "priorityLabel": "Има јавна библиотека",
+  "note": null
+ },
+ {
+  "name": "Богданци",
+  "slug": "bogdanci",
+  "publicCount": 1,
+  "branchCount": 0,
+  "otherCount": 0,
+  "publicNames": [
+   "Дом на култура \"Бранд Петрушев\", Богданци / Библиотека"
+  ],
+  "culturalHomes": "Јавна општинска установа Дом на културата БРАНД ПЕТРУШЕВ Богданци",
+  "priority": "none",
+  "priorityLabel": "Има јавна библиотека",
+  "note": null
+ },
+ {
+  "name": "Валандово",
+  "slug": "valandovo",
+  "publicCount": 1,
+  "branchCount": 0,
+  "otherCount": 0,
+  "publicNames": [
+   "Дом на културата 25 Мај, Валандово / библиотека"
+  ],
+  "culturalHomes": "Јавна општинска установа Дом на културата 25-ТИ МАЈ Валандово",
+  "priority": "none",
+  "priorityLabel": "Има јавна библиотека",
+  "note": null
+ },
+ {
+  "name": "Велес",
+  "slug": "veles",
+  "publicCount": 1,
+  "branchCount": 0,
+  "otherCount": 0,
+  "publicNames": [
+   "Народна библиотека „Гоце Делчев“"
+  ],
+  "culturalHomes": null,
+  "priority": "none",
+  "priorityLabel": "Има јавна библиотека",
+  "note": null
+ },
+ {
+  "name": "Виница",
+  "slug": "vinica",
+  "publicCount": 1,
+  "branchCount": 0,
+  "otherCount": 0,
+  "publicNames": [
+   "Народна библиотека „Ванчо Прке“"
+  ],
+  "culturalHomes": "Општинска Установа ДОМ НА КУЛТУРАТА ТОШО АРСОВ Виница",
+  "priority": "none",
+  "priorityLabel": "Има јавна библиотека",
+  "note": null
+ },
+ {
+  "name": "Гевгелија",
+  "slug": "gevgelija",
+  "publicCount": 1,
+  "branchCount": 0,
+  "otherCount": 0,
+  "publicNames": [
+   "Матична библиотека „Гоце Делчев“"
+  ],
+  "culturalHomes": "Јавна општинска установа Дом на култура МАКЕДОНИЈА Гевгелија",
+  "priority": "none",
+  "priorityLabel": "Има јавна библиотека",
+  "note": null
+ },
+ {
+  "name": "Гостивар",
+  "slug": "gostivar",
+  "publicCount": 1,
+  "branchCount": 0,
+  "otherCount": 2,
+  "publicNames": [
+   "Национална установа Центар за култура \"АСНОМ\" Гостивар / Библиотека"
+  ],
+  "culturalHomes": "Национална установа-ЦЕНТАР ЗА КУЛТУРА АСНОМ Гостивар",
+  "priority": "none",
+  "priorityLabel": "Има јавна библиотека",
+  "note": null
+ },
+ {
+  "name": "Дебар",
+  "slug": "debar",
+  "publicCount": 1,
+  "branchCount": 0,
+  "otherCount": 0,
+  "publicNames": [
+   "Национална установа - Центар за култура - Дебар / Библиотека"
+  ],
+  "culturalHomes": "Национална установа-ЦЕНТАР ЗА КУЛТУРА-Дебар",
+  "priority": "none",
+  "priorityLabel": "Има јавна библиотека",
+  "note": null
+ },
+ {
+  "name": "Делчево",
+  "slug": "delchevo",
+  "publicCount": 1,
+  "branchCount": 0,
+  "otherCount": 1,
+  "publicNames": [
+   "Матична библиотека „Илинден“"
+  ],
+  "culturalHomes": "Национална установа-центар за култура НИКОЛА ЈОНКОВ ВАПЦАРОВ Делчево",
+  "priority": "none",
+  "priorityLabel": "Има јавна библиотека",
+  "note": null
+ },
+ {
+  "name": "Демир Капија",
+  "slug": "demir-kapija",
+  "publicCount": 1,
+  "branchCount": 0,
+  "otherCount": 0,
+  "publicNames": [
+   "Дом на култура \"Мирка Гинова\", Демир Капија / Библиотека"
+  ],
+  "culturalHomes": "Општинска установа Дом на култура МИРКА ГИНОВА Демир Капија",
+  "priority": "none",
+  "priorityLabel": "Има јавна библиотека",
+  "note": null
+ },
+ {
+  "name": "Демир Хисар",
+  "slug": "demir-hisar",
+  "publicCount": 1,
+  "branchCount": 0,
+  "otherCount": 1,
+  "publicNames": [
+   "Дом на Културата \"Илинден\" / Народна библиотека"
+  ],
+  "culturalHomes": "Дом на културата ИЛИНДЕН Демир Хисар",
+  "priority": "none",
+  "priorityLabel": "Има јавна библиотека",
+  "note": null
+ },
+ {
+  "name": "Кавадарци",
+  "slug": "kavadarci",
+  "publicCount": 1,
+  "branchCount": 0,
+  "otherCount": 0,
+  "publicNames": [
+   "Народна библиотека „Феткин“"
+  ],
+  "culturalHomes": "Јавна општинска установа Дом на култура ИВАН МАЗОВ-КЛИМЕ Кавадарци",
+  "priority": "none",
+  "priorityLabel": "Има јавна библиотека",
+  "note": null
+ },
+ {
+  "name": "Кичево",
+  "slug": "kichevo",
+  "publicCount": 1,
+  "branchCount": 0,
+  "otherCount": 0,
+  "publicNames": [
+   "Национална установа - Библиотека \"Кочо Рацин\" - Кичево"
+  ],
+  "culturalHomes": "ОПШТИНСКА УСТАНОВА РАБОТНИЧКИ УНИВЕРЗИТЕТ КРСТЕ МИСИРКОВ КИЧЕВО; Национална установа-Центар за култура Кочо Рацин-Кичево",
+  "priority": "none",
+  "priorityLabel": "Има јавна библиотека",
+  "note": null
+ },
+ {
+  "name": "Кочани",
+  "slug": "kochani",
+  "publicCount": 1,
+  "branchCount": 1,
+  "otherCount": 0,
+  "publicNames": [
+   "Матична библиотека „Искра“"
+  ],
+  "culturalHomes": "Национална установа центар за културата БЕЛИ МУГРИ Кочани",
+  "priority": "none",
+  "priorityLabel": "Има јавна библиотека",
+  "note": null
+ },
+ {
+  "name": "Кратово",
+  "slug": "kratovo",
+  "publicCount": 1,
+  "branchCount": 0,
+  "otherCount": 0,
+  "publicNames": [
+   "Дом на културата \"Лазар Софијанов\", Кратово / библиотека"
+  ],
+  "culturalHomes": "Јавна општинска установа-Дом на културата ЛАЗАР СОФИЈАНОВ Ц.О. Кратово",
+  "priority": "none",
+  "priorityLabel": "Има јавна библиотека",
+  "note": null
+ },
+ {
+  "name": "Крива Паланка",
+  "slug": "kriva-palanka",
+  "publicCount": 1,
+  "branchCount": 0,
+  "otherCount": 1,
+  "publicNames": [
+   "НУ Центар за култура - Крива Паланка / библиотека"
+  ],
+  "culturalHomes": "Национална установа-ЦЕНТАР ЗА КУЛТУРА Крива Паланка",
+  "priority": "none",
+  "priorityLabel": "Има јавна библиотека",
+  "note": null
+ },
+ {
+  "name": "Крушево",
+  "slug": "krushevo",
+  "publicCount": 1,
+  "branchCount": 0,
+  "otherCount": 0,
+  "publicNames": [
+   "ОУ Дом на култура \"Наум Наумовски Борче\" - Крушево / Библиотека"
+  ],
+  "culturalHomes": "Национална установа Центар за култура Десет Дена Крушевска Република-Крушево; Општинска установа Дом на култура НАУМ НАУМОВСКИ-БОРЧЕ Крушево",
+  "priority": "none",
+  "priorityLabel": "Има јавна библиотека",
+  "note": null
+ },
+ {
+  "name": "Куманово",
+  "slug": "kumanovo",
+  "publicCount": 1,
+  "branchCount": 0,
+  "otherCount": 0,
+  "publicNames": [
+   "Библиотека „Тане Георгиевски“"
+  ],
+  "culturalHomes": "Национална установа Центар за култура ТРАЈКО ПРОКОПИЕВ Куманово",
+  "priority": "none",
+  "priorityLabel": "Има јавна библиотека",
+  "note": null
+ },
+ {
+  "name": "Македонски Брод",
+  "slug": "makedonski-brod",
+  "publicCount": 1,
+  "branchCount": 0,
+  "otherCount": 0,
+  "publicNames": [
+   "ОУ Дом на култура \"Македонски Брод\" Македонски Брод / Библиотека"
+  ],
+  "culturalHomes": "Општинска установа Дом на култура МАКЕДОНСКИ БРОД Македонски Брод",
+  "priority": "none",
+  "priorityLabel": "Има јавна библиотека",
+  "note": null
+ },
+ {
+  "name": "Неготино",
+  "slug": "negotino",
+  "publicCount": 1,
+  "branchCount": 1,
+  "otherCount": 0,
+  "publicNames": [
+   "Матична библиотека „Страшо Пинџур“"
+  ],
+  "culturalHomes": "Национална установа-Центар за култура АЦО ЃОРЧЕВ Неготино",
+  "priority": "none",
+  "priorityLabel": "Има јавна библиотека",
+  "note": null
+ },
+ {
+  "name": "Охрид",
+  "slug": "ohrid",
+  "publicCount": 1,
+  "branchCount": 0,
+  "otherCount": 1,
+  "publicNames": [
+   "НУ Библиотека „Григор Прличев“"
+  ],
+  "culturalHomes": "Национална установа-Центар за култура ГЛИГОР ПРЛИЧЕВ Охрид",
+  "priority": "none",
+  "priorityLabel": "Има јавна библиотека",
+  "note": null
+ },
+ {
+  "name": "Пехчево",
+  "slug": "pehchevo",
+  "publicCount": 1,
+  "branchCount": 0,
+  "otherCount": 0,
+  "publicNames": [
+   "Матична библиотека „Кочо Рацин“"
+  ],
+  "culturalHomes": "Општинска установа -Дом на културата ЈАНЕ САНДАНСКИ Пехчево",
+  "priority": "none",
+  "priorityLabel": "Има јавна библиотека",
+  "note": null
+ },
+ {
+  "name": "Прилеп",
+  "slug": "prilep",
+  "publicCount": 1,
+  "branchCount": 2,
+  "otherCount": 4,
+  "publicNames": [
+   "Градска библиотека „Борка Талески“"
+  ],
+  "culturalHomes": "Национална установа Центар за култура МАРКО ЦЕПЕНКОВ Прилеп",
+  "priority": "none",
+  "priorityLabel": "Има јавна библиотека",
+  "note": null
+ },
+ {
+  "name": "Пробиштип",
+  "slug": "probishtip",
+  "publicCount": 1,
+  "branchCount": 0,
+  "otherCount": 0,
+  "publicNames": [
+   "Општинска установа Дом на култура \"Злетовски рудар\" / Народна библиотека \"Јане Сандански\""
+  ],
+  "culturalHomes": "Дом на културата ЗЛЕТОВСКИ РУДАР Пробиштип",
+  "priority": "none",
+  "priorityLabel": "Има јавна библиотека",
+  "note": null
+ },
+ {
+  "name": "Радовиш",
+  "slug": "radovish",
+  "publicCount": 1,
+  "branchCount": 0,
+  "otherCount": 0,
+  "publicNames": [
+   "Народна библиотека „Браќа Миладиновци“"
+  ],
+  "culturalHomes": "Општинска установа-центар за култура АЦО КАРАМАНОВ Радовиш",
+  "priority": "none",
+  "priorityLabel": "Има јавна библиотека",
+  "note": null
+ },
+ {
+  "name": "Ресен",
+  "slug": "resen",
+  "publicCount": 1,
+  "branchCount": 0,
+  "otherCount": 0,
+  "publicNames": [
+   "Општинска установа Дом на култура \"Драги Тозија\" - Ресен / Библиотека"
+  ],
+  "culturalHomes": "Општинска установа Дом на култура Драги Тозија Ресен",
+  "priority": "none",
+  "priorityLabel": "Има јавна библиотека",
+  "note": null
+ },
+ {
+  "name": "Свети Николе",
+  "slug": "sveti-nikole",
+  "publicCount": 1,
+  "branchCount": 0,
+  "otherCount": 0,
+  "publicNames": [
+   "Општинска установа Дом на култура \"Крсте П. Мисирков\" Свети Николе / Библиотека"
+  ],
+  "culturalHomes": "Општинска установа Дом на културата КРСТЕ МИСИРКОВ Свети Николе",
+  "priority": "none",
+  "priorityLabel": "Има јавна библиотека",
+  "note": null
+ },
+ {
+  "name": "Струга",
+  "slug": "struga",
+  "publicCount": 1,
+  "branchCount": 0,
+  "otherCount": 0,
+  "publicNames": [
+   "Национална установа - Центар за култура \"Брака Миладиновци\" - Струга / Библиотека"
+  ],
+  "culturalHomes": "Национална установа Центар за култура Браќа Миладиновци Стругa",
+  "priority": "none",
+  "priorityLabel": "Има јавна библиотека",
+  "note": null
+ },
+ {
+  "name": "Струмица",
+  "slug": "strumica",
+  "publicCount": 1,
+  "branchCount": 0,
+  "otherCount": 0,
+  "publicNames": [
+   "Општинска матична библиотека „Благоја Јанков Мучето“"
+  ],
+  "culturalHomes": "Национална установа-Центар за култура АНТОН ПАНОВ Струмица",
+  "priority": "none",
+  "priorityLabel": "Има јавна библиотека",
+  "note": null
+ },
+ {
+  "name": "Тетово",
+  "slug": "tetovo",
+  "publicCount": 1,
+  "branchCount": 0,
+  "otherCount": 4,
+  "publicNames": [
+   "НУ Библиотека „Кочо Рацин“"
+  ],
+  "culturalHomes": "Национална установа-Центар за култура ИЉО АНТЕСКИ СМОК-Тетово",
+  "priority": "none",
+  "priorityLabel": "Има јавна библиотека",
+  "note": null
+ },
+ {
+  "name": "Центар",
+  "slug": "centar",
+  "publicCount": 1,
+  "branchCount": 1,
+  "otherCount": 1,
+  "publicNames": [
+   "Градска библиотека „Браќа Миладиновци“"
+  ],
+  "culturalHomes": null,
+  "priority": "none",
+  "priorityLabel": "Има јавна библиотека",
+  "note": null
+ },
+ {
+  "name": "Чаир",
+  "slug": "chair",
+  "publicCount": 1,
+  "branchCount": 0,
+  "otherCount": 1,
+  "publicNames": [
+   "НУ НУБ „Св. Климент Охридски“"
+  ],
+  "culturalHomes": null,
+  "priority": "none",
+  "priorityLabel": "Има јавна библиотека",
+  "note": null
+ },
+ {
+  "name": "Штип",
+  "slug": "shtip",
+  "publicCount": 1,
+  "branchCount": 0,
+  "otherCount": 1,
+  "publicNames": [
+   "НУ Библиотека „Гоце Делчев“"
+  ],
+  "culturalHomes": "Општинска установа за култура ДОМ НА МЛАДИ Штип; Национална установа-Центар за култура АЦО ШОПОВ-Штип",
+  "priority": "none",
+  "priorityLabel": "Има јавна библиотека",
+  "note": null
+ }
+]

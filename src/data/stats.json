@@ -1,0 +1,359 @@
+{
+ "generatedAt": "2026-10-12T00:00:00.000Z",
+ "dataVerifiedOn": "2026-10-12",
+ "totals": {
+  "records": 152,
+  "public": 144,
+  "excluded": 8,
+  "byType": [
+   {
+    "slug": "visokoskolska",
+    "label": "Високошколска",
+    "count": 36
+   },
+   {
+    "slug": "specijalizirana",
+    "label": "Специјализирана",
+    "count": 31
+   },
+   {
+    "slug": "javna",
+    "label": "Јавна",
+    "count": 29
+   },
+   {
+    "slug": "ogranok",
+    "label": "Огранок",
+    "count": 22
+   },
+   {
+    "slug": "nepoznato",
+    "label": "Непознато",
+    "count": 7
+   },
+   {
+    "slug": "ucilisna",
+    "label": "Училишна",
+    "count": 6
+   },
+   {
+    "slug": "nacionalna-ustanova",
+    "label": "Национална",
+    "count": 5
+   },
+   {
+    "slug": "stranski-centar",
+    "label": "Читална",
+    "count": 5
+   },
+   {
+    "slug": "zdruzenie",
+    "label": "Приватна",
+    "count": 3
+   }
+  ],
+  "byTypeGroup": [
+   {
+    "slug": "visokoskolski",
+    "label": "Високошколски библиотеки",
+    "count": 36
+   },
+   {
+    "slug": "specijalizirani",
+    "label": "Специјализирани библиотеки",
+    "count": 31
+   },
+   {
+    "slug": "javni",
+    "label": "Јавни (народни) библиотеки",
+    "count": 29
+   },
+   {
+    "slug": "ogranoci",
+    "label": "Подрачни библиотеки и ограноци",
+    "count": 22
+   },
+   {
+    "slug": "ostanati",
+    "label": "Останати библиотеки и читални",
+    "count": 21
+   },
+   {
+    "slug": "nacionalni",
+    "label": "Национални библиотеки",
+    "count": 5
+   }
+  ],
+  "byVerification": [
+   {
+    "slug": "confirmed",
+    "label": "Потврдено",
+    "count": 112
+   },
+   {
+    "slug": "partial",
+    "label": "Делумно потврдено",
+    "count": 16
+   },
+   {
+    "slug": "unconfirmed",
+    "label": "Непотврдено",
+    "count": 16
+   }
+  ],
+  "byConfidence": [
+   {
+    "slug": "high",
+    "label": "Висока сигурност",
+    "count": 80
+   },
+   {
+    "slug": "single",
+    "label": "Еден извор",
+    "count": 53
+   },
+   {
+    "slug": "medium",
+    "label": "Средна сигурност",
+    "count": 11
+   }
+  ]
+ },
+ "geography": {
+  "places": 42,
+  "topPlaces": [
+   {
+    "slug": "skopje",
+    "label": "Скопје",
+    "count": 81
+   },
+   {
+    "slug": "bitola",
+    "label": "Битола",
+    "count": 5
+   },
+   {
+    "slug": "tetovo",
+    "label": "Тетово",
+    "count": 5
+   },
+   {
+    "slug": "prilep",
+    "label": "Прилеп",
+    "count": 5
+   },
+   {
+    "slug": "gostivar",
+    "label": "Гостивар",
+    "count": 3
+   },
+   {
+    "slug": "struga",
+    "label": "Струга",
+    "count": 3
+   },
+   {
+    "slug": "ohrid",
+    "label": "Охрид",
+    "count": 2
+   },
+   {
+    "slug": "shtip",
+    "label": "Штип",
+    "count": 2
+   },
+   {
+    "slug": "veles",
+    "label": "Велес",
+    "count": 2
+   },
+   {
+    "slug": "delchevo",
+    "label": "Делчево",
+    "count": 2
+   },
+   {
+    "slug": "kichevo",
+    "label": "Кичево",
+    "count": 2
+   },
+   {
+    "slug": "kriva-palanka",
+    "label": "Крива Паланка",
+    "count": 2
+   },
+   {
+    "slug": "strumica",
+    "label": "Струмица",
+    "count": 1
+   },
+   {
+    "slug": "vinica",
+    "label": "Виница",
+    "count": 1
+   },
+   {
+    "slug": "gevgelija",
+    "label": "Гевгелија",
+    "count": 1
+   }
+  ],
+  "coverage": {
+   "municipalities": 81,
+   "withLibrary": 35,
+   "partial": 11,
+   "none": 35
+  }
+ },
+ "cobiss": {
+  "libraries": 70,
+  "fund": 2762541,
+  "increment": 65159,
+  "records": 1366389
+ },
+ "dzs": {
+  "officialTotal": 170,
+  "confirmedTotal": 102,
+  "rows": [
+   {
+    "category": "Национална библиотека",
+    "official": 1,
+    "confirmedInMaster": 1,
+    "allInMaster": 1,
+    "difference": 0,
+    "note": "НУБ „Св. Климент Охридски“ – Скопје."
+   },
+   {
+    "category": "Библиотеки – национални установи",
+    "official": 5,
+    "confirmedInMaster": 4,
+    "allInMaster": 4,
+    "difference": 1,
+    "note": "МКТ наведува 4 (Битола, Охрид, Тетово, Штип). Петтата не е утврдена. „Кочо Рацин“ – Кичево е потврдено дел од НУ Центар за култура (не посебна библиотечна установа) и е прекласифицирана во јавни. Можна алтернатива: ДЗС да ги брои библиотеките во националните центри за култура – потребен е список од ДЗС."
+   },
+   {
+    "category": "Јавни (народни) библиотеки",
+    "official": 50,
+    "confirmedInMaster": 30,
+    "allInMaster": 30,
+    "difference": 20,
+    "note": "Недостасуваат ~21. Можни објаснувања: ДЗС брои централни библиотеки/огранци одделно (ГБСК има 4 централни библиотеки и 16 клонови), или општински библиотеки надвор од COBISS. Потребен е список од ДЗС."
+   },
+   {
+    "category": "Високошколски библиотеки",
+    "official": 73,
+    "confirmedInMaster": 35,
+    "allInMaster": 36,
+    "difference": 38,
+    "note": "Потврдени: 24 факултетски библиотеки на УКИМ (официјална листа), COBISS-членки, УЈИЕ, УГД, 3 факултети на УКЛО и 3 приватни универзитети. Останатите факултети и високообразовни установи се во лист „Кандидати (непотврдени)“. Можно е ДЗС да брои и висши/стручни школи и академии."
+   },
+   {
+    "category": "Специјализирани библиотеки",
+    "official": 40,
+    "confirmedInMaster": 32,
+    "allInMaster": 32,
+    "difference": 8,
+    "note": "Вклучени се и 3 библиотеки исклучени од COBISS во 2023–2025 (Академија за судии, Институт за старословенска култура, Државен архив) – да се провери дали ДЗС ги брои."
+   },
+   {
+    "category": "Неспецијализирани (општонаучни) библиотеки",
+    "official": 1,
+    "confirmedInMaster": 0,
+    "allInMaster": 0,
+    "difference": 1,
+    "note": "Не е идентификувана во достапните извори."
+   }
+  ]
+ },
+ "sources": {
+  "averagePerRecord": 3.5,
+  "maxPerRecord": 14,
+  "bySource": [
+   {
+    "slug": "cobiss-statistika-2024-pdf",
+    "label": "COBISS статистика 2024 (PDF)",
+    "count": 74
+   },
+   {
+    "slug": "cobiss-profili",
+    "label": "COBISS (профили)",
+    "count": 67
+   },
+   {
+    "slug": "cobiss-chlenki",
+    "label": "COBISS-членки",
+    "count": 67
+   },
+   {
+    "slug": "veb-proverka-12-10-2026",
+    "label": "Веб-проверка (12.10.2026)",
+    "count": 63
+   },
+   {
+    "slug": "zlatna-kniga-zk-mk",
+    "label": "Златна книга (zk.mk)",
+    "count": 43
+   },
+   {
+    "slug": "neoficijalen-dokument-opshtinski-biblioteki",
+    "label": "Неофицијален документ (општински библиотеки)",
+    "count": 42
+   },
+   {
+    "slug": "zholti-stranici",
+    "label": "Жолти страници",
+    "count": 36
+   },
+   {
+    "slug": "centralen-registar-dejnost-91",
+    "label": "Централен регистар (дејност 91)",
+    "count": 32
+   },
+   {
+    "slug": "loc-mk",
+    "label": "loc.mk",
+    "count": 26
+   },
+   {
+    "slug": "centralen-registar-naziv-biblioteka",
+    "label": "Централен регистар (назив „библиотека“)",
+    "count": 22
+   },
+   {
+    "slug": "mkt",
+    "label": "МКТ",
+    "count": 21
+   },
+   {
+    "slug": "companywall-sliki-od-ekran",
+    "label": "CompanyWall – слики од екран",
+    "count": 20
+   },
+   {
+    "slug": "aspi",
+    "label": "ASPI",
+    "count": 19
+   },
+   {
+    "slug": "vikipedija",
+    "label": "Википедија",
+    "count": 19
+   },
+   {
+    "slug": "abv-mk",
+    "label": "abv.mk",
+    "count": 19
+   },
+   {
+    "slug": "centralen-registar-dejnost-90-04-90-310",
+    "label": "Централен регистар (дејност 90.04 / 90.310)",
+    "count": 17
+   },
+   {
+    "slug": "crm-slika-od-ekran",
+    "label": "ЦРМ – слика од екран",
+    "count": 2
+   }
+  ]
+ }
+}
