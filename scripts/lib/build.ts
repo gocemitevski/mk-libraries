@@ -192,6 +192,30 @@ function cleanPhones(list: string[], issues: BuildIssue[], id: string): string[]
   return [...new Set(out)];
 }
 
+/**
+ * Работната книга го нарекува адресарот „директориум“ — збор што на македонски
+ * најчесто значи папка во датотечниот систем, па така и се учи („Папка (фолдер,
+ * директориум, каталог)“ во учебникот по информатика). Станицата се вика „адресар“,
+ * по образецот на „Адресар на општини“, „Адресар на граѓанските организации“.
+ *
+ * Работната книга не се менува: усогласуваме само изведениот текст што оди до
+ * корисникот — деталот на верификацијата и methodology.md. Истото веќе го прави
+ * и VERIFICATION_LABEL, кое од „Делумно“ прави „Делумно потврдено“.
+ *
+ * Редот е важен: „директориум“ е префикс на другите две форми, па мора последно.
+ */
+const DIRECTORY_TERM: [RegExp, string][] = [
+  [/директориуми/g, 'адресари'],
+  [/директориумот/g, 'адресарот'],
+  [/директориум/g, 'адресар'],
+  [/Директориуми/g, 'Адресари'],
+  [/Директориумот/g, 'Адресарот'],
+  [/Директориум/g, 'Адресар'],
+];
+
+const mkDirectoryTerm = (text: string): string =>
+  DIRECTORY_TERM.reduce((out, [from, to]) => out.replace(from, to), text);
+
 /** Го извлекува првиот запис од мастерот со што е можно повеќе полиња. */
 function parseMaster(rows: Row[], issues: BuildIssue[]): Library[] {
   const records: Library[] = [];
@@ -217,7 +241,9 @@ function parseMaster(rows: Row[], issues: BuildIssue[]): Library[] {
     const verRaw = str(row, C.verification);
     const verPrefix = verRaw.split(/[–-]/)[0].trim();
     const verLevel = VERIFICATION_LEVEL[verPrefix] ?? 'unconfirmed';
-    const verDetail = verRaw.includes('–') ? verRaw.slice(verRaw.indexOf('–') + 1).trim() : null;
+    const verDetail = verRaw.includes('–')
+      ? mkDirectoryTerm(verRaw.slice(verRaw.indexOf('–') + 1).trim())
+      : null;
 
     const confidence = CONFIDENCE[str(row, C.confidence)] ?? 'single';
 
@@ -348,7 +374,7 @@ function parseMaster(rows: Row[], issues: BuildIssue[]): Library[] {
         allAddresses: str(row, C.allAddresses) || null,
         allPhones: phoneList,
       },
-      notes: str(row, C.comment) || null,
+      notes: mkDirectoryTerm(str(row, C.comment)) || null,
       lastVerified: parseDdMmYyyy(str(row, C.webCheckDate)),
       verificationUrls: urls(splitMulti(str(row, C.webSources)), issues, id, C.webSources),
     };
@@ -633,7 +659,8 @@ export async function buildAll(xlsxPath: string): Promise<BuildResult> {
   const candidates = parseCandidates(sheetToRows(mustSheet(wb, 'Кандидати (непотврдени)'), 4), issues);
   const provenance = parseProvenance(sheetToRows(mustSheet(wb, 'Мапирање на извори')), issues);
   const { dzsRows, officialTotal } = parseDzs(sheetToRows(mustSheet(wb, 'Усогласување со ДЗС'), 4));
-  const methodology = parseMethodology(sheetColumn(mustSheet(wb, 'Легенда и методологија')));
+  const methodologyRaw = parseMethodology(sheetColumn(mustSheet(wb, 'Легенда и методологија')));
+  const methodology = { ...methodologyRaw, markdown: mkDirectoryTerm(methodologyRaw.markdown) };
 
   // Задолжителна проверка на сите записи низ схемата
   for (const lib of libraries) {

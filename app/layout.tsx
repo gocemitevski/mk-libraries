@@ -9,12 +9,12 @@ import { SiteFooter } from '@/components/site-footer';
 export const metadata: Metadata = {
   metadataBase: new URL('https://biblioteki.mk'),
   title: {
-    default: 'Библиотеки во Северна Македонија — директориум',
+    default: 'Библиотеки во Северна Македонија — адресар',
     template: '%s | Библиотеки.мк',
   },
   description:
     'Пребарувајте ги библиотеките во Северна Македонија по населено место, тип и статус. Податоци проверени од јавни извори: МКТ, COBISS, Централен регистар и Википедија.',
-  keywords: ['библиотеки', 'Северна Македонија', 'директориум', 'COBISS', 'народна библиотека'],
+  keywords: ['библиотеки', 'Северна Македонија', 'адресар', 'COBISS', 'народна библиотека'],
   openGraph: {
     type: 'website',
     locale: 'mk_MK',
@@ -26,7 +26,7 @@ export const metadata: Metadata = {
   twitter: {
     card: 'summary_large_image',
     title: 'Библиотеки во Северна Македонија',
-    description: 'Директориум на библиотеки во Северна Македонија со податоци од јавни извори.',
+    description: 'Адресар на библиотеки во Северна Македонија со податоци од јавни извори.',
   },
   robots: { index: true, follow: true },
 };

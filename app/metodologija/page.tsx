@@ -217,7 +217,7 @@ export default function MethodologyPage() {
           <div className="alert alert-secondary small mb-0">
             <Icon name="info-circle" size={18} className="me-2" />
             <strong>Дајте забелешка.</strong> Ако наидете на неточен податок, проверете го прво во{' '}
-            <Link href="/biblioteki/">директориумот</Link> — записите се означени со степенот на
+            <Link href="/biblioteki/">адресарот</Link> — записите се означени со степенот на
             сигурност и со целосната листа на извори.
           </div>
         </aside>

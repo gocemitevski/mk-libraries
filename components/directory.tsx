@@ -26,7 +26,7 @@ interface Props {
 type SortKey = 'name' | 'place' | 'fund';
 
 /**
- * Директориумот: пребарување + филтри, сè на клиентот.
+ * Адресарот: пребарување + филтри, сè на клиентот.
  *
  * Состојбата се чита од URL-от при монтирање и се запишува назад со
  * history.replaceState — не користиме useSearchParams, бидејќи тој бара
@@ -271,7 +271,7 @@ export function Directory({ records, places, typeGroups }: Props) {
         <div className="d-flex flex-column flex-md-row gap-2 mb-3">
           <div className="flex-grow-1">
             <label htmlFor="directory-search" className="visually-hidden">
-              Пребарај во директориумот
+              Пребарај во адресарот
             </label>
             <input
               id="directory-search"

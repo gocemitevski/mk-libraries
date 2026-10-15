@@ -60,7 +60,7 @@ export const LibrarySchema = z.object({
   dzsLabel: z.string(),
   /** „Е библиотека?“ */
   isLibrary: z.enum(['yes', 'partial', 'uncertain', 'no']),
-  /** Се прикажува во директориумот? (false = не е библиотека) */
+  /** Се прикажува во адресарот? (false = не е библиотека) */
   public: z.boolean(),
   status: z.string(),
   active: z.boolean(),

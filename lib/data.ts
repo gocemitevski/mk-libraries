@@ -40,7 +40,7 @@ export function slugify(input: string): string {
 
 const provenanceFile = provenanceJson as { byId: Record<string, ProvenanceEntry[]>; unmerged: ProvenanceEntry[] };
 
-/** Само записи што се прикажуваат во директориумот (не-библиотеките се исклучени). */
+/** Само записи што се прикажуваат во адресарот (не-библиотеките се исклучени). */
 export const publicLibraries = libraries.filter((l) => l.public);
 
 export const librariesBySlug = new Map(libraries.map((l) => [l.slug, l]));

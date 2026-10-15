@@ -13,13 +13,13 @@ export function SiteFooter() {
               Библиотеки<span className="text-accent">.</span>мк
             </p>
             <p className="small mb-0">
-              Директориум на библиотеки во Северна Македонија, изработен од јавно достапни извори.
+              Адресар на библиотеки во Северна Македонија, изработен од јавно достапни извори.
               Податоците се проверени на{' '}
               {stats.dataVerifiedOn ? <time dateTime={stats.dataVerifiedOn}>12.10.2026</time> : '12.10.2026'}.
             </p>
           </div>
           <div className="col-6 col-md-3">
-            <p className="h6 fw-semibold mb-2">Директориум</p>
+            <p className="h6 fw-semibold mb-2">Адресар</p>
             <ul className="list-unstyled small mb-0">
               <li className="mb-1"><Link href="/biblioteki/">Сите библиотеки</Link></li>
               <li className="mb-1"><Link href="/naseleni-mesta/">По населено место</Link></li>

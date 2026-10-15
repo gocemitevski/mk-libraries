@@ -15,7 +15,7 @@ import type { TypeGroup } from '@/src/lib/taxonomy';
  * од /data/search-index.json.
  */
 
-/** Податок за филтерите и картичките во директориумот. */
+/** Податок за филтерите и картичките во адресарот. */
 export interface DirectoryRecord {
   slug: string;
   name: string;
