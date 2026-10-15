@@ -48,7 +48,7 @@ export function TypeBadge({
 }: {
   library: Pick<LibraryCardData, 'typeLabel' | 'typeGroup'>;
 }) {
-  // Бојата доаѓа од .type-<slug> (defинирана во globals.scss од $type-hues),
+  // Бојата доаѓа од .type-<slug> (дефинирана во globals.scss од $type-hues),
   // така што значката ја наследува нијансата на својата група.
   return (
     <span className={`badge text-truncate type-badge type-${library.typeGroup}`}>{library.typeLabel}</span>
