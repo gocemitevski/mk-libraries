@@ -1,0 +1,39 @@
+{
+  "name": "biblioteki-mk",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Директориум на библиотеки во Северна Македонија — податоци, збирка и веб-страница",
+  "license": "CC-BY-4.0",
+  "scripts": {
+    "dev": "next dev",
+    "build": "npm run data:build && next build",
+    "typecheck": "tsc --noEmit",
+    "data:build": "tsx scripts/build-data.ts",
+    "data:check": "tsx scripts/build-data.ts --check",
+    "data:test": "node --import tsx --test tests/*.test.ts",
+    "test": "npm run data:test",
+    "check": "npm run data:check && npm run data:test && npm run typecheck"
+  },
+  "dependencies": {
+    "bootstrap": "^5.3.8",
+    "exceljs": "^4.4.0",
+    "fuse.js": "^7.5.0",
+    "leaflet": "^1.9.4",
+    "next": "^16.4.0",
+    "react": "^19.3.0",
+    "react-dom": "^19.3.0",
+    "react-leaflet": "^5.0.0",
+    "tsx": "^4.23.15",
+    "typescript": "^7.0.2",
+    "zod": "^4.6.7"
+  },
+  "devDependencies": {
+    "@types/leaflet": "^1.9.22",
+    "@types/node": "^26.6.5",
+    "@types/react": "^19.3.0",
+    "@types/react-dom": "^19.3.0",
+    "bootstrap-icons": "^1.13.2",
+    "sass": "^1.105.1"
+  }
+}

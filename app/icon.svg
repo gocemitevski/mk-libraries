@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="32" height="32" role="img" aria-label="Библиотеки.мк">
+  <title>Библиотеки.мк</title>
+  <rect width="32" height="32" rx="7" fill="#12263f"/>
+  <!-- отворена книга: две страници со 'спинка' во килибарна -->
+  <path d="M16 11.2C13.2 9.1 9.4 8.4 5.4 8.9V23.6c4-.5 7.8.2 10.6 2.3z" fill="#faf7f2"/>
+  <path d="M16 11.2c2.8-2.1 6.6-2.8 10.6-2.3v14.7c-4-.5-7.8.2-10.6 2.3z" fill="#faf7f2" opacity="0.82"/>
+  <rect x="15.2" y="10.4" width="1.6" height="15.8" rx="0.8" fill="#c9822b"/>
+</svg>

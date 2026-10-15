@@ -1,0 +1,133 @@
+import type { Metadata } from 'next';
+import Link from 'next/link';
+import { Breadcrumbs } from '@/components/breadcrumbs';
+import { LazyCoverageMap } from '@/components/lazy-coverage-map';
+import { Icon } from '@/components/icon';
+import { JsonLd, itemListJsonLd, SITE_URL } from '@/lib/seo';
+import { coverage, mapPlaces, publicLibraries, recordCountsBySlug } from '@/lib/data';
+import { formatNumber, NOUNS, plural } from '@/lib/format';
+
+export const metadata: Metadata = {
+  title: 'Покриеност по општини',
+  description: `${coverage.length} општини во Северна Македонија — 35 со јавна библиотека, 11 без потврдена, 35 без ниту една. Мапа и целосна табела.`,
+  alternates: { canonical: '/opstini/' },
+};
+
+const ORDER = { high: 0, medium: 1, none: 2 } as const;
+
+export default function CoveragePage() {
+  const sorted = [...coverage].sort(
+    (a, b) => ORDER[a.priority] - ORDER[b.priority] || a.name.localeCompare(b.name, 'mk'),
+  );
+  const groups = [
+    { key: 'high' as const, label: 'Нема јавна библиотека', cls: 'coverage-none' },
+    { key: 'medium' as const, label: 'Нема потврдена јавна библиотека', cls: 'coverage-mid' },
+    { key: 'none' as const, label: 'Има јавна библиотека', cls: 'coverage-ok' },
+  ];
+
+  return (
+    <div className="container py-4">
+      <JsonLd
+        data={itemListJsonLd(
+          sorted.map((c) => ({ name: c.name, url: `${SITE_URL}/opstini/${c.slug}/` })),
+          'Општини и библиотечна покриеност',
+        )}
+      />
+      <Breadcrumbs items={[{ label: 'Општини' }]} />
+
+      <header className="mt-3 mb-4">
+        <h1 className="h2 mb-2">Покриеност по општини</h1>
+        <p className="text-secondary mb-0">
+          Од {coverage.length} општини во базата, <strong className="coverage-ok">35 имаат јавна
+          библиотека</strong>, <strong className="coverage-mid">11 немаат потврдена</strong> и{' '}
+          <strong className="coverage-none">35 немаат ниту една</strong>. Мапата и табелата ги
+          прикажуваат и {formatNumber(publicLibraries.length)}-те прикажани записи.
+        </p>
+      </header>
+
+      {/* ── Мапа ─────────────────────────────────────────────────────── */}
+      <section className="mb-3" aria-labelledby="map-heading">
+        <h2 id="map-heading" className="h4 mb-2">
+          <Icon name="map" className="me-2" />
+          Мапа
+        </h2>
+        <LazyCoverageMap coverage={coverage} places={mapPlaces} counts={recordCountsBySlug} />
+        <p className="small text-secondary mt-2 mb-0">
+          Точките по населено место се <strong>приближни</strong> — ги користиме центроидите на местата
+          бидејќи само 10 од {formatNumber(152)} {plural(152, NOUNS.запис)} имаат точни координати. Општинските граници се од
+          geoBoundaries (CC BY 4.0). За точна адреса, погледнете ја страницата на библиотеката.
+        </p>
+      </section>
+
+      {/* ── Табела: пристапен паралелен извор ───────────────────────── */}
+      <section className="mt-5" aria-labelledby="table-heading">
+        <h2 id="table-heading" className="h4 mb-3">Табела по општини</h2>
+
+        {groups.map((group) => {
+          const entries = sorted.filter((c) => c.priority === group.key);
+          return (
+            <div className="mb-4" key={group.key}>
+              <h3 className={`h5 ${group.cls}`}>
+                {group.label}{' '}
+                <span className="badge text-truncate flex-shrink-0 bg-secondary-subtle text-secondary-emphasis">{entries.length}</span>
+              </h3>
+              <div className="table-responsive">
+                <table className="table table-sm align-middle">
+                  <caption className="visually-hidden">
+                    Општини со статус: {group.label}. Колоните „Јавни / Ограноци / Останати“ се
+                    класификација од мастер-листот; „Записи“ е бројот што се прикажува во базата.
+                  </caption>
+                  <thead>
+                    <tr>
+                      <th scope="col">Општина</th>
+                      <th scope="col" className="text-end">Јавни</th>
+                      <th scope="col" className="text-end">Ограноци</th>
+                      <th scope="col" className="text-end">Останати</th>
+                      <th scope="col" className="text-end">Записи во базата</th>
+                      <th scope="col">Јавни библиотеки (називи)</th>
+                      <th scope="col">Забелешка</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {entries.map((c) => (
+                      <tr key={c.slug}>
+                        <th scope="row" className="fw-normal">
+                          <Link href={`/opstini/${c.slug}/`}>{c.name}</Link>
+                        </th>
+                        <td className="text-end">{c.publicCount}</td>
+                        <td className="text-end">{c.branchCount}</td>
+                        <td className="text-end">{c.otherCount}</td>
+                        <td className="text-end">{recordCountsBySlug[c.slug] ?? 0}</td>
+                        <td>
+                          {c.publicNames.length > 0 ? (
+                            <ul className="list-unstyled mb-0 small">
+                              {c.publicNames.map((n) => (
+                                <li key={n}>{n}</li>
+                              ))}
+                            </ul>
+                          ) : (
+                            <span className="text-secondary">—</span>
+                          )}
+                        </td>
+                        <td className="small text-secondary">{c.note ?? '—'}</td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          );
+        })}
+      </section>
+
+      {/* ── Град Скопје ──────────────────────────────────────────────── */}
+      <div className="alert alert-secondary mt-3">
+        <Icon name="info-circle" size={18} className="me-2" />
+        <strong>Забелешка за Скопје:</strong> градските библиотеки често се водат на ниво на Град
+        Скопје, а не по поединечна општина. Затоа дел од скопските општини изгледаат без јавна
+        библиотека и покрај присутните ограноци — види ги{' '}
+        <Link href="/opstini/skopje-opstina-neutvrdena/">записите без утврдена општина</Link>.
+      </div>
+    </div>
+  );
+}
