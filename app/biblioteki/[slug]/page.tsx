@@ -5,6 +5,7 @@ import { Breadcrumbs } from '@/components/breadcrumbs';
 import { Icon } from '@/components/icon';
 import { LibraryCard, TypeBadge, VerificationBadge } from '@/components/library-card';
 import { JsonLd, libraryJsonLd } from '@/lib/seo';
+import { formatDayNames, formatMkTime, parseHours } from '@/lib/hours';
 import { commonsImageUrl } from '@/lib/commons';
 import {
   getBranches,
@@ -220,20 +221,52 @@ export default async function LibraryPage({ params }: Props) {
           {/* ── Работно време ──────────────────────────────────────────── */}
           {library.contacts.hours.length > 0 && (
             <section className="detail-section py-4">
-              <h2 className="h4 mb-3">
-                <Icon name="clock" className="me-2" />
-                Работно време
+              <h2 className="h4 hstack gap-2 mb-3 mx-2">
+                <Icon name="clock" />
+                <span>Работно време</span>
               </h2>
-              <ul className="list-unstyled mb-0">
-                {library.contacts.hours.map((h, i) => (
-                  <li key={`${h.source}-${i}`} className="mb-1">
-                    <strong>{h.value}</strong>
-                    <span className="text-secondary small"> — според {h.source}</span>
-                  </li>
-                ))}
-              </ul>
-              <p className="small text-secondary mt-2 mb-0">
-                Работното време е преземено од директориуми и може да не е актуелно — проверете на мрежното место.
+              {/* Секој запис е верзија на еден извор, па секој извор добива свој
+                  list-group, а секоја деновска група внатре — свој list-group-item,
+                  за да се скенира ред по ред. Цитатот за изворот е последен ред во
+                  групата, тивок и со икона: внатре, за да не се натпреварува со
+                  насловот над групата, и еднаш по извор, бидејќи 43 од 69 реда би
+                  го повториле. Кај 4 библиотеки два извора се разликуваат, па
+                  секоја група носи свој цитат и не може да се замени кој што тврди.
+                  Изворот пишува „Пон–Пет 08:00–19:00“, а прикажуваме целосни имиња
+                  и правописен македонски часовник „понеделник–петок 8.00–19:00“ —
+                  двоеточието и скратените зборови остануваат во JSON-LD, каде ги
+                  бара schema.org. Непознат формат се прикажува суров, за да не се
+                  изгуби податок. */}
+              {library.contacts.hours.map((h, i) => (
+                <div key={`${h.source}-${i}`} className={i > 0 ? 'mt-3' : undefined}>
+                  <ul className="list-group">
+                    {parseHours(h.value).map((seg, j) =>
+                      seg.days === null ? (
+                        <li key={j} className="list-group-item">
+                          {seg.raw}
+                        </li>
+                      ) : (
+                        <li key={j} className="list-group-item d-flex gap-3">
+                          <span className="flex-grow-1 text-secondary">{formatDayNames(seg.days)}</span>
+                          <span>
+                            {seg.open ? `${formatMkTime(seg.open.from)}–${formatMkTime(seg.open.to)}` : 'затворено'}
+                          </span>
+                        </li>
+                      ),
+                    )}
+                    {/* Цитат: еднаш по извор, внатре во групата како тивок ред — не
+                        над неа, за да не се натпреварува со насловот, и не по секој
+                        ред, бидејќи 43 од 69 реда би го повториле (loc.mk има 6 реда
+                        на една страница). Иконата го означува како фуснота, а не како
+                        уште еден податок. */}
+                    <li className="list-group-item text-bg-light py-2 small text-secondary hstack gap-2">
+                      <span>според {h.source}</span>
+                    </li>
+                  </ul>
+                </div>
+              ))}
+              <p className="small text-secondary mt-3 mx-3 mb-0">
+                Работното време е преземено од адресари и може да не е актуелно — проверете на мрежното место.
               </p>
             </section>
           )}

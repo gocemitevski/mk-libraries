@@ -1,5 +1,6 @@
 import type { Library } from '@/src/lib/schema';
 import { publicLibraries } from '@/lib/data';
+import { schemaOrgOpeningHours } from '@/lib/hours';
 
 const SITE = 'https://biblioteki.mk';
 
@@ -55,8 +56,11 @@ export function libraryJsonLd(library: Library, url: string): Record<string, unk
   if (library.contacts.website) data.mainEntityOfPage = library.contacts.website;
   if (sameAs.length) data.sameAs = sameAs;
 
-  const hours = library.contacts.hours.map((h) => h.value).join('; ');
-  if (hours) {
+  // „Mo-Fr 08:30-16:30“ — ја чита и Google. Суровиот македонски текст
+  // („Пон–Пет 08:30–16:30“) не се разбира како OpeningHours, па овде го
+  // претвораме во машинскиот формат; приказот кон човекот останува македонски.
+  const hours = schemaOrgOpeningHours(library.contacts.hours);
+  if (hours.length) {
     data.openingHours = hours;
   }
 
