@@ -72,7 +72,7 @@ export function CoverageMap({ coverage, places, counts }: Props) {
       return {
         fillColor: PRIORITY_COLOR[priority ?? ''] ?? '#94a3b8',
         fillOpacity: isActive ? 0.8 : 0.5,
-        color: isActive ? '#12263f' : '#ffffff',
+        color: isActive ? '#12263f' : '#98857d',
         weight: isActive ? 3 : 1,
         opacity: 1,
       };
@@ -117,9 +117,11 @@ export function CoverageMap({ coverage, places, counts }: Props) {
           scrollWheelZoom={false}
           style={{ height: '100%', width: '100%' }}
         >
+          {/* Монокроматска база: земјата е речиси една нијанса на сиво, па
+              полигоните со боја остануваат главен носител на информацијата. */}
           <TileLayer
-            attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> соработници'
-            url="https://tile.openstreetmap.org/{z}/{x}/{y}.png"
+            attribution='&copy; <a href="https://www.esri.com/">Esri</a>, <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> соработници'
+            url="https://services.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Light_Gray_Base/MapServer/tile/{z}/{y}/{x}"
           />
           {geo && (
             <>
