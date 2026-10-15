@@ -70,8 +70,8 @@ export default async function MunicipalityPage({ params }: Props) {
       <Breadcrumbs items={[{ label: 'Општини', href: '/opstini/' }, { label: entry.name }]} />
 
       <header className="mt-3 mb-4">
-        <div className="d-flex flex-wrap align-items-baseline gap-3 mb-2">
-          <h1 className="h2 mb-0">Општина {entry.name}</h1>
+        <div className="hstack flex-wrap gap-3 mb-2">
+          <h1 className="mb-0">Општина {entry.name}</h1>
           <span className={`badge text-truncate flex-shrink-0 ${PRIORITY_CLASS[entry.priority]} border`}>
             {entry.priorityLabel}
           </span>
@@ -91,23 +91,30 @@ export default async function MunicipalityPage({ params }: Props) {
       </header>
 
       {entry.note && (
-        <div className="alert alert-secondary mb-4">
-          <Icon name="info-circle" size={18} className="me-2" />
-          <strong>Забелешка од базата:</strong> {entry.note}
+        <div className="alert alert-secondary mb-3 hstack gap-3">
+          <Icon name="info-circle" size={18} />
+          <div className="hstack gap-2">
+            <strong>Забелешка од базата:</strong>
+            <span>{entry.note}</span>
+          </div>
         </div>
       )}
 
       {libraries.length === 0 ? (
-        <div className="alert alert-secondary">
-          <Icon name="info-circle" size={18} className="me-2" />
-          Во мастер-базата нема записи што се водат на оваа општина.
-          {entry.priority === 'high' && (
-            <>
-              {' '}
-              Ова е една од 35-те општини без јавна библиотека — видете ја{' '}
-              <Link href="/opstini/">мапата на покриеноста</Link> за целиот преглед.
-            </>
-          )}
+        <div className="alert alert-secondary hstack gap-3">
+          <Icon name="info-circle" size={18} />
+          <div className="hstack gap-2">
+            <span>
+              Во базата нема записи што се водат на оваа општина.
+              {entry.priority === 'high' && (
+                <>
+                  {' '}
+                  Ова е една од 35-те општини без јавна библиотека — видете ја{' '}
+                  <Link href="/opstini/">мапата на покриеноста</Link> за целиот преглед.
+                </>
+              )}
+            </span>
+          </div>
         </div>
       ) : (
         <>
@@ -115,7 +122,7 @@ export default async function MunicipalityPage({ params }: Props) {
             <h2 id="by-place" className="h4 mb-3">
               По населено место
             </h2>
-            <div className="d-flex flex-wrap gap-2 mb-4">
+            <div className="d-flex flex-wrap gap-2 mb-3">
               {placesList.map(([place, list]) => (
                 <Link
                   key={place}

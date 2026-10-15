@@ -68,7 +68,7 @@ export default function StatsPage() {
       <Breadcrumbs items={[{ label: 'Статистика' }]} />
 
       <header className="mt-3 mb-4">
-        <h1 className="h2 mb-2">Статистика и отворени податоци</h1>
+        <h1 className="mb-2">Статистика и отворени податоци</h1>
         <p className="text-secondary mb-0">
           Сите бројки подолу се пресметани од истиот записник што ја гради страницата. Податоците се
           проверени на{' '}

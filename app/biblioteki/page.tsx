@@ -29,7 +29,7 @@ export default function DirectoryPage() {
       <JsonLd data={itemList} />
       <Breadcrumbs items={[{ label: 'Библиотеки' }]} />
       <header className="mt-3 mb-4">
-        <h1 className="h2 mb-2">Сите библиотеки</h1>
+        <h1 className="mb-2">Сите библиотеки</h1>
         <p className="text-secondary mb-0">
           {formatNumber(publicLibraries.length)} {plural(publicLibraries.length, NOUNS.запис)} во{' '}
           {formatNumber(places.length)} {plural(places.length, NOUNS['населено место'])}. Пребарајте по име, краток назив,

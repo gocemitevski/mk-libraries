@@ -132,7 +132,7 @@ export default async function LibraryPage({ params }: Props) {
         <div className="col-lg-8">
           {/* ── Наслов ─────────────────────────────────────────────────── */}
           <header className="mb-4">
-            <h1 className="h2 mb-2">{library.name}</h1>
+            <h1 className="mb-3">{library.name}</h1>
             <div className="d-flex flex-wrap gap-2 mb-3">
               <TypeBadge library={library} />
               <VerificationBadge library={library} />
@@ -167,7 +167,7 @@ export default async function LibraryPage({ params }: Props) {
           {/* ── Дејства ──────────────────────────────────────────────────
               Едно исполнето копче за она што најчесто се бара (мрежно место),
               сè останато со контурниот втор степен на хиерархијата. */}
-          <div className="d-flex flex-wrap gap-2 mb-4">
+          <div className="d-flex flex-wrap gap-2 mb-3">
             {library.contacts.website && (
               <a className="btn btn-primary hstack gap-2" href={library.contacts.website} target="_blank" rel="noopener external">
                 <Icon name="globe2" />

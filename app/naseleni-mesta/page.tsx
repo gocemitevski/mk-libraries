@@ -21,7 +21,7 @@ export default function PlacesPage() {
       />
       <Breadcrumbs items={[{ label: 'Населени места' }]} />
       <header className="mt-3 mb-4">
-        <h1 className="h2 mb-2">Библиотеки по населено место</h1>
+        <h1 className="mb-2">Библиотеки по населено место</h1>
         <p className="text-secondary mb-0">
           {publicLibraries.length} библиотеки во {places.length} населени места. Скопје сочинува{' '}
           {Math.round(((places.find((p) => p.name === 'Скопје')?.count ?? 0) / publicLibraries.length) * 100)}% од

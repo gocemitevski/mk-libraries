@@ -24,7 +24,7 @@ export default function TypesPage() {
       <Breadcrumbs items={[{ label: 'Типови' }]} />
 
       <header className="mt-3 mb-4">
-        <h1 className="h2 mb-2">Библиотеки по тип</h1>
+        <h1 className="mb-2">Библиотеки по тип</h1>
         <p className="text-secondary mb-0">
           Мастер-листот користи десет стандардизирани типа. Овде се групирани во шест групи за полесно
           прелистување; засебниот тип „Не е библиотека“ останува во базата, но не се прикажува во адресарот.

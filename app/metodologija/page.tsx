@@ -128,7 +128,7 @@ export default function MethodologyPage() {
       <div className="row g-4 mt-1">
         <div className="col-lg-8">
           <header className="mb-4">
-            <h1 className="h2 mb-2">Методологија и извори</h1>
+            <h1 className="mb-2">Методологија и извори</h1>
             <p className="text-secondary mb-0">
               Целосниот записник што ја гради оваа страница, во луѓе-читлива форма. Секоја бројка на
               страницата за статистика потекнува од овој процес.

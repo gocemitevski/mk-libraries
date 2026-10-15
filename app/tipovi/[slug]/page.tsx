@@ -52,8 +52,8 @@ export default async function TypeGroupPage({ params }: Props) {
       <Breadcrumbs items={[{ label: 'Типови', href: '/tipovi/' }, { label: group.label }]} />
 
       <header className={`mt-3 mb-4 type-${group.slug}`}>
-        <div className="d-flex flex-wrap align-items-baseline gap-3 mb-2">
-          <h1 className="h2 mb-0">{group.label}</h1>
+        <div className="hstack flex-wrap gap-3 mb-2">
+          <h1 className="mb-0">{group.label}</h1>
           {/* Бројачот е значка, не текст — инаку ја надминува главниот наслов. */}
           <span className="badge text-truncate flex-shrink-0 type-badge">{formatNumber(group.count)}</span>
         </div>
@@ -85,20 +85,24 @@ export default async function TypeGroupPage({ params }: Props) {
         ))}
       </div>
 
-      <nav className="mt-4 d-flex flex-wrap gap-2" aria-label="Други типови">
-        <span className="text-secondary small align-self-center me-2">Други типови:</span>
-        {typeGroups
-          .filter((g) => g.slug !== group.slug)
-          .map((g) => (
-            <Link
-              key={g.slug}
-              href={`/tipovi/${g.slug}/`}
-              className="btn btn-sm btn-outline-secondary d-inline-flex align-items-center gap-2"
-            >
-              {g.label}
-              <span className="badge text-truncate flex-shrink-0 bg-secondary-subtle text-secondary-emphasis">{g.count}</span>
-            </Link>
-          ))}
+      <nav className="mt-5" aria-label="Други типови">
+        <h2 className="mb-3">Други типови</h2>
+        <div className="d-flex flex-wrap gap-2">
+          {typeGroups
+            .filter((g) => g.slug !== group.slug)
+            .map((g) => (
+              <Link
+                key={g.slug}
+                href={`/tipovi/${g.slug}/`}
+                className="btn btn-sm btn-outline-secondary d-inline-flex align-items-center gap-2"
+              >
+                {g.label}
+                <span className="badge text-truncate flex-shrink-0 bg-secondary-subtle text-secondary-emphasis">
+                  {g.count}
+                </span>
+              </Link>
+            ))}
+        </div>
       </nav>
     </div>
   );

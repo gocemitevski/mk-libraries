@@ -51,7 +51,7 @@ export default async function PlacePage({ params }: Props) {
       <Breadcrumbs items={[{ label: 'Населени места', href: '/naseleni-mesta/' }, { label: place.name }]} />
 
       <header className="mt-3 mb-4">
-        <h1 className="h2 mb-2">Библиотеки во {place.name}</h1>
+        <h1 className="mb-2">Библиотеки во {place.name}</h1>
         <p className="text-secondary mb-0">
           {formatNumber(place.count)} {plural(place.count, NOUNS.библиотека)} во населеното место{' '}
           <strong>{place.name}</strong>. Погледнете ги сите {places.length} места со библиотеки.

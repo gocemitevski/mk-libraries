@@ -16,6 +16,12 @@ export const metadata: Metadata = {
 const ORDER = { high: 0, medium: 1, none: 2 } as const;
 
 export default function CoveragePage() {
+  // Кофата за Скопје е обичен запис во `coverage`. Ја бараме по име, наместо да
+  // ја цврстиме транслитерацијата во маркапот — `slug` ја одредува build-data и
+  // ако еднаш се промени, врската ќе ја следи без да пука. Ако кофата исчезне,
+  // и забелешката паѓа: таа тврди токму за неа.
+  const skopjeUndetermined = coverage.find((c) => c.name.startsWith('Скопје (општина'));
+
   const sorted = [...coverage].sort(
     (a, b) => ORDER[a.priority] - ORDER[b.priority] || a.name.localeCompare(b.name, 'mk'),
   );
@@ -36,7 +42,7 @@ export default function CoveragePage() {
       <Breadcrumbs items={[{ label: 'Општини' }]} />
 
       <header className="mt-3 mb-4">
-        <h1 className="h2 mb-2">Покриеност по општини</h1>
+        <h1 className="mb-2">Покриеност по општини</h1>
         <p className="text-secondary mb-0">
           Од {coverage.length} општини во базата, <strong className="coverage-ok">35 имаат јавна
           библиотека</strong>, <strong className="coverage-mid">11 немаат потврдена</strong> и{' '}
@@ -61,21 +67,29 @@ export default function CoveragePage() {
 
       {/* ── Табела: пристапен паралелен извор ───────────────────────── */}
       <section className="mt-5" aria-labelledby="table-heading">
-        <h2 id="table-heading" className="h4 mb-3">Табела по општини</h2>
+        <h2 id="table-heading" className="h2 mb-3 mx-2">Библиотеки по општини</h2>
 
         {groups.map((group) => {
           const entries = sorted.filter((c) => c.priority === group.key);
           return (
             <div className="mb-4" key={group.key}>
-              <h3 className={`h5 ${group.cls}`}>
-                {group.label}{' '}
-                <span className="badge text-truncate flex-shrink-0 bg-secondary-subtle text-secondary-emphasis">{entries.length}</span>
-              </h3>
               <div className="table-responsive">
-                <table className="table table-sm align-middle">
-                  <caption className="visually-hidden">
-                    Општини со статус: {group.label}. Колоните „Јавни / Ограноци / Останати“ се
-                    класификација од мастер-листот; „Записи“ е бројот што се прикажува во базата.
+                {/* Групата е caption на табелата, не посебен наслов над неа: така
+                    скринерите ја чуваат како име на табелата, а насловот останува
+                    h3 во хиерархијата. `.caption-top` е готова класа на Bootstrap —
+                    без неа caption-от паѓа на дното (Bootstrap го фаќа caption-side:
+                    bottom). `text-start` го враќа порамнувањето одлево бидејќи
+                    прелилнувачите го центрираат caption-от по default. */}
+                <table className="table align-middle caption-top">
+                  <caption className={`text-start pb-2 px-2 ${group.cls}`}>
+                    <h3 className="h4 hstack gap-2">
+                      <span>{group.label}</span>
+                      <span className="badge text-truncate flex-shrink-0 bg-secondary-subtle text-secondary-emphasis">{entries.length}</span>
+                    </h3>
+                    <span className="visually-hidden">
+                      Општини со статус: {group.label}. Колоните „Јавни / Ограноци / Останати“ се
+                      класификација од мастер-листот; „Записи“ е бројот што се прикажува во базата.
+                    </span>
                   </caption>
                   <thead>
                     <tr>
@@ -121,13 +135,18 @@ export default function CoveragePage() {
       </section>
 
       {/* ── Град Скопје ──────────────────────────────────────────────── */}
-      <div className="alert alert-secondary mt-3">
-        <Icon name="info-circle" size={18} className="me-2" />
-        <strong>Забелешка за Скопје:</strong> градските библиотеки често се водат на ниво на Град
-        Скопје, а не по поединечна општина. Затоа дел од скопските општини изгледаат без јавна
-        библиотека и покрај присутните ограноци — види ги{' '}
-        <Link href="/opstini/skopje-opstina-neutvrdena/">записите без утврдена општина</Link>.
-      </div>
+      {skopjeUndetermined && (
+        <div className="alert alert-secondary mt-3 hstack gap-3">
+          <Icon name="info-circle" size={18} className='flex-shrink-0' />
+          <p className='mb-0 lh-sm'><strong>Забелешка за Скопје:</strong> градските библиотеки често се водат на ниво на
+          Град Скопје, а не по поединечна општина. Затоа дел од скопските општини изгледаат без
+          јавна библиотека и покрај присутните ограноци — види ги{' '}
+          <Link href={`/opstini/${skopjeUndetermined.slug}/`}>
+            записите без утврдена општина
+          </Link>
+          .</p>
+        </div>
+      )}
     </div>
   );
 }

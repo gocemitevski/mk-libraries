@@ -27,11 +27,11 @@ export default function HomePage() {
           header-от; внатрешниот container ја држи содржината усогласена
           со остатокот од страницата. Затоа нема нит агли, нит надворешен
           padding — тоа го прави container-от. */}
-      <section className="hero">
+      <section className="hero py-lg-4">
         <div className="container py-4 py-md-5">
           <div className="row align-items-center g-lg-5">
             <div className="col-lg-7">
-              <h1 className="display-5 display-md-3 fw-bold mb-3">
+              <h1 className="display-5 display-md-3 mb-3">
                 {stats.totals.public} библиотеки
                 <br className="d-none d-md-block" /> во Северна Македонија
               </h1>
@@ -80,10 +80,10 @@ export default function HomePage() {
 
       <div className="container pt-4 pt-md-5 pb-4 pb-md-5">
         {/* ── Предупредување за покриеноста ────────────────────────────── */}
-        <section className="alert alert-secondary d-flex flex-wrap align-items-center gap-3 mb-5" role="note">
+        <section className="alert alert-warning d-flex flex-wrap align-items-center gap-3 mb-5" role="note">
           <div className="flex-grow-1">
             <Icon name="info-circle" size={18} className="me-2" />
-            <strong>{uncoveredMunicipalities.length} општини</strong> во мастер-базата немаат ниедна јавна библиотека.
+            <strong>{uncoveredMunicipalities.length} општини</strong> во базата немаат ниедна јавна библиотека.
             Проверете ја мапата на покриеноста или видете ги сите општини.
           </div>
           <Link href="/opstini/" className="btn btn-sm btn-primary">
@@ -93,7 +93,7 @@ export default function HomePage() {
 
         {/* ── Типови ───────────────────────────────────────────────────── */}
         <section className="mb-5">
-          <div className="d-flex justify-content-between align-items-end mb-4 mx-3">
+          <div className="d-flex justify-content-between align-items-end mb-4 mx-4">
             <div>
               <span className="section-label">Таксономија</span>
               <h2 className="mb-1">Библиотеки по тип</h2>
@@ -150,7 +150,7 @@ export default function HomePage() {
 
         {/* ── Истакнати записи ─────────────────────────────────────────── */}
         <section className="mb-5">
-          <div className='mx-3'>
+          <div className='mx-4'>
           <span className="section-label">Истакнато</span>
           <h2 className="mb-4">Записи со најмногу податоци</h2>
           </div>
