@@ -2,7 +2,7 @@
  * Го приготвува општинскиот GeoJSON за мапата:
  *  - ги отстранува 4-те поранешни општини на Кичево (споени во 2013 → 80 општини)
  *  - ги врзува латиничните имиња на geoBoundaries со кириличните од coverage.json
- *  - го заострува геометријата и засчува во public/data/municipalities.geojson
+ *  - ја заострува геометријата и зачувува во public/data/municipalities.geojson
  *
  *   npx tsx scripts/build-geo.ts <патека-до-geojson>
  */
