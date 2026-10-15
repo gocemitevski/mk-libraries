@@ -1,6 +1,6 @@
 /**
  * Го приготвува општинскиот GeoJSON за мапата:
- *  - ги отстранува 4-те поранешни општини на Кичево (споени во 2013 → 80 општини)
+ *  - ги здружува 4-те поранешни општини на Кичево со самата Кичево (споени во 2013 → 80 општини)
  *  - ги врзува латиничните имиња на geoBoundaries со кириличните од coverage.json
  *  - ја заострува геометријата и зачувува во public/data/municipalities.geojson
  *
@@ -10,8 +10,17 @@ import { readFileSync, writeFileSync, mkdirSync } from 'node:fs';
 import path from 'node:path';
 import type { CoverageEntry } from '../src/lib/schema';
 
-/** Поранешни општини споени во Кичево (2013) — ги нема во денешната поделба. */
-const MERGED_INTO_KICHEVO = new Set(['Drugovo', 'Oslomej', 'Zajas', 'Vraneshtitsa']);
+/**
+ * Поранешни општини споени во Кичево (2013). Изворот ги уште ги носи како засебни
+ * полиња, а „Kichevo“ е само стариот урбано јадро (0.005°²) — па ако тие четири
+ * едноставно се отстранат, од денешната општина остануваат 6% од површината и на
+ * мапата останува дупка од ~750 km². Затоа се здружуваат со Кичево, а не се бришат.
+ */
+const MERGED_INTO_KICHEVO = ['Drugovo', 'Oslomej', 'Zajas', 'Vraneshtitsa'] as const;
+const MERGED_SET = new Set<string>(MERGED_INTO_KICHEVO);
+
+/** Латиничното име на општината во која се здружуваат горенаведените четири. */
+const KICHEVO_LATIN = 'Kichevo';
 
 /**
  * Рачна врска: латинично име од geoBoundaries → кирилично од coverage.json.
@@ -104,6 +113,76 @@ function simplifyFeature(f: Feature): Feature {
   };
 }
 
+type Ring = number[][];
+
+/** Ги собира надворешните прстени на едно поле (секој полигон по еден). */
+function collectRings(f: Feature): Ring[] {
+  const g = f.geometry;
+  if (g.type === 'Polygon') return [(g.coordinates as Ring[])[0]];
+  return (g.coordinates as Ring[][]).map((poly) => poly[0]);
+}
+
+/**
+ * Ги здружува соседните полиња во еден надворешен прстен. Работа што се јавува
+ * двапати е внатрешна граница меѓу споените полиња и се отстранува; останатите
+ * се низаат во затворен прстен.
+ *
+ * Бара работите на изворот да се совпаѓаат точка-во-точка, што ADM2-податоците
+ * го прават — проверено: 245 уникатни работи, 87 внатрешни, ниту една работа
+ * зафаќа повеќе од два прстени, а остататото се затвора во еден прстен.
+ */
+function unionRings(rings: Ring[]): Ring[] {
+  const key = (p: number[]) => `${p[0].toFixed(7)},${p[1].toFixed(7)}`;
+  const edgeOf = (a: string, b: string) => (a < b ? `${a}|${b}` : `${b}|${a}`);
+
+  const counts = new Map<string, number>();
+  const point = new Map<string, number[]>();
+  for (const ring of rings) {
+    for (let i = 0; i < ring.length - 1; i++) {
+      const a = key(ring[i]);
+      const b = key(ring[i + 1]);
+      const edge = edgeOf(a, b);
+      counts.set(edge, (counts.get(edge) ?? 0) + 1);
+      point.set(a, ring[i]);
+      point.set(b, ring[i + 1]);
+    }
+  }
+
+  const adj = new Map<string, string[]>();
+  for (const [edge, n] of counts) {
+    if (n !== 1) continue;
+    const [a, b] = edge.split('|');
+    if (!adj.has(a)) adj.set(a, []);
+    if (!adj.has(b)) adj.set(b, []);
+    adj.get(a)!.push(b);
+    adj.get(b)!.push(a);
+  }
+
+  const out: Ring[] = [];
+  const used = new Set<string>();
+  for (const [start, neighbours] of adj) {
+    if (!neighbours.length || used.has(edgeOf(start, neighbours[0]))) continue;
+    const ring: Ring = [point.get(start)!];
+    let cur = start;
+    let step = neighbours[0];
+    for (;;) {
+      used.add(edgeOf(cur, step));
+      ring.push(point.get(step)!);
+      cur = step;
+      if (cur === start) break;
+      const next = (adj.get(cur) ?? []).find((n) => !used.has(edgeOf(cur, n)));
+      if (!next) break;
+      step = next;
+    }
+    // Затворен прстен: првата точка се повторува на крајот (како во изворот).
+    if (ring.length >= 4) {
+      ring.push([...ring[0]]);
+      out.push(ring);
+    }
+  }
+  return out;
+}
+
 function main(): void {
   const input = process.argv[2];
   if (!input) {
@@ -116,19 +195,38 @@ function main(): void {
     readFileSync(path.join(process.cwd(), 'src', 'data', 'coverage.json'), 'utf8'),
   ) as CoverageEntry[];
 
+  // Спојувањето на Кичево се пресметува еднаш, пред парсењето: изворот носи 84
+  // општини (поделбата пред 2013), а денешните се 80.
+  const byLatin = new Map(raw.features.map((f) => [f.properties.shapeName, f]));
+  const needed = [KICHEVO_LATIN, ...MERGED_INTO_KICHEVO];
+  const absent = needed.filter((n) => !byLatin.has(n));
+  if (absent.length) {
+    console.error(`Во изворот ги нема: ${absent.join(', ')}`);
+    process.exit(1);
+  }
+  const kichevoRings = unionRings(needed.map((n) => byLatin.get(n)!).flatMap(collectRings));
+  if (!kichevoRings.length) {
+    console.error('Здружувањето на Кичево не даде затворен прстен.');
+    process.exit(1);
+  }
+  const kichevoGeometry =
+    kichevoRings.length === 1
+      ? { type: 'Polygon', coordinates: [kichevoRings[0]] }
+      : { type: 'MultiPolygon', coordinates: kichevoRings.map((r) => [r]) };
+
   const byNorm = new Map<string, string>();
   for (const c of coverage) byNorm.set(norm(c.name), c.name);
   const coverageSlugs = new Map(coverage.map((c) => [c.name, c.slug]));
 
   const features: Record<string, unknown>[] = [];
   const matched: string[] = [];
-  const skipped: string[] = [];
+  const merged: string[] = [];
   const unmatched: string[] = [];
 
   for (const f of raw.features) {
     const latin = f.properties.shapeName;
-    if (MERGED_INTO_KICHEVO.has(latin)) {
-      skipped.push(latin);
+    if (MERGED_SET.has(latin)) {
+      merged.push(latin);
       continue;
     }
 
@@ -141,7 +239,9 @@ function main(): void {
     }
 
     const c = coverage.find((x) => x.name === cyrillic)!;
-    const simplified = simplifyFeature(f);
+    // Кичево добива здружена геометрија; сите останати ја носат својата.
+    const source = latin === KICHEVO_LATIN ? { ...f, geometry: kichevoGeometry } : f;
+    const simplified = simplifyFeature(source);
     features.push({
       type: 'Feature',
       properties: {
@@ -175,7 +275,7 @@ function main(): void {
   writeFileSync(outFile, JSON.stringify(out), 'utf8');
 
   console.log(`Полигони: ${features.length}`);
-  console.log(`Прескокнато (споени во Кичево): ${skipped.join(', ')}`);
+  console.log(`Здружени во Кичево (${kichevoRings.length} прстен): ${merged.join(', ')}`);
   if (unmatched.length) console.log(`НЕСПОРЕДЕНИ: ${unmatched.join(' | ')}`);
   console.log(`Без полигон: ${withoutPolygon.map((c) => c.name).join(', ')}`);
   console.log(`Запишано: ${outFile} (${(JSON.stringify(out).length / 1024).toFixed(1)} kB)`);
