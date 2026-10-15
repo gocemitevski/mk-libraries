@@ -502,9 +502,11 @@ export default async function LibraryPage({ params }: Props) {
         )}
 
           {library.history.protectedObj && (
-            <div className="alert alert-secondary mb-3">
-              <Icon name="info-circle" className="me-2" />
-              <strong>Заштитено наследство:</strong> {library.history.protectedObj}
+            <div className="alert alert-warning mb-3 hstack gap-3">
+              <Icon name="bank2" className="flex-shrink-0 fs-5" />
+              <p className="mb-0 lh-sm">
+                <strong>Заштитено наследство:</strong> {library.history.protectedObj}
+              </p>
             </div>
           )}
         </aside>
