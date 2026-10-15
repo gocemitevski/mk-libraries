@@ -7,8 +7,8 @@ import { formatNumber, NOUNS, plural } from '@/lib/format';
 
 export const metadata: Metadata = {
   title: 'За проектот',
-  description: `Што е Библиотеки.мк, како се собираат податоците, што се објавува а што не — и зошто ${formatNumber(stats.totals.excluded)} записи остануваат надвор од директориумот.`,
-  alternates: { canonical: '/o-proektu/' },
+  description: `Што е Библиотеки.мк, како се собираат податоците, што се објавува а што не — и зошто ${formatNumber(stats.totals.excluded)} записи остануваат надвор од адресарот.`,
+  alternates: { canonical: '/za-proektot/' },
 };
 
 export default function AboutPage() {
@@ -20,7 +20,7 @@ export default function AboutPage() {
           '@type': 'AboutPage',
           name: 'За проектот Библиотеки.мк',
           inLanguage: 'mk',
-          url: 'https://biblioteki.mk/o-proektu/',
+          url: 'https://biblioteki.mk/za-proektot/',
         }}
       />
       <Breadcrumbs items={[{ label: 'За проектот' }]} />
@@ -28,9 +28,9 @@ export default function AboutPage() {
       <div className="row g-4 mt-1">
         <div className="col-lg-8">
           <header className="mb-4">
-            <h1 className="h2 mb-2">За проектот</h1>
+            <h1 className="mb-2">За проектот</h1>
             <p className="lead mb-0">
-              Библиотеки.мк е јавен директориум на библиотеките во Северна Македонија — да се најде
+              Библиотеки.мк е јавен адресар на библиотеките во Северна Македонија — да се најде
               адреса, телефон и мрежно место на библиотека, и да се види каде системот има дупки.
             </p>
           </header>
@@ -39,7 +39,7 @@ export default function AboutPage() {
             <h2 className="h4 mb-3">Зошто постои</h2>
             <p>
               Податоците за библиотеките постојат, но се разпрснати: во одговори на министерството,
-              во COBISS, во регистри на деловни субјекти, во Википедија и по локални директориуми —
+              во COBISS, во регистри на деловни субјекти, во Википедија и по локални адресари —
               често со различни адреси и различни називи за истата установа.
             </p>
             <p>
@@ -55,7 +55,7 @@ export default function AboutPage() {
             <div className="row g-3 mb-3">
               {[
                 { n: stats.totals.records, l: `${plural(stats.totals.records, NOUNS.запис)} вкупно` },
-                { n: stats.totals.public, l: 'прикажани во директориумот' },
+                { n: stats.totals.public, l: 'прикажани во адресарот' },
                 { n: stats.totals.excluded, l: 'исклучени (не се библиотеки)' },
                 { n: candidates.length, l: 'кандидати во проверка' },
               ].map((s) => (
@@ -77,7 +77,7 @@ export default function AboutPage() {
             </p>
             <p>
               Уште {candidates.length} установи се во посебен лист како <strong>кандидати</strong>:
-              потврдено е дека постојат, но не и дека имаат библиотека. И тие не се во директориумот.
+              потврдено е дека постојат, но не и дека имаат библиотека. И тие не се во адресарот.
             </p>
           </section>
 
@@ -114,7 +114,7 @@ export default function AboutPage() {
               </div>
             </div>
             <p className="small text-secondary mt-3 mb-0">
-              Подетално: <Link href="/metodologija/">методологија и извори</Link>.
+              Подетално: <Link href="/metodologija/">Методологија и извори</Link>.
             </p>
           </section>
 
@@ -138,7 +138,7 @@ export default function AboutPage() {
                 центроиди по населено место и е јасно означена како приближна.
               </li>
               <li>
-                Работното време е преземено од директориуми и често е застарено — секогаш проверете
+                Работното време е преземено од адресари и често е застарено — секогаш проверете
                 на мрежното место на библиотеката.
               </li>
               <li>

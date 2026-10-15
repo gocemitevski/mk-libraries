@@ -9,3 +9,9 @@
 /gradovi/   /naseleni-mesta/        301
 /gradovi    /naseleni-mesta/        301
 /gradovi/*  /naseleni-mesta/:splat  301
+
+# /o-proektu/ е преименувана во /za-proektot/ — изразот на македонски
+# е „за проектот", а страницата веќе се вика така во навигацијата и во
+# патеката на лебедите (план §2). Страницата е една, па нема splat.
+/o-proektu/  /za-proektot/  301
+/o-proektu   /za-proektot/  301

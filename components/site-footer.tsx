@@ -32,7 +32,7 @@ export function SiteFooter() {
             <ul className="list-unstyled small mb-0">
               <li className="mb-1"><Link href="/statistika/">Статистика</Link></li>
               <li className="mb-1"><Link href="/metodologija/">Методологија</Link></li>
-              <li className="mb-1"><Link href="/o-proektu/">За проектот</Link></li>
+              <li className="mb-1"><Link href="/za-proektot/">За проектот</Link></li>
             </ul>
           </div>
           <div className="col-md-3">

@@ -189,7 +189,7 @@ export default function MethodologyPage() {
               <ul className="list-unstyled small mb-0">
                 <li className="mb-2"><Link href="/statistika/">Статистика и преземање</Link></li>
                 <li className="mb-2"><Link href="/opstini/">Мапа на покриеноста</Link></li>
-                <li className="mb-2"><Link href="/o-proektu/">За проектот</Link></li>
+                <li className="mb-2"><Link href="/za-proektot/">За проектот</Link></li>
                 <li className="mb-2">
                   <a href="/data/methodology.md" download>
                     <Icon name="download" className="me-2" />

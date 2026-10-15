@@ -21,7 +21,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${SITE}/opstini/`, lastModified: LASTMOD, changeFrequency: 'weekly', priority: 0.8 },
     { url: `${SITE}/statistika/`, lastModified: LASTMOD, changeFrequency: 'monthly', priority: 0.7 },
     { url: `${SITE}/metodologija/`, lastModified: LASTMOD, changeFrequency: 'monthly', priority: 0.6 },
-    { url: `${SITE}/o-proektu/`, lastModified: LASTMOD, changeFrequency: 'monthly', priority: 0.5 },
+    { url: `${SITE}/za-proektot/`, lastModified: LASTMOD, changeFrequency: 'monthly', priority: 0.5 },
   ];
 
   // Деталните страници — само 144-те прикажани записи. 8-те „не е библиотека“
