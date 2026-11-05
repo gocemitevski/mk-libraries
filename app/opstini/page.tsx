@@ -13,7 +13,11 @@ export const metadata: Metadata = {
   alternates: { canonical: '/opstini/' },
 };
 
-const ORDER = { high: 0, medium: 1, none: 2 } as const;
+// Редоследот го следи заглавието и легендата на мапата: прво општините со
+// библиотека, па оние без потврдена, на крај оние без ниту една. `ORDER` го
+// одредува редоследот на JSON-LD-то, а `groups` — на табелите; мора да се
+// разидат за списокот да не оди во спротивна насока од страницата.
+const ORDER = { none: 0, medium: 1, high: 2 } as const;
 
 export default function CoveragePage() {
   // Кофата за Скопје е обичен запис во `coverage`. Ја бараме по име, наместо да
@@ -26,9 +30,9 @@ export default function CoveragePage() {
     (a, b) => ORDER[a.priority] - ORDER[b.priority] || a.name.localeCompare(b.name, 'mk'),
   );
   const groups = [
-    { key: 'high' as const, label: 'Нема јавна библиотека', cls: 'coverage-none' },
-    { key: 'medium' as const, label: 'Нема потврдена јавна библиотека', cls: 'coverage-mid' },
     { key: 'none' as const, label: 'Има јавна библиотека', cls: 'coverage-ok' },
+    { key: 'medium' as const, label: 'Нема потврдена јавна библиотека', cls: 'coverage-mid' },
+    { key: 'high' as const, label: 'Нема јавна библиотека', cls: 'coverage-none' },
   ];
 
   return (
