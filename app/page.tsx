@@ -4,7 +4,7 @@ import { Icon } from '@/components/icon';
 import { SearchBox } from '@/components/search-box';
 import { TypeBadge } from '@/components/library-card';
 import { JsonLd, websiteJsonLd } from '@/lib/seo';
-import { coverage, places, publicLibraries, stats, typeGroups, uncoveredMunicipalities } from '@/lib/data';
+import { coverage, places, publicLibraries, stats, typeGroups } from '@/lib/data';
 import { searchIndex } from '@/lib/search';
 import { formatNumber } from '@/lib/format';
 
@@ -83,7 +83,10 @@ export default function HomePage() {
         <section className="alert alert-warning d-flex flex-wrap align-items-center gap-3 mb-5" role="note">
           <div className="flex-grow-1">
             <Icon name="info-circle" size={18} className="me-2" />
-            <strong>{uncoveredMunicipalities.length} општини</strong> во базата немаат ниедна јавна библиотека.
+            <strong>
+              {stats.geography.coverage.withLibrary} од {stats.geography.coverage.municipalities} општини
+            </strong>{' '}
+            во базата веќе имаат јавна библиотека.
             Проверете ја мапата на покриеноста или видете ги сите општини.
           </div>
           <Link href="/opstini/" className="btn btn-sm btn-primary">
