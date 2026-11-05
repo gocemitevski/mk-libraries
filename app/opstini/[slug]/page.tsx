@@ -109,7 +109,7 @@ export default async function MunicipalityPage({ params }: Props) {
               {entry.priority === 'high' && (
                 <>
                   {' '}
-                  Ова е една од 35-те општини без јавна библиотека — видете ја{' '}
+                  Ова е една од 35-те општини без јавна библиотека - видете ја{' '}
                   <Link href="/opstini/">мапата на покриеноста</Link> за целиот преглед.
                 </>
               )}

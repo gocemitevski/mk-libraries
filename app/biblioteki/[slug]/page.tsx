@@ -152,7 +152,7 @@ export default async function LibraryPage({ params }: Props) {
               {library.location.lat !== null && (
                 <span className="text-secondary small ms-2">
                   ({library.location.lat.toFixed(4)}, {library.location.lon?.toFixed(4)})
-                  {library.location.coordsSource === 'settlement' && ' — приближно, по населено место'}
+                  {library.location.coordsSource === 'settlement' && ' - приближно, по населено место'}
                 </span>
               )}
             </p>
@@ -209,7 +209,7 @@ export default async function LibraryPage({ params }: Props) {
                   <ul className="mb-0">
                     {branches.map((b) => (
                       <li key={b.slug}>
-                        <Link href={`/biblioteki/${b.slug}/`}>{b.name}</Link> — {b.location.place}
+                        <Link href={`/biblioteki/${b.slug}/`}>{b.name}</Link> - {b.location.place}
                       </li>
                     ))}
                   </ul>
@@ -266,7 +266,7 @@ export default async function LibraryPage({ params }: Props) {
                 </div>
               ))}
               <p className="small text-secondary mt-3 mx-3 mb-0">
-                Работното време е преземено од адресари и може да не е актуелно — проверете на мрежното место.
+                Работното време е преземено од адресари и може да не е актуелно - проверете на мрежното место.
               </p>
             </section>
           )}
@@ -403,7 +403,7 @@ export default async function LibraryPage({ params }: Props) {
                   {provenance.map((p, i) => (
                     <li key={`${p.source}-${i}`} className="mb-1">
                       <strong>{p.source}</strong>
-                      {p.basis && <> — {p.basis}</>}
+                      {p.basis && <> - {p.basis}</>}
                       {p.note && <em className="text-secondary"> ({p.note})</em>}
                     </li>
                   ))}
@@ -432,7 +432,7 @@ export default async function LibraryPage({ params }: Props) {
                       {link.label}
                       <span className="visually-hidden"> ({displayUrl(link.href)})</span>
                     </a>
-                    <span className="text-secondary small"> — {displayUrl(link.href)}</span>
+                    <span className="text-secondary small"> - {displayUrl(link.href)}</span>
                   </li>
                 ))}
               </ul>

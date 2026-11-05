@@ -23,7 +23,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   if (!group) return {};
 
   const title = `${group.label} во Северна Македонија`;
-  const description = `${group.count} ${plural(group.count, NOUNS.библиотека)} од типот „${group.label}“ во Северна Македонија — адреси, телефони, мрежни места и податоци од COBISS.`;
+  const description = `${group.count} ${plural(group.count, NOUNS.библиотека)} од типот „${group.label}“ во Северна Македонија - адреси, телефони, мрежни места и податоци од COBISS.`;
 
   return {
     title,

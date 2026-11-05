@@ -6,7 +6,7 @@ import { places, publicLibraries } from '@/lib/data';
 
 export const metadata: Metadata = {
   title: 'Библиотеки по населено место',
-  description: `Библиотеки во ${places.length} населени места во Северна Македонија — изберете населено место за целосен список.`,
+  description: `Библиотеки во ${places.length} населени места во Северна Македонија - изберете населено место за целосен список.`,
   alternates: { canonical: '/naseleni-mesta/' },
 };
 

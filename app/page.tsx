@@ -36,7 +36,7 @@ export default function HomePage() {
                 <br className="d-none d-md-block" /> во Северна Македонија
               </h1>
               <p className="lead mb-4">
-                Еден пребарувач за целиот библиотечен систем — од НУБ „Св. Климент Охридски“ до
+                Еден пребарувач за целиот библиотечен систем - од НУБ „Св. Климент Охридски“ до
                 подрачните ограноци. Податоците се собрани и проверени од {stats.sources.bySource.length} јавни извори.
               </p>
               <SearchBox records={searchIndex} />

@@ -8,7 +8,7 @@ import { formatNumber, NOUNS, plural } from '@/lib/format';
 
 export const metadata: Metadata = {
   title: 'Статистика и отворени податоци',
-  description: `${formatNumber(stats.totals.records)} ${plural(stats.totals.records, NOUNS.запис)}, ${formatNumber(stats.cobiss.fund)} примероци во COBISS, ${stats.sources.bySource.length} извори — бројки, табели и преземање на податоците.`,
+  description: `${formatNumber(stats.totals.records)} ${plural(stats.totals.records, NOUNS.запис)}, ${formatNumber(stats.cobiss.fund)} примероци во COBISS, ${stats.sources.bySource.length} извори - бројки, табели и преземање на податоците.`,
   alternates: { canonical: '/statistika/' },
 };
 
@@ -203,7 +203,7 @@ export default function StatsPage() {
                     stats.totals.public) *
                     100,
                 )}
-                % од сите записи — остатокот е распределен по уште {stats.geography.places - 1} места.
+                % од сите записи - остатокот е распределен по уште {stats.geography.places - 1} места.
               </p>
               {stats.geography.topPlaces.slice(0, 10).map((p) => (
                 <div className="mb-2" key={p.slug}>
@@ -265,7 +265,7 @@ export default function StatsPage() {
                   <td className={`text-end ${r.difference > 0 ? 'text-danger' : ''}`}>
                     {r.difference > 0 ? `+${r.difference}` : r.difference}
                   </td>
-                  <td className="small text-secondary">{r.note ?? '—'}</td>
+                  <td className="small text-secondary">{r.note ?? '-'}</td>
                 </tr>
               ))}
             </tbody>
@@ -317,7 +317,7 @@ export default function StatsPage() {
                 <p className="card-text small text-secondary mb-3">
                   Просечно {stats.sources.averagePerRecord} извора по запис, со максимум{' '}
                   {formatNumber(stats.sources.maxPerRecord)} {plural(stats.sources.maxPerRecord, NOUNS.извор)}. Редоследот
-                  на приоритет е фиксен и ист за сите записи — види ја{' '}
+                  на приоритет е фиксен и ист за сите записи - види ја{' '}
                   <Link href="/metodologija/">методологијата</Link>.
                 </p>
                 <h3 className="h6 mb-2">Покриеност на COBISS</h3>

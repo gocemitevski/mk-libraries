@@ -8,7 +8,7 @@ import { SITE_URL } from '@/lib/seo';
 
 export const metadata: Metadata = {
   title: 'Библиотеки по тип',
-  description: `Шест групи библиотеки во Северна Македонија — национални, јавни, високошколски, специјализирани, подрачни ограноци и останати. ${formatNumber(publicLibraries.length)} ${plural(publicLibraries.length, NOUNS.запис)} вкупно.`,
+  description: `Шест групи библиотеки во Северна Македонија - национални, јавни, високошколски, специјализирани, подрачни ограноци и останати. ${formatNumber(publicLibraries.length)} ${plural(publicLibraries.length, NOUNS.запис)} вкупно.`,
   alternates: { canonical: '/tipovi/' },
 };
 
@@ -46,7 +46,7 @@ export default function TypesPage() {
                   <ul className="list-unstyled small text-secondary mb-0">
                     {group.types.map((t) => (
                       <li key={t.slug} className="mb-1">
-                        <strong className="text-body">{t.label}</strong> <span className="text-nowrap">— {formatNumber(t.count)}</span>
+                        <strong className="text-body">{t.label}</strong> <span className="text-nowrap">- {formatNumber(t.count)}</span>
                         <div>{t.description}</div>
                       </li>
                     ))}

@@ -141,7 +141,20 @@ export interface BuildResult {
   issues: BuildIssue[];
 }
 
-const str = (row: Row, key: string): string => (row[key] ?? '').toString().trim();
+/**
+ * Цртички: книгата ја означува празната ќелија со „—“, а прозата ја дели со „ — “.
+ * И двете стануваат обичен цртички „-“, за да се совпадне со текстот на страницата.
+ *
+ * Врските се исклучок: навестувањето на Википедија е „_—_“, без празнина на ниту
+ * една страна, па не се допира — страницата постои само во тој облик (проверено:
+ * со цртички враќа 404). Затоа правилото е „целосно „—“ или „ — “ со празнини“,
+ * а не замена на секој знак.
+ */
+const mkDash = (text: string): string =>
+  text === '—' ? '-' : text.replace(/ — /g, ' - ');
+
+/** Текст од ќелија: без празнини на крајот и со цртичкита усогласена со страницата. */
+const str = (row: Row, key: string): string => mkDash((row[key] ?? '').toString().trim());
 const num = (row: Row, key: string): number | null => {
   const v = row[key];
   if (typeof v === 'number') return Number.isFinite(v) ? v : null;

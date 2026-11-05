@@ -76,7 +76,7 @@ export const TYPES: Record<string, TypeMeta> = {
     label: 'Странски културен центар / читална / катче',
     shortLabel: 'Читална',
     group: 'ostanati',
-    description: 'Читални и катчиња при културни центри — службено „делумно“ библиотеки.',
+    description: 'Читални и катчиња при културни центри - службено „делумно“ библиотеки.',
   },
   'Здружение / приватна библиотека': {
     label: 'Здружение / приватна библиотека',
@@ -88,13 +88,13 @@ export const TYPES: Record<string, TypeMeta> = {
     label: 'Непознато – потребна проверка',
     shortLabel: 'Непознато',
     group: 'ostanati',
-    description: 'Записи кај кои типот не е јасно утврден — податокот е во проверка.',
+    description: 'Записи кај кои типот не е јасно утврден - податокот е во проверка.',
   },
   'Не е библиотека (друга дејност)': {
     label: 'Не е библиотека (друга дејност)',
     shortLabel: 'Не е библиотека',
     group: 'ostanati',
-    description: 'Изведени записи што не се библиотеки — не се прикажуваат во адресарот.',
+    description: 'Изведени записи што не се библиотеки - не се прикажуваат во адресарот.',
   },
 };
 
@@ -188,7 +188,7 @@ export const DZS_LABEL: Record<string, string> = {
 export const COVERAGE_PRIORITY: Record<string, 'high' | 'medium' | 'none'> = {
   'ВИСОК': 'high',
   'СРЕДЕН': 'medium',
-  '—': 'none',
+  '-': 'none',
 };
 
 export const COVERAGE_LABEL = {

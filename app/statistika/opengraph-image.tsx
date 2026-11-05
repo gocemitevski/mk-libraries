@@ -11,7 +11,7 @@ export const dynamic = 'force-static';
 export default async function Image(): Promise<ImageResponse> {
   return ogImage({
     title: 'Статистика и отворени податоци',
-    subtitle: `${formatNumber(stats.totals.records)} ${plural(stats.totals.records, NOUNS.запис)}, ${stats.sources.bySource.length} извори и ${stats.geography.coverage.municipalities} општини — сè пресметано од истиот записник.`,
+    subtitle: `${formatNumber(stats.totals.records)} ${plural(stats.totals.records, NOUNS.запис)}, ${stats.sources.bySource.length} извори и ${stats.geography.coverage.municipalities} општини - сè пресметано од истиот записник.`,
     meta: `COBISS фонд 2024: ${stats.cobiss.fund.toLocaleString('mk-MK')} примероци · CC-BY-4.0`,
   });
 }

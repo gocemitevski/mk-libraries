@@ -9,7 +9,7 @@ import { JsonLd } from '@/lib/seo';
 export const metadata: Metadata = {
   title: 'Методологија и извори',
   description:
-    'Редослед на спојување на изворите, критериуми за верификација и сигурност, пресликување со ДЗС и белешки за квалитетот — како е направена базата.',
+    'Редослед на спојување на изворите, критериуми за верификација и сигурност, пресликување со ДЗС и белешки за квалитетот - како е направена базата.',
   alternates: { canonical: '/metodologija/' },
 };
 
@@ -208,7 +208,7 @@ export default function MethodologyPage() {
                 телефони и е-пошти, јавни профили (COBISS, Википедија, Wikidata).
               </p>
               <p className="card-text small mb-0">
-                <strong>Не објавуваме:</strong> лични телефонски броеви на директори и вработени —
+                <strong>Не објавуваме:</strong> лични телефонски броеви на директори и вработени -
                 се отстрануваат при градењето на базата.
               </p>
             </div>
@@ -217,7 +217,7 @@ export default function MethodologyPage() {
           <div className="alert alert-secondary small mb-0">
             <Icon name="info-circle" size={18} className="me-2" />
             <strong>Дајте забелешка.</strong> Ако наидете на неточен податок, проверете го прво во{' '}
-            <Link href="/biblioteki/">адресарот</Link> — записите се означени со степенот на
+            <Link href="/biblioteki/">адресарот</Link> - записите се означени со степенот на
             сигурност и со целосната листа на извори.
           </div>
         </aside>

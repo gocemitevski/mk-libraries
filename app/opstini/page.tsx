@@ -9,7 +9,7 @@ import { formatNumber, NOUNS, plural } from '@/lib/format';
 
 export const metadata: Metadata = {
   title: 'Покриеност по општини',
-  description: `${coverage.length} општини во Северна Македонија — 35 со јавна библиотека, 11 без потврдена, 35 без ниту една. Мапа и целосна табела.`,
+  description: `${coverage.length} општини во Северна Македонија - 35 со јавна библиотека, 11 без потврдена, 35 без ниту една. Мапа и целосна табела.`,
   alternates: { canonical: '/opstini/' },
 };
 
@@ -59,7 +59,7 @@ export default function CoveragePage() {
         </h2>
         <LazyCoverageMap coverage={coverage} places={mapPlaces} counts={recordCountsBySlug} />
         <p className="small text-secondary mt-2 mb-0">
-          Точките по населено место се <strong>приближни</strong> — ги користиме центроидите на местата
+          Точките по населено место се <strong>приближни</strong> - ги користиме центроидите на местата
           бидејќи само 10 од {formatNumber(152)} {plural(152, NOUNS.запис)} имаат точни координати. Општинските граници се од
           geoBoundaries (CC BY 4.0). За точна адреса, погледнете ја страницата на библиотеката.
         </p>
@@ -120,10 +120,10 @@ export default function CoveragePage() {
                               ))}
                             </ul>
                           ) : (
-                            <span className="text-secondary">—</span>
+                            <span className="text-secondary">-</span>
                           )}
                         </td>
-                        <td className="small text-secondary">{c.note ?? '—'}</td>
+                        <td className="small text-secondary">{c.note ?? '-'}</td>
                       </tr>
                     ))}
                   </tbody>
@@ -140,7 +140,7 @@ export default function CoveragePage() {
           <Icon name="info-circle" size={18} className='flex-shrink-0' />
           <p className='mb-0 lh-sm'><strong>Забелешка за Скопје:</strong> градските библиотеки често се водат на ниво на
           Град Скопје, а не по поединечна општина. Затоа дел од скопските општини изгледаат без
-          јавна библиотека и покрај присутните ограноци — види ги{' '}
+          јавна библиотека и покрај присутните ограноци - види ги{' '}
           <Link href={`/opstini/${skopjeUndetermined.slug}/`}>
             записите без утврдена општина
           </Link>

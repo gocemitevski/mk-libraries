@@ -10,7 +10,7 @@ import { directoryIndex } from '@/lib/search';
 export const metadata: Metadata = {
   title: 'Сите библиотеки',
   description:
-    'Целосен адресар на библиотеките во Северна Македонија — пребарајте и филтрирајте по населено место, тип, верификација и достапни податоци.',
+    'Целосен адресар на библиотеките во Северна Македонија - пребарајте и филтрирајте по населено место, тип, верификација и достапни податоци.',
   alternates: { canonical: '/biblioteki/' },
 };
 
@@ -19,7 +19,7 @@ export default function DirectoryPage() {
     publicLibraries.slice(0, 50).map((l) => ({
       name: l.name,
       url: `${SITE_URL}/biblioteki/${l.slug}/`,
-      description: `${l.typeLabel} — ${l.location.place}`,
+      description: `${l.typeLabel} - ${l.location.place}`,
     })),
     'Библиотеки во Северна Македонија',
   );

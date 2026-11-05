@@ -22,7 +22,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   if (!place) return {};
 
   const title = `Библиотеки во ${place.name}`;
-  const description = `${place.count} ${plural(place.count, NOUNS.библиотека)} во ${place.name} — адреси, телефони, мрежни места и податоци од COBISS.`;
+  const description = `${place.count} ${plural(place.count, NOUNS.библиотека)} во ${place.name} - адреси, телефони, мрежни места и податоци од COBISS.`;
 
   return {
     title,
