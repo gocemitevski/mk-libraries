@@ -47,8 +47,7 @@ export function SiteFooter() {
         </div>
         <hr className="border-light my-4" />
         <p className="small mb-0">
-          © {year} Библиотеки.мк · Податоците се под CC-BY-4.0 · Извор: {stats.sources.bySource.length} јавни извори,
-          просечно {stats.sources.averagePerRecord} по запис
+          © {year} Библиотеки.мк · Податоците се под CC-BY-4.0
         </p>
       </div>
     </footer>
