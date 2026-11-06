@@ -21,6 +21,10 @@ export default function AboutPage() {
           name: 'За проектот Библиотеки.мк',
           inLanguage: 'mk',
           url: 'https://biblioteki.mk/za-proektot/',
+          author: [
+            { '@type': 'Person', name: 'Гоце Митевски', url: 'https://www.gocemitevski.com/' },
+            { '@type': 'Person', name: 'Борис Ристовски', url: 'https://www.facebook.com/twibi/' },
+          ],
         }}
       />
       <Breadcrumbs items={[{ label: 'За проектот' }]} />
@@ -151,6 +155,21 @@ export default function AboutPage() {
                 библиотека или немаат потврдена - види ја <Link href="/opstini/">мапата</Link>.
               </li>
             </ul>
+          </section>
+
+          <section className="detail-section py-4">
+            <h2 className="h4 mb-3">За изработката</h2>
+            <p className="mb-0">
+              Базата е создадена од{' '}
+              <a href="https://www.gocemitevski.com/" target="_blank" rel="noopener external">
+                Гоце Митевски
+              </a>{' '}
+              и{' '}
+              <a href="https://www.facebook.com/twibi/" target="_blank" rel="noopener external">
+                Борис Ристовски
+              </a>
+              .
+            </p>
           </section>
         </div>
 
