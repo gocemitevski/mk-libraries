@@ -11,7 +11,7 @@ export const dynamic = 'force-static';
 export default async function Image(): Promise<ImageResponse> {
   return ogImage({
     title: 'За проектот',
-    subtitle: 'Податоците постојат, но се разпрснати. Ги собираме во една база со фиксен редослед на приоритет и јасен степен на сигурност.',
+    subtitle: 'Податоците постојат, но се распрснати. Ги собираме во една база со фиксен редослед на приоритет и јасен степен на сигурност.',
     meta: `${formatNumber(stats.totals.records)} ${plural(stats.totals.records, NOUNS.запис)} · ${candidates.length} кандидати во проверка · CC-BY-4.0`,
   });
 }
