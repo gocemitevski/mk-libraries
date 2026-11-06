@@ -240,11 +240,6 @@ export function byName(a: Library, b: Library): number {
   return a.name.localeCompare(b.name, 'mk');
 }
 
-// ── мали помошници ──────────────────────────────────────────────────────────
-
-/** Сите општини без јавна библиотека — приоритет за барање. */
-export const uncoveredMunicipalities = coverage.filter((c) => c.priority === 'high');
-
 // ── географија за мапата ────────────────────────────────────────────────────
 
 interface RawCentroid {

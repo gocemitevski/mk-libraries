@@ -231,8 +231,3 @@ export type ProvenanceFile = z.infer<typeof ProvenanceFileSchema>;
 export type Stats = z.infer<typeof StatsSchema>;
 export type DzsRow = z.infer<typeof DzsRowSchema>;
 export type SourceVariant = z.infer<typeof SourceVariantSchema>;
-
-export interface MethodologyDoc {
-  markdown: string;
-  headings: string[];
-}

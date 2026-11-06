@@ -1,7 +1,7 @@
 'use client';
 
 import { useRef } from 'react';
-import { useDisclosure, useEscape, useFocusTrap, useScrollLock } from './behaviour';
+import { useEscape, useFocusTrap, useScrollLock } from './behaviour';
 
 interface OffcanvasProps {
   open: boolean;

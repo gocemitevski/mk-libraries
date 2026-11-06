@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import { Breadcrumbs } from '@/components/breadcrumbs';
 import { JsonLd } from '@/lib/seo';
-import { candidates, coverage, publicLibraries, stats } from '@/lib/data';
+import { candidates, coverage, stats } from '@/lib/data';
 import { formatNumber, formatDateShort, NOUNS, plural } from '@/lib/format';
 
 export const metadata: Metadata = {

@@ -1,5 +1,5 @@
 import type { MetadataRoute } from 'next';
-import { coverage, libraries, places, publicLibraries, stats, typeGroups } from '@/lib/data';
+import { coverage, places, publicLibraries, stats, typeGroups } from '@/lib/data';
 
 const SITE = 'https://biblioteki.mk';
 
@@ -65,13 +65,3 @@ export default function sitemap(): MetadataRoute.Sitemap {
     ...municipalityRoutes,
   ];
 }
-
-/** Колку страници се очекуваат — се користи во тестовите. */
-export const SITEMAP_EXPECTED = {
-  static: 8,
-  libraries: publicLibraries.length,
-  excludedLibraries: libraries.length - publicLibraries.length,
-  places: places.length,
-  types: typeGroups.length,
-  municipalities: coverage.length,
-};

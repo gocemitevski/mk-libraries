@@ -29,7 +29,6 @@ import {
   type Library,
   type ProvenanceEntry,
   type ProvenanceFile,
-  type SourceVariant,
   type Stats,
 } from '../../src/lib/schema.ts';
 import { sheetColumn, sheetToRows, readWorkbook, type Row } from './sheet.ts';

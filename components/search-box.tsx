@@ -1,6 +1,5 @@
 'use client';
 
-import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import Fuse from 'fuse.js';
 import { useEffect, useMemo, useRef, useState } from 'react';

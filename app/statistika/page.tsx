@@ -3,7 +3,7 @@ import Link from 'next/link';
 import { Breadcrumbs } from '@/components/breadcrumbs';
 import { Icon } from '@/components/icon';
 import { JsonLd, datasetJsonLd } from '@/lib/seo';
-import { coverage, publicLibraries, stats } from '@/lib/data';
+import { coverage, stats } from '@/lib/data';
 import { formatNumber, formatDateShort, NOUNS, plural } from '@/lib/format';
 
 export const metadata: Metadata = {
