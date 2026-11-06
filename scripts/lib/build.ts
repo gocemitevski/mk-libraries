@@ -542,26 +542,47 @@ function parseDzs(rows: Row[]): { dzsRows: DzsRow[]; officialTotal: number | nul
 }
 
 /**
+ * Наслови од мастерот што не се прикажуваат на страницата.
+ *
+ * Мастер-книгата не се менува, па одбивањето се прави овде, при парсирањето.
+ * Секој од нив е цела секција: насловот и сите редови до следниот нумериран
+ * ред. Бришењето е по точен наслов, не по позиција — ако книгата подоцна
+ * додаде нова секција, таа останува.
+ */
+const METHODOLOGY_SKIP = new Set([
+  'Исклучен извор: biblioteki_15_with_media.xlsx',
+  'Забелешки за квалитетот на изворите',
+  'Бои во листот „Мастер“',
+  'Колони без податоци за повеќето записи',
+]);
+
+/**
  * Го претвора листот „Легенда и методологија“ во markdown.
  * Нумерираните редови („1. …“, „2. …“) стануваат наслови од второ ниво.
  */
 function parseMethodology(lines: string[]): { markdown: string; headings: string[] } {
   const headings: string[] = [];
   const md: string[] = ['# Методологија и извори', ''];
+  let skipping = false;
 
   for (const raw of lines) {
     const line = raw.trim();
     if (!line) {
-      if (md.at(-1) !== '') md.push('');
+      // Празниот ред се турка само кога не сме во избришана секција, инаку
+      // останува дупол празен ред пред следниот наслов.
+      if (!skipping && md.at(-1) !== '') md.push('');
       continue;
     }
     const heading = line.match(/^(\d{1,2})\.\s+(.+)$/);
     if (heading) {
       const title = heading[2].trim();
+      skipping = METHODOLOGY_SKIP.has(title);
+      if (skipping) continue;
       headings.push(title);
       md.push(`## ${title}`, '');
       continue;
     }
+    if (skipping) continue;
     md.push(line.replace(/^•\s*/, '- '));
   }
   return { markdown: `${md.join('\n').trimEnd()}\n`, headings };

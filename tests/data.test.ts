@@ -317,7 +317,10 @@ describe('кандидати и методологија', () => {
   });
 
   it('методологијата има наслови', () => {
-    assert.ok(result.methodology.headings.length >= 10);
+    // 9: колку што останува откако се отфрлени четирите секции од
+    // METHODOLOGY_SKIP. Прагот е намерно еднаков на тековниот број — секое
+    // идно отфрлање на секција ќе го прекине тестот и ќе бара свесна одлука.
+    assert.ok(result.methodology.headings.length >= 9);
     assert.ok(result.methodology.markdown.startsWith('# Методологија'));
   });
 });
