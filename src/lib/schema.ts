@@ -187,12 +187,17 @@ export const StatsSchema = z.object({
     excluded: z.number().int(),
     byType: z.array(CountSchema),
     byTypeGroup: z.array(CountSchema),
+    /** Само прикажаните записи. */
     byVerification: z.array(CountSchema),
+    /** Верификација низ целата база, вклучувајќи ги и исклучените записи. */
+    byVerificationAll: z.array(CountSchema),
     byConfidence: z.array(CountSchema),
   }),
   geography: z.object({
     places: z.number().int(),
     topPlaces: z.array(CountSchema),
+    /** Записи со точни координати (останатите се приближни или ги нема). */
+    exactCoordinates: z.number().int().nonnegative(),
     coverage: z.object({
       municipalities: z.number().int(),
       withLibrary: z.number().int(),

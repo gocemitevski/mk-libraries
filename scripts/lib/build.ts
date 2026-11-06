@@ -607,6 +607,7 @@ function computeStats(input: {
   const typeCounts = countBy(pub, (l) => l.type);
   const groupCounts = countBy(pub, (l) => l.typeGroup);
   const verCounts = countBy(pub, (l) => l.verification.level);
+  const verAllCounts = countBy(libraries, (l) => l.verification.level);
   const confCounts = countBy(pub, (l) => l.confidence);
   const placeCounts = countBy(pub, (l) => l.location.place);
 
@@ -642,10 +643,12 @@ function computeStats(input: {
         countItem(slug, TYPE_GROUP_LABEL[slug as TypeGroup] ?? slug, count),
       ),
       byVerification: verCounts.map(([level, count]) => countItem(level, VERIFICATION_LABEL[level as keyof typeof VERIFICATION_LABEL], count)),
+      byVerificationAll: verAllCounts.map(([level, count]) => countItem(level, VERIFICATION_LABEL[level as keyof typeof VERIFICATION_LABEL], count)),
       byConfidence: confCounts.map(([c, count]) => countItem(c, CONFIDENCE_LABEL[c as keyof typeof CONFIDENCE_LABEL], count)),
     },
     geography: {
       places: placeCounts.length,
+      exactCoordinates: libraries.filter((l) => l.location.coordsSource === 'exact').length,
       topPlaces: placeCounts.slice(0, 15).map(([place, count]) => countItem(slugify(place), place, count)),
       coverage: {
         municipalities: coverage.length,

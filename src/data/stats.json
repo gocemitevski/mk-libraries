@@ -101,6 +101,23 @@
     "count": 16
    }
   ],
+  "byVerificationAll": [
+   {
+    "slug": "confirmed",
+    "label": "Потврдено",
+    "count": 113
+   },
+   {
+    "slug": "unconfirmed",
+    "label": "Непотврдено",
+    "count": 22
+   },
+   {
+    "slug": "partial",
+    "label": "Делумно потврдено",
+    "count": 17
+   }
+  ],
   "byConfidence": [
    {
     "slug": "high",
@@ -198,6 +215,7 @@
     "count": 1
    }
   ],
+  "exactCoordinates": 10,
   "coverage": {
    "municipalities": 81,
    "withLibrary": 35,

@@ -307,6 +307,11 @@ describe('ДЗС и статистика', () => {
     assert.equal(result.stats.totals.public, result.libraries.filter((l) => l.public).length);
     const sumTypes = result.stats.totals.byType.reduce((a, t) => a + t.count, 0);
     assert.equal(sumTypes, result.stats.totals.public);
+    // верификацијата низ целата база — ја користи /statistika/ наместо рачен број
+    const sumAll = result.stats.totals.byVerificationAll.reduce((a, v) => a + v.count, 0);
+    assert.equal(sumAll, result.stats.totals.records);
+    const exact = result.libraries.filter((l) => l.location.coordsSource === 'exact').length;
+    assert.equal(result.stats.geography.exactCoordinates, exact);
   });
 });
 
