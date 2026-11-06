@@ -4,7 +4,7 @@ import { Breadcrumbs } from '@/components/breadcrumbs';
 import { Icon } from '@/components/icon';
 import { JsonLd, datasetJsonLd } from '@/lib/seo';
 import { coverage, publicLibraries, stats } from '@/lib/data';
-import { formatNumber, NOUNS, plural } from '@/lib/format';
+import { formatNumber, formatDateShort, NOUNS, plural } from '@/lib/format';
 
 export const metadata: Metadata = {
   title: 'Статистика и отворени податоци',
@@ -72,7 +72,7 @@ export default function StatsPage() {
         <p className="text-secondary mb-0">
           Сите бројки подолу се пресметани од истиот записник што ја гради страницата. Податоците се
           проверени на{' '}
-          <time dateTime={stats.dataVerifiedOn ?? undefined}>{stats.dataVerifiedOn}</time> и се
+          <time dateTime={stats.dataVerifiedOn ?? undefined}>{formatDateShort(stats.dataVerifiedOn)}</time> и се
           достапни за преземање.
         </p>
       </header>

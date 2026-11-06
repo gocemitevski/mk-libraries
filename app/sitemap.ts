@@ -1,5 +1,5 @@
 import type { MetadataRoute } from 'next';
-import { coverage, libraries, places, publicLibraries, typeGroups } from '@/lib/data';
+import { coverage, libraries, places, publicLibraries, stats, typeGroups } from '@/lib/data';
 
 const SITE = 'https://biblioteki.mk';
 
@@ -10,7 +10,7 @@ export const dynamic = 'force-static';
  * Датумот на последна измена е изведен од податоците (check-workbook),
  * не од часовникот — изградбата останува детерминирана (план §7).
  */
-const LASTMOD = '2026-10-12';
+const LASTMOD = stats.dataVerifiedOn ?? undefined;
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const staticRoutes: MetadataRoute.Sitemap = [

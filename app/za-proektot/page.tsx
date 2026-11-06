@@ -3,7 +3,7 @@ import Link from 'next/link';
 import { Breadcrumbs } from '@/components/breadcrumbs';
 import { JsonLd } from '@/lib/seo';
 import { candidates, coverage, publicLibraries, stats } from '@/lib/data';
-import { formatNumber, NOUNS, plural } from '@/lib/format';
+import { formatNumber, formatDateShort, NOUNS, plural } from '@/lib/format';
 
 export const metadata: Metadata = {
   title: 'За проектот',
@@ -193,7 +193,7 @@ export default function AboutPage() {
                 <dt className="text-secondary">Извори</dt>
                 <dd>{stats.sources.bySource.length} различни, просечно {stats.sources.averagePerRecord} по запис</dd>
                 <dt className="text-secondary">Датум на проверка</dt>
-                <dd><time dateTime={stats.dataVerifiedOn ?? undefined}>{stats.dataVerifiedOn}</time></dd>
+                <dd><time dateTime={stats.dataVerifiedOn ?? undefined}>{formatDateShort(stats.dataVerifiedOn)}</time></dd>
                 <dt className="text-secondary">Лиценца</dt>
                 <dd>CC-BY-4.0</dd>
               </dl>

@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import { Icon } from '@/components/icon';
 import { stats } from '@/lib/data';
+import { formatDateShort } from '@/lib/format';
 
 export function SiteFooter() {
   const year = new Date().getFullYear();
@@ -15,7 +16,7 @@ export function SiteFooter() {
             <p className="small mb-0">
               Адресар на библиотеки во Северна Македонија, изработен од јавно достапни извори.
               Податоците се проверени на{' '}
-              {stats.dataVerifiedOn ? <time dateTime={stats.dataVerifiedOn}>12.10.2026</time> : '12.10.2026'}.
+              <time dateTime={stats.dataVerifiedOn ?? undefined}>{formatDateShort(stats.dataVerifiedOn)}</time>.
             </p>
           </div>
           <div className="col-6 col-md-3">

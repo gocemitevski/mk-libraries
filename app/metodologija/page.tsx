@@ -3,6 +3,7 @@ import Link from 'next/link';
 import { Breadcrumbs } from '@/components/breadcrumbs';
 import { Icon } from '@/components/icon';
 import { JsonLd } from '@/lib/seo';
+import { stats } from '@/lib/data';
 
 export const metadata: Metadata = {
   title: 'Методологија и извори',
@@ -10,6 +11,12 @@ export const metadata: Metadata = {
     'Како е собрана, споена и проверена базата - едноставен опис на постапката, во обични зборови.',
   alternates: { canonical: '/metodologija/' },
 };
+
+/**
+ * Изворите се редиме рачно по важност, но нивните имиња — вклучувајќи го и
+ * датумот во „Веб-проверка“ — доаѓаат од базата, за да не застарее рачно.
+ */
+const webCheckSource = stats.sources.bySource.find((s) => s.slug.startsWith('veb-proverka'))?.label;
 
 const SOURCE_ORDER = [
   'МКТ – одговор од Министерството за култура и туризам',
@@ -21,7 +28,7 @@ const SOURCE_ORDER = [
   'Жолти страници',
   'loc.mk',
   'abv.mk',
-  'Веб-проверка (12.10.2026)',
+  ...(webCheckSource ? [webCheckSource] : []),
 ];
 
 export default function MethodologyPage() {
@@ -33,7 +40,7 @@ export default function MethodologyPage() {
           '@type': 'Article',
           headline: 'Методологија и извори',
           inLanguage: 'mk',
-          dateModified: '2026-10-12',
+          dateModified: stats.dataVerifiedOn ?? undefined,
           about: 'Собирање и спојување на податоци за библиотеките во Северна Македонија',
         }}
       />
