@@ -4,12 +4,12 @@ import { Breadcrumbs } from '@/components/breadcrumbs';
 import { LazyCoverageMap } from '@/components/lazy-coverage-map';
 import { Icon } from '@/components/icon';
 import { JsonLd, itemListJsonLd, SITE_URL } from '@/lib/seo';
-import { coverage, mapPlaces, publicLibraries, recordCountsBySlug } from '@/lib/data';
+import { coverage, mapPlaces, publicLibraries, recordCountsBySlug, stats } from '@/lib/data';
 import { formatNumber, NOUNS, plural } from '@/lib/format';
 
 export const metadata: Metadata = {
   title: 'Покриеност по општини',
-  description: `${coverage.length} општини во Северна Македонија - 35 со јавна библиотека, 11 без потврдена, 35 без ниту една. Мапа и целосна табела.`,
+  description: `${coverage.length} општини во Северна Македонија - ${stats.geography.coverage.withLibrary} со јавна библиотека, ${stats.geography.coverage.partial} без потврдена, ${stats.geography.coverage.none} без ниту една. Мапа и целосна табела.`,
   alternates: { canonical: '/opstini/' },
 };
 
@@ -48,9 +48,11 @@ export default function CoveragePage() {
       <header className="mt-3 mb-4">
         <h1 className="mb-2">Покриеност по општини</h1>
         <p className="text-secondary mb-0">
-          Од {coverage.length} општини во базата, <strong className="coverage-ok">35 имаат јавна
-          библиотека</strong>, <strong className="coverage-mid">11 немаат потврдена</strong> и{' '}
-          <strong className="coverage-none">35 немаат ниту една</strong>. Мапата и табелата ги
+          Од {coverage.length} општини во базата,{' '}
+          <strong className="coverage-ok">{stats.geography.coverage.withLibrary} имаат јавна
+          библиотека</strong>,{' '}
+          <strong className="coverage-mid">{stats.geography.coverage.partial} немаат потврдена</strong> и{' '}
+          <strong className="coverage-none">{stats.geography.coverage.none} немаат ниту една</strong>. Мапата и табелата ги
           прикажуваат и {formatNumber(publicLibraries.length)}-те прикажани записи.
         </p>
       </header>
@@ -64,7 +66,8 @@ export default function CoveragePage() {
         <LazyCoverageMap coverage={coverage} places={mapPlaces} counts={recordCountsBySlug} />
         <p className="small text-secondary mt-2 mb-0">
           Точките по населено место се <strong>приближни</strong> - ги користиме центроидите на местата
-          бидејќи само 10 од {formatNumber(152)} {plural(152, NOUNS.запис)} имаат точни координати. Општинските граници се од
+          бидејќи само {stats.geography.exactCoordinates} од {formatNumber(stats.totals.records)}{' '}
+          {plural(stats.totals.records, NOUNS.запис)} имаат точни координати. Општинските граници се од
           geoBoundaries (CC BY 4.0). За точна адреса, погледнете ја страницата на библиотеката.
         </p>
       </section>

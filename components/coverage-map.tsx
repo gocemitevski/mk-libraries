@@ -15,6 +15,13 @@ const PRIORITY_COLOR: Record<string, string> = {
   none: '#2f7d4f', // има јавна библиотека
 };
 
+/** Редослед во легендата — истиот што го следи табелата на /opstini/. */
+const PRIORITY_LEGEND = [
+  ['none', 'Има јавна библиотека'],
+  ['medium', 'Нема потврдена'],
+  ['high', 'Нема јавна библиотека'],
+] as const;
+
 interface PlacePoint {
   name: string;
   slug: string;
@@ -63,6 +70,14 @@ export function CoverageMap({ coverage, places, counts }: Props) {
   }, []);
 
   const bySlug = useMemo(() => new Map(coverage.map((c) => [c.slug, c])), [coverage]);
+
+  // Бројките во легендата се пресметуваат од истиот `coverage` што ја полни табелата
+  // — два пати истите бројки рачно би можеле да се разидат.
+  const legendCounts = useMemo(() => {
+    const counts = new Map<string, number>();
+    for (const entry of coverage) counts.set(entry.priority, (counts.get(entry.priority) ?? 0) + 1);
+    return counts;
+  }, [coverage]);
 
   const geoStyle = useMemo(
     () => (feature?: GeoJSON.Feature): L.PathOptions => {
@@ -161,20 +176,14 @@ export function CoverageMap({ coverage, places, counts }: Props) {
         style={{ zIndex: 500, lineHeight: 1.5 }}
       >
         <div className="fw-semibold mb-1">Покриеност на општини</div>
-        {(
-          [
-            ['none', 'Има јавна библиотека', 35],
-            ['medium', 'Нема потврдена', 11],
-            ['high', 'Нема јавна библиотека', 35],
-          ] as const
-        ).map(([key, label, n]) => (
+        {PRIORITY_LEGEND.map(([key, label]) => (
           <div key={key}>
             <span
               className="d-inline-block rounded-circle me-1"
               style={{ width: 10, height: 10, background: PRIORITY_COLOR[key] }}
               aria-hidden="true"
             />
-            {label} ({n})
+            {label} ({legendCounts.get(key) ?? 0})
           </div>
         ))}
         <div className="mt-1 text-secondary" style={{ fontSize: '0.72rem' }}>

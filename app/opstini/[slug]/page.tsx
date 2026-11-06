@@ -5,7 +5,7 @@ import { Breadcrumbs } from '@/components/breadcrumbs';
 import { Icon } from '@/components/icon';
 import { LibraryCard } from '@/components/library-card';
 import { JsonLd, itemListJsonLd, SITE_URL } from '@/lib/seo';
-import { coverage, coverageBySlug, getLibrariesForMunicipality, placeSlug } from '@/lib/data';
+import { coverage, coverageBySlug, getLibrariesForMunicipality, placeSlug, stats } from '@/lib/data';
 import { NOUNS, plural } from '@/lib/format';
 
 interface Props {
@@ -109,7 +109,7 @@ export default async function MunicipalityPage({ params }: Props) {
               {entry.priority === 'high' && (
                 <>
                   {' '}
-                  Ова е една од 35-те општини без јавна библиотека - видете ја{' '}
+                  Ова е една од {stats.geography.coverage.none}-те општини без јавна библиотека - видете ја{' '}
                   <Link href="/opstini/">мапата на покриеноста</Link> за целиот преглед.
                 </>
               )}

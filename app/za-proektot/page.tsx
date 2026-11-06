@@ -74,7 +74,7 @@ export default function AboutPage() {
               ))}
             </div>
             <p>
-              Покрај 144-те прикажани записи, уште {stats.totals.excluded} ќелији во мастер-листот се
+              Покрај {stats.totals.public}-те прикажани записи, уште {stats.totals.excluded} ќелији во мастер-листот се
               означени „не е библиотека“ (музеи, архиви, друга дејност). Остануваат во базата и во
               JSON-извозот, но се со <code>noindex</code> и не се пребаруваат - за да не се мами
               пребарувачот.
@@ -138,7 +138,7 @@ export default function AboutPage() {
             <h2 className="h4 mb-3">Ограничувања</h2>
             <ul>
               <li>
-                Само 10 од {formatNumber(stats.totals.records)} {plural(stats.totals.records, NOUNS.запис)} имаат точни координати. Мапата затоа користи
+                Само {stats.geography.exactCoordinates} од {formatNumber(stats.totals.records)} {plural(stats.totals.records, NOUNS.запис)} имаат точни координати. Мапата затоа користи
                 центроиди по населено место и е јасно означена како приближна.
               </li>
               <li>

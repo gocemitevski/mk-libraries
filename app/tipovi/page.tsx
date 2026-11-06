@@ -2,8 +2,9 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import { Breadcrumbs } from '@/components/breadcrumbs';
 import { JsonLd, itemListJsonLd } from '@/lib/seo';
-import { publicLibraries, typeGroups, typeBySlug } from '@/lib/data';
+import { publicLibraries, stats, typeGroups, typeBySlug } from '@/lib/data';
 import { formatNumber, NOUNS, plural } from '@/lib/format';
+import { TYPES } from '@/src/lib/taxonomy';
 import { SITE_URL } from '@/lib/seo';
 
 export const metadata: Metadata = {
@@ -63,15 +64,15 @@ export default function TypesPage() {
           <h2 className="card-title h5">Зошто има двојна класификација?</h2>
           <p className="card-text text-secondary mb-0">
             Покрај типот, секој запис носи и категорија што ја користи Државниот завод за статистика: од{' '}
-            {formatNumber(152)} {plural(152, NOUNS.запис)}, {formatNumber(170)} се врзани за официјална категорија (истоветна со шифрата на типот), а{' '}
-            {formatNumber(102)} имаат потврден опис. Разликата е прикажана на{' '}
+            {formatNumber(stats.totals.records)} {plural(stats.totals.records, NOUNS.запис)}, {formatNumber(stats.dzs.officialTotal)} се врзани за официјална категорија (истоветна со шифрата на типот), а{' '}
+            {formatNumber(stats.dzs.confirmedTotal)} имаат потврден опис. Разликата е прикажана на{' '}
             <Link href="/metodologija/">страницата за методологија</Link>.
           </p>
         </div>
       </div>
 
       <p className="small text-secondary mt-3 mb-0">
-        Користени типови: {Object.keys(typeBySlug).length} од 10 стандардизирани.
+        Користени типови: {Object.keys(typeBySlug).length} од {Object.keys(TYPES).length} стандардизирани.
       </p>
     </div>
   );

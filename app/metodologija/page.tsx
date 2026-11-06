@@ -4,6 +4,7 @@ import { Breadcrumbs } from '@/components/breadcrumbs';
 import { Icon } from '@/components/icon';
 import { JsonLd } from '@/lib/seo';
 import { stats } from '@/lib/data';
+import { NOUNS, plural } from '@/lib/format';
 
 export const metadata: Metadata = {
   title: 'Методологија и извори',
@@ -64,8 +65,11 @@ export default function MethodologyPage() {
               <h2 className="h4">Што направивме</h2>
               <p className="mb-0">
                 Собравме податоци за библиотеките во Северна Македонија од јавно достапни извори
-                и ги поврзавме во еден запис за секоја установа. Така настана адресарот: 152
-                записи за 81 општина, од кои 144 се прикажани на страницата.
+                и ги поврзавме во еден запис за секоја установа. Така настана адресарот:{' '}
+                {stats.totals.records} {plural(stats.totals.records, NOUNS.запис)} за{' '}
+                {stats.geography.coverage.municipalities}{' '}
+                {plural(stats.geography.coverage.municipalities, NOUNS.општина)}, од кои{' '}
+                {stats.totals.public} се прикажани на страницата.
               </p>
             </section>
 

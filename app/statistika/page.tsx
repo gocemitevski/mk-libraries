@@ -40,6 +40,8 @@ export default function StatsPage() {
   const maxGroup = Math.max(...stats.totals.byTypeGroup.map((t) => t.count));
   const maxPlace = Math.max(...stats.geography.topPlaces.map((t) => t.count));
   const maxSource = Math.max(...stats.sources.bySource.map((s) => s.count));
+  // Верификација низ целата база (вклучувајќи ги и исклучените записи)
+  const verAll = Object.fromEntries(stats.totals.byVerificationAll.map((v) => [v.slug, v.count]));
 
   const tiles = [
     {
@@ -105,7 +107,7 @@ export default function StatsPage() {
                 <Bar key={t.slug} label={t.label} count={t.count} value={t.count} max={maxType} />
               ))}
               <p className="card-text small text-secondary mt-3 mb-0">
-                Сите {formatNumber(152)} {plural(152, NOUNS.запис)}, вклучувајќи ги и 8-те што не се библиотеки.
+                Сите {formatNumber(stats.totals.records)} {plural(stats.totals.records, NOUNS.запис)}, вклучувајќи ги и {stats.totals.excluded}-те што не се библиотеки.
               </p>
             </div>
           </div>
@@ -153,7 +155,7 @@ export default function StatsPage() {
               <h2 id="verification" className="card-title h5">Сигурност на податоците</h2>
               <table className="table table-sm mb-3">
                 <caption className="visually-hidden">
-                  Распределба на прикажаните {formatNumber(144)} {plural(144, NOUNS.запис)} по верификација и сигурност
+                  Распределба на прикажаните {formatNumber(stats.totals.public)} {plural(stats.totals.public, NOUNS.запис)} по верификација и сигурност
                 </caption>
                 <thead>
                   <tr>
@@ -184,8 +186,9 @@ export default function StatsPage() {
                 </tbody>
               </table>
               <p className="card-text small text-secondary mb-0">
-                Овие бројки ги покриваат <strong>144-те прикажани</strong> записи. Низ целата база
-                од 152, распределбата е 113 / 17 / 22. <Link href="/metodologija/">Како се пресметува →</Link>
+                Овие бројки ги покриваат <strong>{stats.totals.public}-те прикажани</strong> записи. Низ целата база
+                од {stats.totals.records}, распределбата е {verAll.confirmed} / {verAll.partial} / {verAll.unconfirmed}.{' '}
+                <Link href="/metodologija/">Како се пресметува →</Link>
               </p>
             </div>
           </div>
