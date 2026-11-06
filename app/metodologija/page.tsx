@@ -1,7 +1,5 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
-import { readFileSync } from 'node:fs';
-import path from 'node:path';
 import { Breadcrumbs } from '@/components/breadcrumbs';
 import { Icon } from '@/components/icon';
 import { JsonLd } from '@/lib/seo';
@@ -9,90 +7,9 @@ import { JsonLd } from '@/lib/seo';
 export const metadata: Metadata = {
   title: 'Методологија и извори',
   description:
-    'Редослед на спојување на изворите, критериуми за верификација и сигурност, пресликување со ДЗС и белешки за квалитетот - како е направена базата.',
+    'Како е собрана, споена и проверена базата - едноставен опис на постапката, во обични зборови.',
   alternates: { canonical: '/metodologija/' },
 };
-
-/**
- * Минимален markdown-рендерер за генерираниот methodology.md.
- * Поддржува само она што пайплинот го произведува: наслови, реченици,
- * листи со „-“ и „1)“ и моќен текст во облик `код`.
- */
-function renderInline(text: string): React.ReactNode[] {
-  const out: React.ReactNode[] = [];
-  // `код` и **силно** — доволно за генерираниот текст
-  const re = /(`[^`]+`|\*\*[^*]+\*\*)/g;
-  let last = 0;
-  let m: RegExpExecArray | null;
-  let i = 0;
-  while ((m = re.exec(text)) !== null) {
-    if (m.index > last) out.push(text.slice(last, m.index));
-    const token = m[0];
-    if (token.startsWith('`')) out.push(<code className="bg-light border rounded px-1" key={i}>{token.slice(1, -1)}</code>);
-    else out.push(<strong key={i}>{token.slice(2, -2)}</strong>);
-    last = m.index + token.length;
-    i++;
-  }
-  if (last < text.length) out.push(text.slice(last));
-  return out;
-}
-
-interface Block {
-  type: 'heading' | 'para' | 'list';
-  depth?: number;
-  items?: string[];
-  text?: string;
-}
-
-function parse(md: string): Block[] {
-  const blocks: Block[] = [];
-  const all = md.split('\n');
-  const firstHeading = all.findIndex((line) => /^##\s/.test(line));
-  const secondHeading = all.findIndex((line, i) => i > firstHeading && /^##\s/.test(line));
-  // Го отфрламе заглавјето на записникот (H1 + поднасловот) — страницата веќе го
-  // има сопствениот наслов и вовед, па поднасловот би останал осиротена реченица.
-  // Првата секција („Редослед и приоритет на изворите") е прикажана структурирано
-  // како картичка погоре — и таа не се повторува веднаш до неа.
-  const lines =
-    firstHeading === -1 ? all.slice(1) : all.slice(secondHeading === -1 ? all.length : secondHeading);
-  let list: string[] | null = null;
-
-  const flush = () => {
-    if (list) {
-      blocks.push({ type: 'list', items: list });
-      list = null;
-    }
-  };
-
-  for (const raw of lines) {
-    const line = raw.trimEnd();
-    if (!line.trim()) {
-      flush();
-      continue;
-    }
-    const heading = /^(#{2,6})\s+(.*)$/.exec(line);
-    if (heading) {
-      flush();
-      blocks.push({ type: 'heading', depth: heading[1].length, text: heading[2] });
-      continue;
-    }
-    if (/^[-*]\s+/.test(line)) {
-      list = list ?? [];
-      list.push(line.replace(/^[-*]\s+/, ''));
-      continue;
-    }
-    // Нумерираните редови во изворот се „1)“ наместо „1.“
-    if (/^\d+\)\s+/.test(line)) {
-      list = list ?? [];
-      list.push(line.replace(/^\d+\)\s+/, ''));
-      continue;
-    }
-    flush();
-    blocks.push({ type: 'para', text: line });
-  }
-  flush();
-  return blocks;
-}
 
 const SOURCE_ORDER = [
   'МКТ – одговор од Министерството за култура и туризам',
@@ -108,9 +25,6 @@ const SOURCE_ORDER = [
 ];
 
 export default function MethodologyPage() {
-  const md = readFileSync(path.join(process.cwd(), 'src', 'data', 'methodology.md'), 'utf8');
-  const blocks = parse(md);
-
   return (
     <div className="container py-4">
       <JsonLd
@@ -130,54 +44,58 @@ export default function MethodologyPage() {
           <header className="mb-4">
             <h1 className="mb-2">Методологија и извори</h1>
             <p className="text-secondary mb-0">
-              Целосниот записник што ја гради оваа страница, во форма читлива за луѓе. Секоја бројка на
-              страницата за статистика потекнува од овој процес.
+              Оваа страница објаснува, со едноставни зборови, како е собрана и проверена базата.
+              Секоја бројка на страницата за статистика потекнува од овој процес.
             </p>
           </header>
 
-          {/* Првата секција — редоследот на спојување — ја прикажуваме структурирано */}
-          <section className="card mb-4">
-            <div className="card-body">
-              <h2 className="card-title h5">Редослед на приоритет на изворите</h2>
-              <p className="card-text small text-secondary mb-3">
-                За поле со една вредност (назив, адреса, телефон, веб) се зема вредноста од првиот
-                извор што ја има. Сите останати варијанти остануваат зачувани.
-              </p>
-              <ol className="mb-0">
-                {SOURCE_ORDER.map((s) => (
-                  <li key={s} className="mb-1">{s}</li>
-                ))}
-              </ol>
-            </div>
-          </section>
-
-          {/* Остатокот од записникот */}
+          {/* Три куси секции: што е направено, како се избрани изворите, како се
+              проверени. Без имиња на листови, колони и фајлови — оние податоци
+              остануваат во methodology.md, кој не се прикажува овде. */}
           <article>
-            {blocks.map((block, i) => {
-              if (block.type === 'heading') {
-                const id = (block.text ?? '')
-                  .toLowerCase()
-                  .replace(/[^\p{L}\p{N}]+/gu, '-')
-                  .replace(/^-+|-+$/g, '');
-                return (
-                  <section key={i} className="detail-section pt-4 pb-3" id={id}>
-                    <h2 className="h4">{block.text}</h2>
-                  </section>
-                );
-              }
-              if (block.type === 'list') {
-                return (
-                  <ul className="mb-4" key={i}>
-                    {block.items?.map((item, j) => (
-                      <li className="mb-2" key={j}>{renderInline(item)}</li>
+            <section className="detail-section pt-4 pb-3" id="sto-napravivme">
+              <h2 className="h4">Што направивме</h2>
+              <p className="mb-0">
+                Собравме податоци за библиотеките во Северна Македонија од јавно достапни извори
+                и ги поврзавме во еден запис за секоја установа. Така настана адресарот: 152
+                записи за 81 општина, од кои 144 се прикажани на страницата.
+              </p>
+            </section>
+
+            <section className="detail-section pt-4 pb-3" id="kako-izborivme">
+              <h2 className="h4">Како изборивме и подредивме извори</h2>
+              <p>
+                Изворите ги редиме по важност: најпрво одговорите од министерството за култура,
+                па библиотечниот систем COBISS, па останатите јавни извори. За секој податок
+                земаме вредност од првиот извор што ја има, а сите останати варијанти ги чуваме,
+                за да не се изгуби ништо.
+              </p>
+              <p>
+                Извори за кои не сме сигурни дека се точни не влегуваат во базата - остануваат
+                настрана, за проверка подоцна.
+              </p>
+
+              <div className="card mb-4">
+                <div className="card-body">
+                  <h3 className="h5 mb-3">Редослед на приоритет на изворите</h3>
+                  <ol className="mb-0">
+                    {SOURCE_ORDER.map((s) => (
+                      <li key={s} className="mb-1">{s}</li>
                     ))}
-                  </ul>
-                );
-              }
-              return (
-                <p className="mb-4" key={i}>{renderInline(block.text ?? '')}</p>
-              );
-            })}
+                  </ol>
+                </div>
+              </div>
+            </section>
+
+            <section className="detail-section pt-4 pb-3" id="kako-gi-proverivme">
+              <h2 className="h4">Како ги проверивме</h2>
+              <p className="mb-0">
+                Секој запис доаѓа од барем еден јавен извор, а на секој е запишано колку сме
+                сигурни во него. Каде податокот не е потврден, тоа е јасно означено наместо да
+                се претпостави. Кога изворите се разликуваат, го земаме посигурниот, а разликата
+                ја забележуваме.
+              </p>
+            </section>
           </article>
         </div>
 
@@ -190,12 +108,6 @@ export default function MethodologyPage() {
                 <li className="mb-2"><Link href="/statistika/">Статистика и преземање</Link></li>
                 <li className="mb-2"><Link href="/opstini/">Мапа на покриеноста</Link></li>
                 <li className="mb-2"><Link href="/za-proektot/">За проектот</Link></li>
-                <li className="mb-2">
-                  <a href="/data/methodology.md" download>
-                    <Icon name="download" className="me-2" />
-                    methodology.md (изворно)
-                  </a>
-                </li>
               </ul>
             </div>
           </div>
