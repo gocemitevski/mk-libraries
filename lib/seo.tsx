@@ -1,6 +1,7 @@
 import type { Library } from '@/src/lib/schema';
-import { publicLibraries, stats } from '@/lib/data';
+import { libraries, publicLibraries, stats } from '@/lib/data';
 import { schemaOrgOpeningHours } from '@/lib/hours';
+import { formatNumber } from '@/lib/format';
 
 const SITE = 'https://biblioteki.mk';
 
@@ -76,12 +77,50 @@ export function libraryJsonLd(library: Library, url: string): Record<string, unk
   return data;
 }
 
-/** Мета-опис на библиотека: тип, адреса, место. Го користат и деталната
+/** Деловите на описот: тип, адреса, место. */
+function descriptionBits(library: Library): string[] {
+  return [library.typeLabel, library.location.address, library.location.place].filter(
+    (bit): bit is string => Boolean(bit),
+  );
+}
+
+/** Редот за фондот — го додава само записот што го има. */
+function fundLine(library: Library): string {
+  return library.cobiss.stats2024.fund !== null
+    ? ` Фонд според COBISS 2024: ${formatNumber(library.cobiss.stats2024.fund)} примероци.`
+    : '';
+}
+
+/** Мета-описот без името — основа по која се бараат повторувања. */
+function baseMetaDescription(library: Library): string {
+  return `${descriptionBits(library).join(' · ')}.${fundLine(library)} Податоци и извори.`;
+}
+
+/** Страниците чиј мета-опис се повторува со друга: 30 записи од ист тип во
+ *  истото место и без адреса (18 скопски факултети, 8 институти, 2 училишта,
+ *  2 ограноци). Тие го додаваат и името — единственото поле што ги разликува —
+ *  а останатите 122 остануваат како што се. Сетот се пресметува од базата,
+ *  па ако се смени записот, описот го следи. */
+const metaCounts = new Map<string, number>();
+for (const l of libraries) {
+  const key = baseMetaDescription(l);
+  metaCounts.set(key, (metaCounts.get(key) ?? 0) + 1);
+}
+const repeatedMetaDescriptions = new Set(
+  libraries.filter((l) => (metaCounts.get(baseMetaDescription(l)) ?? 0) > 1).map((l) => l.slug),
+);
+
+/** Мета-опис на библиотека: тип, адреса, место — го користат и деталната
  *  страница и листовите со записи, за описите да се совпаѓаат. */
 export function libraryDescription(library: Library): string {
-  return [library.typeLabel, library.location.address, library.location.place]
-    .filter(Boolean)
-    .join(' · ');
+  const bits = descriptionBits(library);
+  if (repeatedMetaDescriptions.has(library.slug)) bits.push(library.name);
+  return bits.join(' · ');
+}
+
+/** Мета-опис за <meta name="description"> на страницата на библиотеката. */
+export function libraryMetaDescription(library: Library): string {
+  return `${libraryDescription(library)}.${fundLine(library)} Податоци и извори.`;
 }
 
 /** WebSite + SearchAction за почетната страница. */
