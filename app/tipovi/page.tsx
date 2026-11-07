@@ -18,7 +18,11 @@ export default function TypesPage() {
     <div className="container py-4">
       <JsonLd
         data={itemListJsonLd(
-          typeGroups.map((g) => ({ name: g.label, url: `${SITE_URL}/tipovi/${g.slug}/` })),
+          typeGroups.map((g) => ({
+            name: g.label,
+            url: `${SITE_URL}/tipovi/${g.slug}/`,
+            description: g.types.map((t) => t.description).join(' · '),
+          })),
           'Типови библиотеки',
         )}
       />

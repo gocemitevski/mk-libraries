@@ -4,7 +4,7 @@ import { notFound } from 'next/navigation';
 import { Breadcrumbs } from '@/components/breadcrumbs';
 import { Icon } from '@/components/icon';
 import { LibraryCard, TypeBadge, VerificationBadge } from '@/components/library-card';
-import { JsonLd, libraryJsonLd } from '@/lib/seo';
+import { JsonLd, libraryDescription, libraryJsonLd } from '@/lib/seo';
 import { formatDayNames, formatMkTime, parseHours } from '@/lib/hours';
 import { commonsImageUrl } from '@/lib/commons';
 import {
@@ -45,8 +45,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   if (!library) return {};
 
   const title = `${library.name}, ${library.location.place}`;
-  const bits = [library.typeLabel, library.location.address, library.location.place].filter(Boolean);
-  const description = `${bits.join(' · ')}.${library.cobiss.stats2024.fund !== null ? ` Фонд според COBISS 2024: ${formatNumber(library.cobiss.stats2024.fund)} примероци.` : ''} Податоци и извори.`;
+  const description = `${libraryDescription(library)}.${library.cobiss.stats2024.fund !== null ? ` Фонд според COBISS 2024: ${formatNumber(library.cobiss.stats2024.fund)} примероци.` : ''} Податоци и извори.`;
 
   return {
     title,

@@ -39,7 +39,11 @@ export default function CoveragePage() {
     <div className="container py-4">
       <JsonLd
         data={itemListJsonLd(
-          sorted.map((c) => ({ name: c.name, url: `${SITE_URL}/opstini/${c.slug}/` })),
+          sorted.map((c) => ({
+            name: c.name,
+            url: `${SITE_URL}/opstini/${c.slug}/`,
+            description: c.priorityLabel,
+          })),
           'Општини и библиотечна покриеност',
         )}
       />

@@ -3,6 +3,7 @@ import Link from 'next/link';
 import { Breadcrumbs } from '@/components/breadcrumbs';
 import { JsonLd, itemListJsonLd } from '@/lib/seo';
 import { places, publicLibraries } from '@/lib/data';
+import { NOUNS, plural } from '@/lib/format';
 
 export const metadata: Metadata = {
   title: 'Библиотеки по населено место',
@@ -15,7 +16,11 @@ export default function PlacesPage() {
     <div className="container py-4">
       <JsonLd
         data={itemListJsonLd(
-          places.map((p) => ({ name: p.name, url: `https://biblioteki.mk/naseleni-mesta/${p.slug}/` })),
+          places.map((p) => ({
+            name: p.name,
+            url: `https://biblioteki.mk/naseleni-mesta/${p.slug}/`,
+            description: `${p.count} ${plural(p.count, NOUNS.библиотека)}`,
+          })),
           'Населени места со библиотеки',
         )}
       />

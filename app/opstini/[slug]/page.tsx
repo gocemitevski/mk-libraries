@@ -4,7 +4,7 @@ import { notFound } from 'next/navigation';
 import { Breadcrumbs } from '@/components/breadcrumbs';
 import { Icon } from '@/components/icon';
 import { LibraryCard } from '@/components/library-card';
-import { JsonLd, itemListJsonLd, SITE_URL } from '@/lib/seo';
+import { JsonLd, itemListJsonLd, libraryDescription, SITE_URL } from '@/lib/seo';
 import { coverage, coverageBySlug, getLibrariesForMunicipality, placeSlug, stats } from '@/lib/data';
 import { NOUNS, plural } from '@/lib/format';
 
@@ -63,7 +63,11 @@ export default async function MunicipalityPage({ params }: Props) {
     <div className="container py-4">
       <JsonLd
         data={itemListJsonLd(
-          libraries.map((l) => ({ name: l.name, url: `${SITE_URL}/biblioteki/${l.slug}/` })),
+          libraries.map((l) => ({
+            name: l.name,
+            url: `${SITE_URL}/biblioteki/${l.slug}/`,
+            description: libraryDescription(l),
+          })),
           `Библиотеки во општина ${entry.name}`,
         )}
       />

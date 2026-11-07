@@ -1,5 +1,5 @@
 import type { Library } from '@/src/lib/schema';
-import { publicLibraries } from '@/lib/data';
+import { publicLibraries, stats } from '@/lib/data';
 import { schemaOrgOpeningHours } from '@/lib/hours';
 
 const SITE = 'https://biblioteki.mk';
@@ -68,7 +68,20 @@ export function libraryJsonLd(library: Library, url: string): Record<string, unk
     data.numberOfItems = library.cobiss.stats2024.fund;
   }
 
+  // Свежина за пребарувачот: проверката на самиот запис, а кога ја нема —
+  // проверката на базата. Истиот редослед како во sitemap.xml, за двата
+  // сигнали да не се разидат.
+  data.dateModified = library.lastVerified ?? stats.dataVerifiedOn ?? undefined;
+
   return data;
+}
+
+/** Мета-опис на библиотека: тип, адреса, место. Го користат и деталната
+ *  страница и листовите со записи, за описите да се совпаѓаат. */
+export function libraryDescription(library: Library): string {
+  return [library.typeLabel, library.location.address, library.location.place]
+    .filter(Boolean)
+    .join(' · ');
 }
 
 /** WebSite + SearchAction за почетната страница. */

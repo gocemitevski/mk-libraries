@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import { Breadcrumbs } from '@/components/breadcrumbs';
 import { LibraryCard } from '@/components/library-card';
-import { JsonLd, itemListJsonLd, SITE_URL } from '@/lib/seo';
+import { JsonLd, itemListJsonLd, libraryDescription, SITE_URL } from '@/lib/seo';
 import { getLibrariesByPlace, placeBySlug, places } from '@/lib/data';
 import { formatNumber, NOUNS, plural } from '@/lib/format';
 
@@ -44,7 +44,11 @@ export default async function PlacePage({ params }: Props) {
     <div className="container py-4">
       <JsonLd
         data={itemListJsonLd(
-          libraries.map((l) => ({ name: l.name, url: `${SITE_URL}/biblioteki/${l.slug}/` })),
+          libraries.map((l) => ({
+            name: l.name,
+            url: `${SITE_URL}/biblioteki/${l.slug}/`,
+            description: libraryDescription(l),
+          })),
           `Библиотеки во ${place.name}`,
         )}
       />

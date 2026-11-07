@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 import { Breadcrumbs } from '@/components/breadcrumbs';
 import { Directory } from '@/components/directory';
-import { JsonLd, itemListJsonLd } from '@/lib/seo';
+import { JsonLd, itemListJsonLd, libraryDescription } from '@/lib/seo';
 import { places, publicLibraries, typeGroups } from '@/lib/data';
 import { SITE_URL } from '@/lib/seo';
 import { formatNumber, NOUNS, plural } from '@/lib/format';
@@ -19,7 +19,7 @@ export default function DirectoryPage() {
     publicLibraries.slice(0, 50).map((l) => ({
       name: l.name,
       url: `${SITE_URL}/biblioteki/${l.slug}/`,
-      description: `${l.typeLabel} - ${l.location.place}`,
+      description: libraryDescription(l),
     })),
     'Библиотеки во Северна Македонија',
   );
