@@ -82,6 +82,13 @@ export default async function LibraryPage({ params }: Props) {
     place: library.location.place,
   });
 
+  // „•“ во `notes` е набројување, не интерпункција: првиот дел е воведен
+  // текст, останатите се ставки. Делиме при приказот — податокот во
+  // workbook-от останува како што е.
+  const noteParts = (library.notes ?? '').split('•').map((part) => part.trim());
+  const notesIntro = noteParts[0];
+  const notesItems = noteParts.slice(1).filter(Boolean);
+
   // Commons колоната содржи страници, не слики — претвораме само File: во
   // директен линк; Category: нема еквивалент и останува како линк.
   const commonsImageSrc = commonsImageUrl(library.links.commonsImage);
@@ -414,7 +421,14 @@ export default async function LibraryPage({ params }: Props) {
               <div className="alert alert-secondary mt-3 mb-0">
                 <Icon name="info-circle" className="me-2" />
                 <strong>Забелешки и дилеми при собирањето:</strong>
-                <p className="mb-0 mt-1">{library.notes}</p>
+                {notesIntro && <p className="mb-0 mt-1">{notesIntro}</p>}
+                {notesItems.length > 0 && (
+                  <ul className="mt-1 mb-0">
+                    {notesItems.map((item, i) => (
+                      <li key={`${i}-${item}`} className="mb-1">{item}</li>
+                    ))}
+                  </ul>
+                )}
               </div>
             )}
           </section>
