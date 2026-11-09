@@ -89,7 +89,7 @@ export default async function MunicipalityPage({ params }: Props) {
           ) : (
             <>Нема записи што се водат на оваа општина.</>
           )}{' '}
-          Според мастер-листот: {entry.publicCount} јавни, {entry.branchCount} ограноци и{' '}
+          Според изворните податоци: {entry.publicCount} јавни, {entry.branchCount} ограноци и{' '}
           {entry.otherCount} останати.
         </p>
       </header>

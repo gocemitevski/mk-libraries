@@ -74,7 +74,7 @@ export default function AboutPage() {
               ))}
             </div>
             <p>
-              Покрај {stats.totals.public}-те прикажани записи, уште {stats.totals.excluded} ќелији во мастер-листот се
+              Покрај {stats.totals.public}-те прикажани записи, уште {stats.totals.excluded} ќелии во изворните податоци се
               означени „не е библиотека“ (музеи, архиви, друга дејност). Остануваат во базата и во
               JSON-извозот, но се со <code>noindex</code> и не се пребаруваат - за да не се мами
               пребарувачот.
@@ -160,7 +160,7 @@ export default function AboutPage() {
           <section className="detail-section py-4">
             <h2 className="h4 mb-3">За изработката</h2>
             <p className="mb-0">
-              Базата е создадена од{' '}
+              Регистарот е изработен од{' '}
               <a href="https://www.gocemitevski.com/" target="_blank" rel="noopener external">
                 Гоце Митевски
               </a>{' '}

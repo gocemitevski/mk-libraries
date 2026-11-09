@@ -267,7 +267,7 @@ export const mapPlaces = places
 
 /**
  * Реалниот број записи во базата по општина (спојот од getLibrariesForMunicipality).
- * Се разликува од coverage.publicCount — тој е класификација од мастер-листот.
+ * Се разликува од coverage.publicCount — тој е класификација од изворните податоци.
  */
 export const recordCountsBySlug: Record<string, number> = Object.fromEntries(
   coverage.map((c) => [c.slug, getLibrariesForMunicipality(c.name).length]),
