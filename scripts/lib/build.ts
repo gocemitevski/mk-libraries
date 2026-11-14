@@ -154,6 +154,26 @@ const mkDash = (text: string): string =>
 
 /** Текст од ќелија: без празнини на крајот и со цртичкита усогласена со страницата. */
 const str = (row: Row, key: string): string => mkDash((row[key] ?? '').toString().trim());
+
+/**
+ * Наводниците во изворите доаѓаат во три неисправни облици: два отворачи
+ * („…„), затворач без отвор (“…“) или само затворач. Ги враќаме во еден
+ * пар, а текстот што е веќе уреден не го допираме. Се применува само врз
+ * варијантите на името — тие се препишани од извори со различен правопис.
+ */
+const mkQuotes = (text: string): string => {
+  let open = false;
+  let out = '';
+  for (const ch of text) {
+    if (ch === '„' || ch === '“' || ch === '”') {
+      out += open ? '“' : '„';
+      open = !open;
+    } else {
+      out += ch;
+    }
+  }
+  return open ? `${out}“` : out;
+};
 const num = (row: Row, key: string): number | null => {
   const v = row[key];
   if (typeof v === 'number') return Number.isFinite(v) ? v : null;
@@ -302,7 +322,7 @@ function parseMaster(rows: Row[], issues: BuildIssue[]): Library[] {
       slug: slugify(`${name}-${place}`),
       name,
       shortName: str(row, C.shortName) || null,
-      aliases: splitMulti(str(row, C.nameVariants)).filter((a) => a !== name),
+      aliases: splitMulti(str(row, C.nameVariants)).map(mkQuotes).filter((a) => a !== name),
       type: typeSlug,
       typeLabel: typeMeta?.label ?? typeLabel,
       typeGroup: typeMeta?.group ?? 'ostanati',
