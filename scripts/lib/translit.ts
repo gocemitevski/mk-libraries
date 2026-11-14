@@ -66,6 +66,13 @@ export function looksLikeHost(input: string): boolean {
 }
 
 /**
+ * Домени што не служат TLS: сертификатот е издаден за друг хост, па
+ * https:// паѓа со безбедносно предупредување, а http:// враќа 200
+ * (gbsk.mk, проверено 14.11.2026).
+ */
+const HTTP_ONLY_HOSTS = new Set(['gbsk.mk']);
+
+/**
  * Нормализира веб-адреса: додава https://, го отстранува www, ја чува патеката.
  * Враќа null ако ќелијата не е веб-адреса (некои ќелии содржат проза).
  */
@@ -74,7 +81,9 @@ export function normalizeUrl(input: string): string | null {
   if (!raw) return null;
   if (!looksLikeHost(raw)) return null;
   const withoutScheme = raw.replace(/^https?:\/\//i, '').replace(/^www\./i, '').replace(/\/+$/, '');
-  return `https://${withoutScheme}`;
+  const host = withoutScheme.split('/')[0].toLowerCase();
+  const scheme = HTTP_ONLY_HOSTS.has(host) ? 'http' : 'https';
+  return `${scheme}://${withoutScheme}`;
 }
 
 /** Датум „12.10.2026“ → „2026-10-12“; ако не е таков формат, враќа null. */
