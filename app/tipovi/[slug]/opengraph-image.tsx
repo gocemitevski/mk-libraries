@@ -11,14 +11,10 @@ interface Props {
   params: Promise<{ slug: string }>;
 }
 
+export const alt = 'Библиотеки по тип';
+
 export function generateStaticParams() {
   return typeGroups.map((g) => ({ slug: g.slug }));
-}
-
-export async function generateAlt({ params }: Props): Promise<string> {
-  const { slug } = await params;
-  const group = typeGroupBySlug.get(slug);
-  return group ? `${group.label} во Северна Македонија` : 'Библиотеки по тип';
 }
 
 export default async function Image({ params }: Props): Promise<ImageResponse> {

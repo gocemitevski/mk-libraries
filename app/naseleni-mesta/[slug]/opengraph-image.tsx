@@ -11,14 +11,10 @@ interface Props {
   params: Promise<{ slug: string }>;
 }
 
+export const alt = 'Библиотеки во населено место';
+
 export function generateStaticParams() {
   return places.map((p) => ({ slug: p.slug }));
-}
-
-export async function generateAlt({ params }: Props): Promise<string> {
-  const { slug } = await params;
-  const place = placeBySlug.get(slug);
-  return place ? `Библиотеки во ${place.name}` : 'Библиотеки во Северна Македонија';
 }
 
 export default async function Image({ params }: Props): Promise<ImageResponse> {
