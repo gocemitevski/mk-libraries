@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import './globals.scss';
+import { Analytics } from '@/components/analytics';
 import { SiteHeader } from '@/components/site-header';
 import { SiteFooter } from '@/components/site-footer';
 
@@ -43,6 +44,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           {children}
         </main>
         <SiteFooter />
+        <Analytics />
       </body>
     </html>
   );
