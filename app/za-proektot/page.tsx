@@ -158,6 +158,15 @@ export default function AboutPage() {
           </section>
 
           <section className="detail-section py-4">
+            <h2 className="h4 mb-3">Аналитика</h2>
+            <p className="mb-0">
+              Посетата ја мериме без колачиња. Не зачувуваме ништо на вашиот уред и не
+              создаваме профил; гледаме само збирни бројки - колку посети има и кои страници
+              се читаат - за да знаеме што да подобриме.
+            </p>
+          </section>
+
+          <section className="detail-section py-4">
             <h2 className="h4 mb-3">За изработката</h2>
             <p className="mb-0">
               Регистарот е изработен од{' '}
