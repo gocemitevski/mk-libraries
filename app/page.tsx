@@ -11,7 +11,7 @@ import { formatNumber } from '@/lib/format';
 export const metadata: Metadata = {
   title: 'Библиотеки во Северна Македонија — адресар',
   description:
-    `${stats.totals.public} библиотеки во ${stats.geography.places} населени места во Северна Македонија. Пребарајте по име, населено место или тип и најдете адреса, телефон, мрежно место и податоци од COBISS.`,
+    `${stats.totals.public} библиотеки во ${stats.geography.places} населени места. Пребарајте по име, населено место или тип и најдете адреса, телефон, мрежно место и податоци од COBISS.`,
   alternates: { canonical: '/' },
 };
 

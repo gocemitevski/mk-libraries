@@ -120,9 +120,33 @@ export function libraryDescription(library: Library): string {
   return bits.join(' · ');
 }
 
+/** Колку знаци собира описот во резултатот од пребарувачот (~155). */
+const META_DESCRIPTION_LIMIT = 155;
+
+/** Го сече описот на граница на збор — подобро ние да го скратиме
+ *  уредно, отколку пребарувачот да го пресече среде збор. Последните
+ *  одделувачи („ /“, „–“, „·“) исто паѓаат: „…ентериер /…“ не е опис. */
+function fitMetaDescription(text: string): string {
+  if (text.length <= META_DESCRIPTION_LIMIT) return text;
+  const cut = text.slice(0, META_DESCRIPTION_LIMIT - 1);
+  const lastSpace = cut.lastIndexOf(' ');
+  const head = (lastSpace > 0 ? cut.slice(0, lastSpace) : cut).trimEnd();
+  return `${head.replace(/[\s/,·–—-]+$/u, '')}…`;
+}
+
 /** Мета-опис за <meta name="description"> на страницата на библиотеката. */
 export function libraryMetaDescription(library: Library): string {
-  return `${libraryDescription(library)}.${fundLine(library)} Податоци и извори.`;
+  const bits = libraryDescription(library);
+  const full = `${bits}.${fundLine(library)} Податоци и извори.`;
+  if (full.length <= META_DESCRIPTION_LIMIT) return full;
+
+  // Наместо да ја сечеме опашката, ги отфрламе шаблонските делови: прво
+  // фондот, потоа „Податоци и извори.“. Така името — единственото што ги
+  // разликува повторените описи — останува цело.
+  const noFund = `${bits}. Податоци и извори.`;
+  if (noFund.length <= META_DESCRIPTION_LIMIT) return noFund;
+
+  return fitMetaDescription(bits);
 }
 
 /** WebSite + SearchAction за почетната страница. */
