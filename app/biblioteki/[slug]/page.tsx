@@ -7,6 +7,7 @@ import { LibraryCard, TypeBadge, VerificationBadge } from '@/components/library-
 import { JsonLd, libraryJsonLd, libraryMetaDescription } from '@/lib/seo';
 import { formatDayNames, formatMkTime, parseHours } from '@/lib/hours';
 import { commonsImageUrl } from '@/lib/commons';
+import { websiteHref } from '@/lib/links';
 import {
   getBranches,
   getLibrary,
@@ -81,6 +82,7 @@ export default async function LibraryPage({ params }: Props) {
     address: library.location.address,
     place: library.location.place,
   });
+  const website = websiteHref(library.contacts.website);
 
   // „•“ во `notes` е набројување, не интерпункција: првиот дел е воведен
   // текст, останатите се ставки. Делиме при приказот — податокот во
@@ -94,7 +96,7 @@ export default async function LibraryPage({ params }: Props) {
   const commonsImageSrc = commonsImageUrl(library.links.commonsImage);
 
   const externalLinks = [
-    { href: library.contacts.website, label: 'Мрежно место', rel: 'noopener external' },
+    { href: websiteHref(library.contacts.website), label: 'Мрежно место', rel: 'noopener external' },
     { href: library.cobiss.profileUrl, label: 'Профил во COBISS', rel: 'noopener external' },
     { href: library.cobiss.aspiUrl, label: 'Профил во ASPI', rel: 'noopener external' },
     { href: library.links.wikipedia, label: 'Википедија', rel: 'noopener external' },
@@ -174,8 +176,8 @@ export default async function LibraryPage({ params }: Props) {
               Едно исполнето копче за она што најчесто се бара (мрежно место),
               сè останато со контурниот втор степен на хиерархијата. */}
           <div className="d-flex flex-wrap gap-2 mb-3">
-            {library.contacts.website && (
-              <a className="btn btn-primary hstack gap-2" href={library.contacts.website} target="_blank" rel="noopener external">
+            {website && (
+              <a className="btn btn-primary hstack gap-2" href={website} target="_blank" rel="noopener external">
                 <Icon name="globe2" />
                 <span>Мрежно место</span>
               </a>

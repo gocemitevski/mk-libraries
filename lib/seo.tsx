@@ -2,6 +2,7 @@ import type { Library } from '@/src/lib/schema';
 import { libraries, publicLibraries, stats } from '@/lib/data';
 import { schemaOrgOpeningHours } from '@/lib/hours';
 import { formatNumber } from '@/lib/format';
+import { websiteHref } from '@/lib/links';
 
 const SITE = 'https://biblioteki.mk';
 
@@ -54,7 +55,8 @@ export function libraryJsonLd(library: Library, url: string): Record<string, unk
 
   if (library.contacts.phones.length) data.telephone = library.contacts.phones[0];
   if (library.contacts.emails.length) data.email = library.contacts.emails[0];
-  if (library.contacts.website) data.mainEntityOfPage = library.contacts.website;
+  const website = websiteHref(library.contacts.website);
+  if (website) data.mainEntityOfPage = website;
   if (sameAs.length) data.sameAs = sameAs;
 
   // „Mo-Fr 08:30-16:30“ — ја чита и Google. Суровиот македонски текст

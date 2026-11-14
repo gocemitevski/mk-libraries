@@ -7,6 +7,7 @@ import { Icon } from '@/components/icon';
 import { LibraryCard } from '@/components/library-card';
 import { useDisclosure } from '@/components/ui/behaviour';
 import { Offcanvas } from '@/components/ui/overlay';
+import { websiteHref } from '@/lib/links';
 import type { DirectoryRecord } from '@/lib/search';
 
 const PAGE_SIZE = 24;
@@ -114,7 +115,9 @@ export function Directory({ records, places, typeGroups }: Props) {
     if (typeGroup) list = list.filter((l) => l.typeGroup === typeGroup);
     if (place) list = list.filter((l) => l.location.place === place);
     if (verifiedOnly) list = list.filter((l) => l.verification.level === 'confirmed');
-    if (hasWebsite) list = list.filter((l) => Boolean(l.contacts.website));
+    // `websiteHref` ги отфрла мртвите домени, исто како картичката — инаку
+    // филтерот би вратил записи без копче „Мрежно место“.
+    if (hasWebsite) list = list.filter((l) => Boolean(websiteHref(l.contacts.website)));
     if (hasPhone) list = list.filter((l) => l.contacts.phones.length > 0);
     if (hasCoords) list = list.filter((l) => l.location.lat !== null);
 

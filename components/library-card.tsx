@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import { Icon } from '@/components/icon';
 import { displayUrl, directionsHref, telHref } from '@/lib/format';
+import { websiteHref } from '@/lib/links';
 
 /**
  * Минималниот облик што го бараат картичката и значките.
@@ -73,6 +74,7 @@ export function LibraryCard({
 }) {
   const href = `/biblioteki/${library.slug}/`;
   const Heading = headingLevel;
+  const website = websiteHref(library.contacts.website);
   const directions = directionsHref({
     lat: library.location.lat,
     lon: library.location.lon,
@@ -116,16 +118,16 @@ export function LibraryCard({
             Сите со истиот варијант: во листа нема „главно“ дејство,
             главното е самиот ред на картичката (stretched-link). */}
         <div className="mt-auto d-flex flex-wrap gap-2 pt-3 position-relative">
-          {library.contacts.website && (
+          {website && (
             <a
               className="btn btn-sm btn-outline-secondary hstack gap-1"
-              href={library.contacts.website}
+              href={website}
               target="_blank"
               rel="noopener external"
             >
               <Icon name="globe2" />
               <span>Мрежно место</span>
-              <span className="visually-hidden"> ({displayUrl(library.contacts.website)})</span>
+              <span className="visually-hidden"> ({displayUrl(website)})</span>
             </a>
           )}
           {library.contacts.phones[0] && (
