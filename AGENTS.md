@@ -114,8 +114,10 @@ Rules:
 - Descriptions must fit the ~155-character snippet limit. `libraryMetaDescription` already
   drops template parts and trims separators before the ellipsis — reuse it instead of writing
   a raw description for a library page.
-- Social images are generated per route by `opengraph-image.tsx` using `lib/og.tsx`. Export an
-  `alt` string with each image.
+- Social images: subpages generate one with `opengraph-image.tsx` through `lib/og.tsx`
+  (1200×630). The homepage and root fallback use the static `app/opengraph-image.png`, with
+  `app/opengraph-image.alt.txt` next to it. `assets/social/facebook-post-2400x1260.png` is the
+  source artwork; keep the 1200×630 copy in sync when it changes.
 - Add every new indexable route to `app/sitemap.ts`; keep `noindex` routes out. `app/robots.ts`
   disallows `/data/`.
 - `public/_headers` sets the Open Graph image MIME type; `public/_redirects` keeps the legacy
