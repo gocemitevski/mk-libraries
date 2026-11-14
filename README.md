@@ -108,7 +108,7 @@ The code and the published dataset are licensed under
 [Creative Commons Attribution 4.0 International (CC BY 4.0)](LICENSE.md). Reuse is allowed
 with attribution to the project.
 
-## Credits (За изработката)
+## Credits
 
 The registry was built by [Goce Mitevski](https://www.gocemitevski.com/) and
 [Boris Ristovski](https://www.facebook.com/twibi/).
