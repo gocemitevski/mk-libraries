@@ -1,7 +1,18 @@
 import Link from 'next/link';
+import type { Metadata } from 'next';
 import { Icon } from '@/components/icon';
 import { SearchBox } from '@/components/search-box';
 import { places, typeGroups } from '@/lib/data';
+
+// 404-ката е статична датотека што ја служи секој непознат URL, па не може
+// да има свој canonical — и не треба: Next сам става noindex. Сопствениот
+// наслов и опис само ја вадат од групата што ги повторуваше насловните.
+export const metadata: Metadata = {
+  title: 'Страницата не е пронајдена',
+  description:
+    'Бараната страница не постои или е преместена. Пребарајте библиотеки по име, населено место или тип.',
+  robots: { index: false, follow: false },
+};
 
 export default function NotFound() {
   return (
