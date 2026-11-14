@@ -27,6 +27,9 @@ describe('транслитерација и нормализација', () => {
     assert.equal(normalizeUrl('nubsk.edu.mk'), 'https://nubsk.edu.mk');
     assert.equal(normalizeUrl('www.nubsk.edu.mk/'), 'https://nubsk.edu.mk');
     assert.equal(normalizeUrl('https://loc.mk/mk/place/ohrid/x'), 'https://loc.mk/mk/place/ohrid/x');
+    // gbsk.mk не служи TLS — http:// е единствениот облик што работи
+    assert.equal(normalizeUrl('https://gbsk.mk'), 'http://gbsk.mk');
+    assert.equal(normalizeUrl('gbsk.mk/'), 'http://gbsk.mk');
     assert.equal(normalizeUrl('не е адреса'), null);
     assert.equal(normalizeUrl(''), null);
   });
@@ -122,10 +125,30 @@ describe('мастер-база', () => {
     }
   });
 
-  it('сите веб-страни се валидни HTTPS-адреси', () => {
+  it('сите веб-страни се валидни адреси', () => {
     for (const l of result.libraries) {
-      if (l.contacts.website) assert.match(l.contacts.website, /^https:\/\/[^/]+\.[a-z]{2,}/i, l.id);
+      if (l.contacts.website) {
+        assert.match(l.contacts.website, /^https?:\/\/[^/]+\.[a-z]{2,}/i, l.id);
+        // http е дозволен само за домаќини без TLS (gbsk.mk)
+        if (l.contacts.website.startsWith('http://')) {
+          assert.match(l.contacts.website, /^http:\/\/gbsk\.mk(\/|$)/, l.id);
+        }
+      }
       for (const w of l.contacts.otherWebsites) assert.match(w, /^https:\/\//, l.id);
+    }
+  });
+
+  it('ги балансира наводниците во варијантите на името', () => {
+    for (const l of result.libraries) {
+      for (const alias of l.aliases) {
+        assert.equal(
+          (alias.match(/„/g) ?? []).length,
+          (alias.match(/“/g) ?? []).length,
+          `${l.id}: ${alias}`,
+        );
+        assert.doesNotMatch(alias, /„[^„“]*„/, `${l.id}: ${alias}`);
+        assert.doesNotMatch(alias, /”/, `${l.id}: ${alias}`);
+      }
     }
   });
 
