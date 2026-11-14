@@ -45,7 +45,9 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const library = getLibrary(slug);
   if (!library) return {};
 
-  const title = `${library.name}, ${library.location.place}`;
+  const title = library.name.includes(library.location.place)
+    ? library.name
+    : `${library.name}, ${library.location.place}`;
   const description = libraryMetaDescription(library);
 
   return {
