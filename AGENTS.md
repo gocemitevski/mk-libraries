@@ -114,10 +114,12 @@ Rules:
 - Descriptions must fit the ~155-character snippet limit. `libraryMetaDescription` already
   drops template parts and trims separators before the ellipsis — reuse it instead of writing
   a raw description for a library page.
-- Social images: subpages generate one with `opengraph-image.tsx` through `lib/og.tsx`
-  (1200×630). The homepage and root fallback use the static `app/opengraph-image.png`, with
-  `app/opengraph-image.alt.txt` next to it. `assets/social/facebook-post-2400x1260.png` is the
-  source artwork; keep the 1200×630 copy in sync when it changes.
+- Social images: the shared card is the static `app/opengraph-image.png` (1200×630), with
+  `app/opengraph-image.alt.txt` next to it. Routes that return their own `openGraph` from
+  `generateMetadata` must attach it as `images: [OG_IMAGE]` (`lib/seo.tsx`) — Next replaces a
+  parent's `openGraph` instead of merging it, so the file-convention image is not inherited.
+  `assets/social/facebook-post-2400x1260.png` is the source artwork; keep the 1200×630 copy
+  in sync when it changes.
 - Add every new indexable route to `app/sitemap.ts`; keep `noindex` routes out. `app/robots.ts`
   disallows `/data/`.
 - `public/_headers` sets the Open Graph image MIME type; `public/_redirects` keeps the legacy
@@ -131,8 +133,9 @@ not in this repo. Do not add cookie logic here, and keep `/za-proektot` copy non
 
 ## Adding or changing a route
 
-1. Follow the existing route shape under `app/` (page + `opengraph-image.tsx` when it needs a
-   social card).
+1. Follow the existing route shape under `app/` (page, metadata, and `images: [OG_IMAGE]` in
+   `openGraph` when the page returns one). A per-route `opengraph-image.tsx` is only for a page
+   that genuinely needs its own preview.
 2. Add metadata with a canonical path and a Macedonian description.
 3. Add JSON-LD when the page represents an entity or a list.
 4. Add the route to `app/sitemap.ts` if it should be indexed.

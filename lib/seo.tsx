@@ -207,3 +207,18 @@ export function datasetJsonLd(stats: { totals: { records: number }; dataVerified
 }
 
 export const SITE_URL = SITE;
+
+/**
+ * Споделената картичка за социјални мрежи (1200×630).
+ *
+ * Страниците што самите дефинираат `openGraph` мораат да ја наведат: metadata не ги
+ * спојува вглубените објекти, туку го заменува `openGraph` од родителот, па сликата
+ * од `app/opengraph-image.png` инаку не би стигнала до нив.
+ */
+export const OG_IMAGE = {
+  url: `${SITE}/opengraph-image.png`,
+  width: 1200,
+  height: 630,
+  // истиот текст како app/opengraph-image.alt.txt — менувај ги двете заедно
+  alt: 'Библиотеки.мк — адресар на библиотеки во Северна Македонија',
+};

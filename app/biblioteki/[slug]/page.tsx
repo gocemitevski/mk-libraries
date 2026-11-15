@@ -28,7 +28,7 @@ import {
   NOUNS,
   plural,
 } from '@/lib/format';
-import { SITE_URL } from '@/lib/seo';
+import { OG_IMAGE, SITE_URL } from '@/lib/seo';
 
 interface Props {
   params: Promise<{ slug: string }>;
@@ -63,6 +63,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       description,
       url: `/biblioteki/${library.slug}/`,
       type: 'article',
+      images: [OG_IMAGE],
     },
   };
 }

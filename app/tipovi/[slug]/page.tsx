@@ -3,7 +3,7 @@ import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { Breadcrumbs } from '@/components/breadcrumbs';
 import { LibraryCard } from '@/components/library-card';
-import { JsonLd, itemListJsonLd, libraryDescription, SITE_URL } from '@/lib/seo';
+import { JsonLd, itemListJsonLd, libraryDescription, OG_IMAGE, SITE_URL } from '@/lib/seo';
 import { getLibrariesByTypeGroup, typeGroupBySlug, typeGroups } from '@/lib/data';
 import { formatNumber, NOUNS, plural } from '@/lib/format';
 
@@ -29,7 +29,12 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     title,
     description,
     alternates: { canonical: `/tipovi/${group.slug}/` },
-    openGraph: { title, description, url: `/tipovi/${group.slug}/` },
+    openGraph: {
+      title,
+      description,
+      url: `/tipovi/${group.slug}/`,
+      images: [OG_IMAGE],
+    },
   };
 }
 

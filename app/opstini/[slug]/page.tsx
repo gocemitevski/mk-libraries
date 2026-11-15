@@ -4,7 +4,7 @@ import { notFound } from 'next/navigation';
 import { Breadcrumbs } from '@/components/breadcrumbs';
 import { Icon } from '@/components/icon';
 import { LibraryCard } from '@/components/library-card';
-import { JsonLd, itemListJsonLd, libraryDescription, SITE_URL } from '@/lib/seo';
+import { JsonLd, itemListJsonLd, libraryDescription, OG_IMAGE, SITE_URL } from '@/lib/seo';
 import { coverage, coverageBySlug, getLibrariesForMunicipality, placeSlug, stats } from '@/lib/data';
 import { NOUNS, plural } from '@/lib/format';
 
@@ -36,7 +36,12 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     title,
     description,
     alternates: { canonical: `/opstini/${entry.slug}/` },
-    openGraph: { title, description, url: `/opstini/${entry.slug}/` },
+    openGraph: {
+      title,
+      description,
+      url: `/opstini/${entry.slug}/`,
+      images: [OG_IMAGE],
+    },
   };
 }
 
