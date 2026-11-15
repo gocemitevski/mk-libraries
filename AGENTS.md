@@ -118,8 +118,11 @@ Rules:
   `app/opengraph-image.alt.txt` next to it. Routes that return their own `openGraph` from
   `generateMetadata` must attach it as `images: [OG_IMAGE]` (`lib/seo.tsx`) — Next replaces a
   parent's `openGraph` instead of merging it, so the file-convention image is not inherited.
-  `assets/social/facebook-post-2400x1260.png` is the source artwork; keep the 1200×630 copy
-  in sync when it changes.
+  `assets/social/card-background.webp` is the artwork plate — photograph, scrim, gold rule and
+  the wordmark; the copy below the wordmark is drawn by `scripts/gen-social-card.py`, which
+  writes `assets/social/facebook-post-2400x1260.png` and `app/opengraph-image.png` in one go
+  (`npm run social:build`, `--check` to verify the committed files). Change the copy in the
+  script and regenerate; do not hand-edit either PNG.
 - Add every new indexable route to `app/sitemap.ts`; keep `noindex` routes out. `app/robots.ts`
   disallows `/data/`.
 - `public/_headers` sets the Open Graph image MIME type; `public/_redirects` keeps the legacy

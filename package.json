@@ -12,6 +12,8 @@
     "data:build": "tsx scripts/build-data.ts",
     "data:check": "tsx scripts/build-data.ts --check",
     "data:test": "node --import tsx --test tests/*.test.ts",
+    "social:build": "python3 scripts/gen-social-card.py",
+    "social:check": "python3 scripts/gen-social-card.py --check",
     "test": "npm run data:test",
     "check": "npm run data:check && npm run data:test && npm run typecheck"
   },

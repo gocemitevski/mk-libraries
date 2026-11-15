@@ -35,6 +35,9 @@ in a fixed order of precedence.
 
 Node.js >= 20.9 (CI uses Node 24) and npm.
 
+The social card generator also needs Python 3 with Pillow, plus fontTools and brotli to unpack
+the `.woff2` files. Nothing in `npm run check` or `npm run build` depends on it.
+
 ## Getting started
 
 ```bash
@@ -53,6 +56,8 @@ npm run dev          # http://localhost:3000
 | `npm run data:test` | Run the data tests (`node:test`). |
 | `npm run typecheck` | `tsc --noEmit`. |
 | `npm run check` | `data:check` + tests + typecheck — the suite CI runs. |
+| `npm run social:build` | Regenerate the social card: `assets/social/facebook-post-2400x1260.png` and `app/opengraph-image.png`. |
+| `npm run social:check` | Fail if those two PNGs are out of date with the plate and the copy. |
 
 ## Data pipeline
 
@@ -77,7 +82,7 @@ Do not hand-edit `src/data/` or `public/data/` — change the workbook or the pi
 app/            App Router routes (all statically exported)
 components/     shared UI (header, footer, cards, directory, maps, analytics)
 lib/            data access, SEO/JSON-LD, formatting, opening hours, link helpers
-scripts/        workbook → JSON/CSV pipeline
+scripts/        workbook → JSON/CSV pipeline, image generators
 src/data/       generated data, committed
 src/lib/        schemas and taxonomy
 public/data/    published JSON/CSV exports
