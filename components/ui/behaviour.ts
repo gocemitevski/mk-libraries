@@ -2,7 +2,7 @@
 
 import { useCallback, useEffect, useRef, useState } from 'react';
 
-/** Мала помош за отворено/затворено состојба — ја користат Offcanvas и Modal. */
+/** Мала помош за отворено/затворено состојба - ја користат Offcanvas и Modal. */
 export function useDisclosure(initial = false) {
   const [isOpen, setOpen] = useState(initial);
   const open = useCallback(() => setOpen(true), []);
@@ -31,7 +31,7 @@ const FOCUSABLE =
 
 /**
  * Го држи фокусот внатре додека дијалогот е отворен и го враќа на предизвикувачот.
- * Ова е делот што react-bootstrap ни го даваше — пишан ееднаш и го користат
+ * Ова е делот што react-bootstrap ни го даваше - пишан ееднаш и го користат
  * Offcanvas и Modal (план §3.1).
  */
 export function useFocusTrap(active: boolean, containerRef: React.RefObject<HTMLElement | null>) {

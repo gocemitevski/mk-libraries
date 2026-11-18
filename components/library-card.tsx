@@ -6,15 +6,15 @@ import { websiteHref } from '@/lib/links';
 /**
  * Минималниот облик што го бараат картичката и значките.
  *
- * И двата типа што реално ги пренесуваме — целиот `Library` (детална
- * страница) и намалениот `DirectoryRecord` (адресар) — го задоволуваат
+ * И двата типа што реално ги пренесуваме - целиот `Library` (детална
+ * страница) и намалениот `DirectoryRecord` (адресар) - го задоволуваат
  * ова, па не мораме да ги влечеме комплетните податоци на клиентот.
  */
 export interface LibraryCardData {
   slug: string;
   name: string;
   typeLabel: string;
-  // slug на групата — го користиме за бојата на картичката (.type-<slug>)
+  // slug на групата - го користиме за бојата на картичката (.type-<slug>)
   typeGroup: string;
   verification: { level: string; label: string; detail?: string | null };
   location: { place: string; address: string | null; lat: number | null; lon: number | null };
@@ -57,7 +57,7 @@ export function TypeBadge({
 }
 
 /**
- * Картичка за лист — ја користат адресарот, населените места и типовите.
+ * Картичка за лист - ја користат адресарот, населените места и типовите.
  * Брзите дејства (веб, телефон, насоки) се врзани заради пристапност:
  * секој линк е вистински <a>, не клик-делегација врз картичката.
  *
@@ -85,7 +85,7 @@ export function LibraryCard({
   return (
     <article className={`card lib-card h-100 type-${library.typeGroup}`}>
       <div className="card-body d-flex flex-column">
-        {/* Насловот е прв — значките се мета-податок за него, па следуваат веднаш под него. */}
+        {/* Насловот е прв - значките се мета-податок за него, па следуваат веднаш под него. */}
         <Heading className="card-title h6">
           <Link className="stretched-link text-decoration-none" href={href}>
             {library.name}
@@ -114,7 +114,7 @@ export function LibraryCard({
           </p>
         )}
 
-        {/* Брзи дејства — се појавуваат само кога податокот постои.
+        {/* Брзи дејства - се појавуваат само кога податокот постои.
             Сите со истиот варијант: во листа нема „главно“ дејство,
             главното е самиот ред на картичката (stretched-link). */}
         <div className="mt-auto d-flex flex-wrap gap-2 pt-3 position-relative">

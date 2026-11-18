@@ -44,7 +44,7 @@ export default function TypesPage() {
                 <div className="card-body">
                   <div className="hstack gap-3 mb-2">
                     <h2 className="card-title h5 mb-0 flex-fill">{group.label}</h2>
-                    {/* Истата значка како во заглавието на групата — бројот ја квалификува,
+                    {/* Истата значка како во заглавието на групата - бројот ја квалификува,
                         не ја води, затоа е значка, не голем број. */}
                     <span className="badge text-truncate flex-shrink-0 type-badge">{group.count}</span>
                   </div>

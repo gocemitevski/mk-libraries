@@ -63,7 +63,7 @@ export default async function TypeGroupPage({ params }: Props) {
       <header className={`mt-3 mb-4 type-${group.slug}`}>
         <div className="hstack flex-wrap gap-3 mb-2">
           <h1 className="mb-0">{group.label}</h1>
-          {/* Бројачот е значка, не текст — инаку ја надминува главниот наслов. */}
+          {/* Бројачот е значка, не текст - инаку ја надминува главниот наслов. */}
           <span className="badge text-truncate flex-shrink-0 type-badge">{formatNumber(group.count)}</span>
         </div>
         {group.types.length === 1 && (

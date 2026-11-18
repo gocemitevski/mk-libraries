@@ -4,7 +4,7 @@ import type { Library } from './schema';
  * Намален запис за пребарување.
  *
  * Живее во src/lib/ за да може да го користат и пайплинот (scripts/) и
- * апликацијата (lib/search.ts) — двата пати со релативен пат, без
+ * апликацијата (lib/search.ts) - двата пати со релативен пат, без
  * path-алијаси, за да работи и под tsx.
  */
 export interface SearchRecord {
@@ -22,7 +22,7 @@ export interface SearchRecord {
  * Го претвора целиот запис во индекс за пребарување.
  *
  * Овие полиња се целосно покриени со клучевите на SearchBox (види
- * components/search-box.tsx) — ништо повеќе не се пренесува на клиентот.
+ * components/search-box.tsx) - ништо повеќе не се пренесува на клиентот.
  */
 export function toSearchRecord(l: Library): SearchRecord {
   return {

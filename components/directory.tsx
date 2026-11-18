@@ -30,7 +30,7 @@ type SortKey = 'name' | 'place' | 'fund';
  * Адресарот: пребарување + филтри, сè на клиентот.
  *
  * Состојбата се чита од URL-от при монтирање и се запишува назад со
- * history.replaceState — не користиме useSearchParams, бидејќи тој бара
+ * history.replaceState - не користиме useSearchParams, бидејќи тој бара
  * Suspense-граница и тогаш статичниот HTML на /biblioteki/ содржи само
  * фолбек, наместо филтерите и првите 24 картички. /naseleni-mesta и /tipovi
  * остануваат влезните точки за пребарувачите.
@@ -50,11 +50,11 @@ export function Directory({ records, places, typeGroups }: Props) {
   const [page, setPage] = useState(1);
 
   // Филтерската табла се прикажува двапати (колона на десктоп и Offcanvas на
-  // телефон). Секоја копија добива свој префикс за id/name — инаку би имало
+  // телефон). Секоја копија добива свој префикс за id/name - инаку би имало
   // дупликати во DOM-от и label[for] би водел на првата копија.
   const uid = useId();
 
-  // Првото запишување се прескокнува — инаку би го избришало ?q=… од URL-то
+  // Првото запишување се прескокнува - инаку би го избришало ?q=… од URL-то
   // пред ефектот за читање да го примени.
   const firstWrite = useRef(true);
 
@@ -115,7 +115,7 @@ export function Directory({ records, places, typeGroups }: Props) {
     if (typeGroup) list = list.filter((l) => l.typeGroup === typeGroup);
     if (place) list = list.filter((l) => l.location.place === place);
     if (verifiedOnly) list = list.filter((l) => l.verification.level === 'confirmed');
-    // `websiteHref` ги отфрла мртвите домени, исто како картичката — инаку
+    // `websiteHref` ги отфрла мртвите домени, исто како картичката - инаку
     // филтерот би вратил записи без копче „Мрежно место“.
     if (hasWebsite) list = list.filter((l) => Boolean(websiteHref(l.contacts.website)));
     if (hasPhone) list = list.filter((l) => l.contacts.phones.length > 0);
@@ -147,7 +147,7 @@ export function Directory({ records, places, typeGroups }: Props) {
   };
 
   const goToPage = (n: number) => {
-    // Секогаш во опсег — спречува празна страница ако некој повик мине
+    // Секогаш во опсег - спречува празна страница ако некој повик мине
     // покрај оневозможеното копче (чинителен фокус, стар URL со ?stranica=…).
     setPage(Math.min(Math.max(1, n), totalPages));
     document.getElementById('results')?.scrollIntoView({ block: 'start' });
@@ -355,7 +355,7 @@ export function Directory({ records, places, typeGroups }: Props) {
                 <button
                   type="button"
                   className="page-link"
-                  // Bootstrap го решава disabled само со pointer-events: none —
+                  // Bootstrap го решава disabled само со pointer-events: none -
                   // го блокира глувчето, не тастатурата. Без disabled атрибут
                   // Tab ја наоѓа „Претходна“ и Enter ја празни страницата.
                   disabled={currentPage === 1}
@@ -370,7 +370,7 @@ export function Directory({ records, places, typeGroups }: Props) {
                 .filter((n) => n === 1 || n === totalPages || Math.abs(n - currentPage) <= 1)
                 .map((n, i, arr) => (
                   <Fragment key={n}>
-                    {/* Пропустувањето сместо во свој <li> — споделен <li> со
+                    {/* Пропустувањето сместо во свој <li> - споделен <li> со
                         копчето би дал два .page-link детиња и би ги расипал
                         првиот/последниот радиус на Bootstrap. */}
                     {i > 0 && arr[i - 1] !== n - 1 && (

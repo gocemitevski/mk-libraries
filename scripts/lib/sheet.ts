@@ -3,7 +3,7 @@ import ExcelJS from 'exceljs';
 export type CellValue = string | number | null;
 export type Row = Record<string, CellValue>;
 
-/** Ќелиите со хиперлинк доаѓаат како објект — го вадиме текстот/URL-то. */
+/** Ќелиите со хиперлинк доаѓаат како објект - го вадиме текстот/URL-то. */
 export function cellText(value: ExcelJS.CellValue): string {
   if (value === null || value === undefined) return '';
   if (typeof value === 'string') return value.trim();

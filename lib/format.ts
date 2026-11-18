@@ -16,7 +16,7 @@ export type PluralForms = readonly [one: string, few: string, many: string];
  * Ја бира правилната македонска множина за даден број.
  *
  * Правило: број што завршува на 1 (освен 11) зема еднина; број што завршува
- * на 2–4 (освен 12–14) зема родителен еднински облик; сè останато — множина.
+ * на 2–4 (освен 12–14) зема родителен еднински облик; сè останато - множина.
  */
 export function plural(n: number, forms: PluralForms): string {
   const abs = Math.abs(Math.trunc(n)) % 100;
@@ -26,7 +26,7 @@ export function plural(n: number, forms: PluralForms): string {
   return forms[2];
 }
 
-/** Најчестите именки во интерфејсот — за да не се повторува правилото. */
+/** Најчестите именки во интерфејсот - за да не се повторува правилото. */
 export const NOUNS = {
   запис: ['запис', 'записа', 'записи'],
   извор: ['извор', 'извора', 'извори'],
@@ -65,7 +65,7 @@ export function telHref(phone: string): string {
   return `tel:${phone.replace(/[^\d+]/g, '')}`;
 }
 
-/** Насоки: ако има координати — точна локација, инаку пребарување по адреса. */
+/** Насоки: ако има координати - точна локација, инаку пребарување по адреса. */
 export function directionsHref(input: { lat: number | null; lon: number | null; address: string | null; place: string }): string {
   if (input.lat !== null && input.lon !== null) {
     return `https://www.openstreetmap.org/?mlat=${input.lat}&mlon=${input.lon}#map=17/${input.lat}/${input.lon}`;
@@ -74,7 +74,7 @@ export function directionsHref(input: { lat: number | null; lon: number | null; 
   return `https://www.openstreetmap.org/search?query=${encodeURIComponent(q)}`;
 }
 
-/** Го додава https:// ако веќе го нема — за приказ на домени. */
+/** Го додава https:// ако веќе го нема - за приказ на домени. */
 export function displayUrl(url: string): string {
   return url.replace(/^https?:\/\//, '').replace(/\/$/, '');
 }

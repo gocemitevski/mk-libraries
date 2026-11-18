@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Social card — generator.
+Social card - generator.
 
 Produces the two raster assets the project hands to social platforms:
 
@@ -8,14 +8,14 @@ Produces the two raster assets the project hands to social platforms:
     app/opengraph-image.png                     link preview (1200x630)
 
 Both are the same composition: the second is the downscaled copy that every page points at
-through `app/opengraph-image.png`. Rendering them together is what keeps the pair in sync —
+through `app/opengraph-image.png`. Rendering them together is what keeps the pair in sync -
 before this script the 1200x630 file was resized by hand.
 
 What is baked in and what is drawn here:
   * `assets/social/card-background.webp` is the plate (lossless WebP): the shelving
     photograph, the maroon scrim, the gold rule and the „Библиотеки.мк“ wordmark. Those are
-    artwork — they change only when the brand does, and they sit on a photograph that cannot
-    be re-derived from code — so they stay in the plate.
+    artwork - they change only when the brand does, and they sit on a photograph that cannot
+    be re-derived from code - so they stay in the plate.
   * Everything below the wordmark is copy, and the copy is the part that gets rewritten
     between campaigns. It is drawn here in Geologica, from the same `.woff2` files the site
     ships, so the card cannot drift from the site's typography.
@@ -57,7 +57,7 @@ OFFWHITE = (233, 224, 226)
 
 # ── Typography ───────────────────────────────────────────────────────────────
 # The site's font files are subsets: the Cyrillic one has no punctuation, the Latin one
-# has it — exactly the split the browser resolves through `unicode-range`. The renderer
+# has it - exactly the split the browser resolves through `unicode-range`. The renderer
 # below reproduces that fallback instead of shipping a second copy of the font.
 FONT_DIR = ROOT / "public/fonts"
 FONT_FILES = ["geologica-cyrillic.woff2", "geologica-latin.woff2"]
@@ -112,7 +112,7 @@ def unpack_fonts(tmp: Path) -> list[tuple[str, set[int]]]:
         try:
             font = TTFont(src)
         except ImportError:  # fontTools needs brotli to inflate woff2
-            sys.exit("gen-social-card: cannot unpack woff2 — is brotli installed?")
+            sys.exit("gen-social-card: cannot unpack woff2 - is brotli installed?")
         except Exception as err:  # corrupt or unsupported file: say what actually failed
             sys.exit(f"gen-social-card: cannot read {src.relative_to(ROOT)}: {err}")
         font.flavor = None
@@ -235,7 +235,7 @@ def main(argv: list[str]) -> None:
             if not path.exists():
                 sys.exit(f"gen-social-card: {path.relative_to(ROOT)} is missing")
             if path.read_bytes() != buffer.getvalue():
-                sys.exit(f"gen-social-card: {path.relative_to(ROOT)} is stale — run npm run social:build")
+                sys.exit(f"gen-social-card: {path.relative_to(ROOT)} is stale - run npm run social:build")
         print("social card: up to date")
         return
 

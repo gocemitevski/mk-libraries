@@ -53,7 +53,7 @@ export default async function MunicipalityPage({ params }: Props) {
   const libraries = getLibrariesForMunicipality(entry.name);
   const url = `${SITE_URL}/opstini/${entry.slug}/`;
 
-  // Библиотеките од оваа општина — ги групираме по населено место за подобар преглед.
+  // Библиотеките од оваа општина - ги групираме по населено место за подобар преглед.
   const byPlace = new Map<string, typeof libraries>();
   for (const l of libraries) {
     const list = byPlace.get(l.location.place) ?? [];

@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Hero background texture — procedural generator.
+Hero background texture - procedural generator.
 
 Produces public/hero/shelves.webp: an original image of a library aisle, rendered from
 scratch. No third-party pixels are involved, so the site owns the asset outright and
@@ -8,7 +8,7 @@ there is no licence to clear.
 
 Why generate instead of photograph:
   * The hero uses `background-blend-mode: luminosity`, which throws the image's colour
-    away and keeps only its luminance — so what matters here is *structure*, not hue.
+    away and keeps only its luminance - so what matters here is *structure*, not hue.
   * The band is always shown behind a left-to-right scrim, so the right half only has to
     read as shelving texture, never as a specific recognisable place.
   * We control the exact file weight; the site ships one decorative image and nothing else.
@@ -18,7 +18,7 @@ How it is built:
      cylinder shading, head/tail bands, title blocks, shelf boards, structural uprights).
   2. The corridor is rendered analytically: for every screen pixel the ray direction is
      computed and intersected against five planes (left wall, right wall, floor, ceiling,
-     end wall), keeping the nearest hit. That gives true one-point perspective — rows and
+     end wall), keeping the nearest hit. That gives true one-point perspective - rows and
      uprights converge on the vanishing point, which is the whole depth cue.
   3. Atmosphere (haze that washes distance toward light), a window glow, depth-of-field
      (variable blur, sharp only near the focus plane), film grain, warm duotone.
@@ -67,7 +67,7 @@ PPM = TW / ZMAX  # 256 px per metre on the walls
 HAZE_DIST = 10.0  # metres over which distance washes out
 HAZE_POW = 2.5  # keeps the wash off the near shelves and on the far end
 HAZE_LIGHT = 0.97  # the colour distance washes toward
-FOCUS = 4.5  # metres — the plane held sharp
+FOCUS = 4.5  # metres - the plane held sharp
 BLUR_MAX = 30.0
 BLUR_LEVELS = [0.0, 1.5, 4.0, 8.0, 14.0, 22.0, 32.0]
 GAMMA = 1.15  # >1 deepens midtones; tune against TARGET_MEAN / TARGET_ROI
@@ -75,7 +75,7 @@ ALBEDO = 0.95  # exposure of the shelving itself, before glow and haze
 WINDOW_K = 0.16  # weight of the high window on the left
 MOUTH_K = 2.00  # weight of the lit mouth of the aisle (lands at CX)
 # The mouth is a light source, not a lit surface, so it needs an additive term as
-# well — a purely multiplicative glow can never exceed the dark albedo under it.
+# well - a purely multiplicative glow can never exceed the dark albedo under it.
 MOUTH_ADD = 0.70
 MOUTH_SIGMA = 0.15  # mouth glow reach, as a fraction of the frame width
 
@@ -260,7 +260,7 @@ def render(rng: np.random.Generator) -> np.ndarray:
         w = np.clip((rb - BLUR_LEVELS[i - 1]) / (BLUR_LEVELS[i] - BLUR_LEVELS[i - 1]), 0, 1)
         out = out * (1 - w) + blurred[i] * w
 
-    # A touch of gamma gives the frame real blacks rather than a uniformly pale wash —
+    # A touch of gamma gives the frame real blacks rather than a uniformly pale wash -
     # this is what keeps the hero's text side dark once the blend has taken the colour.
     out = np.clip(out, 0.0, 1.0) ** GAMMA
 
@@ -270,7 +270,7 @@ def render(rng: np.random.Generator) -> np.ndarray:
 
 
 def to_rgb(lum: np.ndarray) -> np.ndarray:
-    """Warm duotone — the reference's neutral-warm room, expressed in one channel."""
+    """Warm duotone - the reference's neutral-warm room, expressed in one channel."""
     shadow = np.array([32, 27, 23], np.float32)
     high = np.array([247, 242, 233], np.float32)
     tone = np.clip(lum, 0.0, 1.0) ** 0.95

@@ -27,7 +27,7 @@ describe('транслитерација и нормализација', () => {
     assert.equal(normalizeUrl('nubsk.edu.mk'), 'https://nubsk.edu.mk');
     assert.equal(normalizeUrl('www.nubsk.edu.mk/'), 'https://nubsk.edu.mk');
     assert.equal(normalizeUrl('https://loc.mk/mk/place/ohrid/x'), 'https://loc.mk/mk/place/ohrid/x');
-    // gbsk.mk не служи TLS — http:// е единствениот облик што работи
+    // gbsk.mk не служи TLS - http:// е единствениот облик што работи
     assert.equal(normalizeUrl('https://gbsk.mk'), 'http://gbsk.mk');
     assert.equal(normalizeUrl('gbsk.mk/'), 'http://gbsk.mk');
     assert.equal(normalizeUrl('не е адреса'), null);
@@ -44,7 +44,7 @@ describe('транслитерација и нормализација', () => {
     assert.equal(stripPhoneNumbers('Јовица Никчевски, тел. +389 2 322 68 46'), 'Јовица Никчевски');
     assert.equal(stripPhoneNumbers('Илија џајкоски, 078 272 880'), 'Илија џајкоски');
     assert.equal(stripPhoneNumbers('Арсена Глигорова'), 'Арсена Глигорова');
-    // телефон на крај, со локален број и со разделувачи — не смеат да останат запирки
+    // телефон на крај, со локален број и со разделувачи - не смеат да останат запирки
     assert.equal(
       stripPhoneNumbers('Весна Бошева Русовски, тел. +389 2 311 51 77 / , lok. 113'),
       'Весна Бошева Русовски',
@@ -330,7 +330,7 @@ describe('ДЗС и статистика', () => {
     assert.equal(result.stats.totals.public, result.libraries.filter((l) => l.public).length);
     const sumTypes = result.stats.totals.byType.reduce((a, t) => a + t.count, 0);
     assert.equal(sumTypes, result.stats.totals.public);
-    // верификацијата низ целата база — ја користи /statistika/ наместо рачен број
+    // верификацијата низ целата база - ја користи /statistika/ наместо рачен број
     const sumAll = result.stats.totals.byVerificationAll.reduce((a, v) => a + v.count, 0);
     assert.equal(sumAll, result.stats.totals.records);
     const exact = result.libraries.filter((l) => l.location.coordsSource === 'exact').length;
@@ -346,7 +346,7 @@ describe('кандидати и методологија', () => {
 
   it('методологијата има наслови', () => {
     // 9: колку што останува откако се отфрлени четирите секции од
-    // METHODOLOGY_SKIP. Прагот е намерно еднаков на тековниот број — секое
+    // METHODOLOGY_SKIP. Прагот е намерно еднаков на тековниот број - секое
     // идно отфрлање на секција ќе го прекине тестот и ќе бара свесна одлука.
     assert.ok(result.methodology.headings.length >= 9);
     assert.ok(result.methodology.markdown.startsWith('# Методологија'));

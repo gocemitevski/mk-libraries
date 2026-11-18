@@ -1,5 +1,5 @@
 /**
- * Таксономија — едно изворно место за сите шифри и називи.
+ * Таксономија - едно изворно место за сите шифри и називи.
  * Ги користат и скриптата за податоци и веб-апликацијата.
  */
 
@@ -18,7 +18,7 @@ export type TypeSlug =
 export interface TypeMeta {
   label: string;
   shortLabel: string;
-  /** Групирање за /tipovi/[group] — 6 индексирани страници, не 10. */
+  /** Групирање за /tipovi/[group] - 6 индексирани страници, не 10. */
   group: TypeGroup;
   description: string;
 }
@@ -107,7 +107,7 @@ export const TYPE_GROUP_ORDER: TypeGroup[] = [
   'ostanati',
 ];
 
-/** Шифра на тип ↔ назив во изворните податоци — едно изворно место за pipeline и апликација. */
+/** Шифра на тип ↔ назив во изворните податоци - едно изворно место за pipeline и апликација. */
 export const TYPE_SLUG_BY_LABEL: Record<string, TypeSlug> = {
   'Национална библиотечна установа': 'nacionalna-ustanova',
   'Јавна (локална/општинска) библиотека': 'javna',

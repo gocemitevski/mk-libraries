@@ -6,7 +6,7 @@
  * ставиме во `<img src>`, браузерот добива HTML и прикажува скршена слика.
  *
  * Затоа:
- *  - `File:` страниците ги претвораме во `Special:FilePath` — стабилен
+ *  - `File:` страниците ги претвораме во `Special:FilePath` - стабилен
  *    redirect на upload.wikimedia.org со thumbnails,
  *  - `Category:` страниците немаат еквивалент, па не добиваат `<img>`.
  */

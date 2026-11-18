@@ -1,8 +1,8 @@
 /**
  * Го претвора master_biblioteki_mk.xlsx во валидирани JSON-податоци во src/data/.
  *
- *   npm run data:build   — ги пишува фајловите
- *   npm run data:check   — само валидира (за CI), излегува со код 1 при грешка
+ *   npm run data:build   - ги пишува фајловите
+ *   npm run data:check   - само валидира (за CI), излегува со код 1 при грешка
  */
 import { mkdir, writeFile } from 'node:fs/promises';
 import path from 'node:path';
@@ -12,7 +12,7 @@ import { toSearchRecord } from '../src/lib/search-index.ts';
 
 const checkOnly = process.argv.includes('--check');
 
-/** Јавно достапните копии — овие ги гледа браузерот преку /data/*.json. */
+/** Јавно достапните копии - овие ги гледа браузерот преку /data/*.json. */
 const PUBLIC_DATA_DIR = path.join(process.cwd(), 'public', 'data');
 
 const result = await buildAll(MASTER_XLSX);
@@ -22,7 +22,7 @@ const warnings = result.issues.filter((i) => i.level === 'warn');
 
 const json = (value: unknown) => `${JSON.stringify(value, null, 1)}\n`;
 
-/** CSV со цитати околу секоја вредност — безбедно за извоз во табеларни програми. */
+/** CSV со цитати околу секоја вредност - безбедно за извоз во табеларни програми. */
 function csvCell(value: unknown): string {
   const s = value === null || value === undefined ? '' : String(value);
   return `"${s.replace(/"/g, '""')}"`;
@@ -83,14 +83,14 @@ if (!checkOnly) {
   ];
   for (const [name, data] of files) {
     await writeFile(path.join(DATA_DIR, name), json(data), 'utf8');
-    // Иста содржина и во public/ — страницата /statistika/ нуди преземање.
+    // Иста содржина и во public/ - страницата /statistika/ нуди преземање.
     await writeFile(path.join(PUBLIC_DATA_DIR, name), json(data), 'utf8');
   }
   await writeFile(path.join(DATA_DIR, 'methodology.md'), result.methodology.markdown, 'utf8');
   // Копија и во public/ за преземање од страницата за методологија.
   await writeFile(path.join(PUBLIC_DATA_DIR, 'methodology.md'), result.methodology.markdown, 'utf8');
   // Индексот го користи 404-страницата (без записите во секој RSC payload).
-  // Минифициран — се вчитува по барање од браузерот.
+  // Минифициран - се вчитува по барање од браузерот.
   await writeFile(
     path.join(PUBLIC_DATA_DIR, 'search-index.json'),
     `${JSON.stringify(result.libraries.filter((l) => l.public).map(toSearchRecord))}\n`,

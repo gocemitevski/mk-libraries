@@ -1,5 +1,5 @@
 # Статичкиот извоз ги пишува Open Graph сликите без наставка
-# (/opengraph-image?<hash>) — серверите по правило ја погаѓаат
+# (/opengraph-image?<hash>) - серверите по правило ја погаѓаат
 # Content-Type-от од наставката и би одговориле со application/octet-stream.
 # Скенерите на Facebook/Slack/Teams тогаш ја одбиваат сликата.
 /*

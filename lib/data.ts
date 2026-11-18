@@ -13,7 +13,7 @@ import {
 } from '@/src/lib/taxonomy';
 
 /**
- * Сите податоци се вчитуваат на ниво на модул — се пререндираат при build
+ * Сите податоци се вчитуваат на ниво на модул - се пререндираат при build
  * и не постои runtime на сервер (output: 'export').
  */
 
@@ -106,13 +106,13 @@ for (const l of publicLibraries) {
   typeCounts.set(l.type, (typeCounts.get(l.type) ?? 0) + 1);
 }
 
-/** Групите на библиотеки за /tipovi/[slug] — само групи со записи. */
+/** Групите на библиотеки за /tipovi/[slug] - само групи со записи. */
 export const typeGroups: TypeGroupSummary[] = TYPE_GROUP_ORDER.filter((g) => (typeGroupCounts.get(g) ?? 0) > 0).map(
   (slug) => ({
     slug,
     label: TYPE_GROUP_LABEL[slug],
     count: typeGroupCounts.get(slug) ?? 0,
-    // TYPES е клучирани по назив, а typeCounts по l.type (шифра) — затоа
+    // TYPES е клучирани по назив, а typeCounts по l.type (шифра) - затоа
     // се оди низ TYPE_BY_SLUG, инаку секој број е 0 и листата останува празна.
     types: Object.entries(TYPE_BY_SLUG)
       .filter(([, meta]) => meta.group === slug)
@@ -127,7 +127,7 @@ export const typeGroups: TypeGroupSummary[] = TYPE_GROUP_ORDER.filter((g) => (ty
   }),
 );
 
-/** Групите по слаг — клучот е string за да се спојува со параметарот на рутата. */
+/** Групите по слаг - клучот е string за да се спојува со параметарот на рутата. */
 export const typeGroupBySlug = new Map<string, TypeGroupSummary>(
   typeGroups.map((g) => [g.slug, g]),
 );
@@ -163,7 +163,7 @@ function normalizeMunicipality(value: string | null): string | null {
   return value.replace(/\s*\(според loc\.mk\)\s*$/i, '').trim();
 }
 
-/** Сите места — ги користи спојувањето општина ↔ населено место. */
+/** Сите места - ги користи спојувањето општина ↔ населено место. */
 const placeNames = new Set(publicLibraries.map((l) => l.location.place));
 
 /**
@@ -173,7 +173,7 @@ const placeNames = new Set(publicLibraries.map((l) => l.location.place));
  * а второто е пополнето само кај 69 од 144-те прикажани записи. Затоа:
  *  1. директен спој по општина (со отстранет додаток),
  *  2. ако општината е и населено место (33 од 81), ги додаваме и записите
- *     од тоа место што немаат утврдена општина — освен за Скопје, каде што
+ *     од тоа место што немаат утврдена општина - освен за Скопје, каде што
  *     еден град се протега низ 10 општини и тоа не е безбедно,
  *  3. записите без утврдена општина од Скопје одат во посебната кофа.
  */
@@ -219,7 +219,7 @@ export function getParent(library: Library): Library | null {
   return library.parent.slug ? (librariesBySlug.get(library.parent.slug) ?? null) : null;
 }
 
-/** Истото населено место + истиот тип — за „поврзани“ на деталната страница. */
+/** Истото населено место + истиот тип - за „поврзани“ на деталната страница. */
 export function getRelated(library: Library, limit = 6): Library[] {
   const samePlace = publicLibraries.filter(
     (l) => l.id !== library.id && l.location.place === library.location.place,
@@ -255,7 +255,7 @@ const centroidByName = new Map(
 /**
  * Центроидите по населено место за мапата (план §6): точките од записите се
  * само 10/152, па ги користиме центроидите на 42-те места. Секогаш се означени
- * како приближни — вистинската адреса останува на деталната страница.
+ * како приближни - вистинската адреса останува на деталната страница.
  */
 export const mapPlaces = places
   .map((p) => {
@@ -267,7 +267,7 @@ export const mapPlaces = places
 
 /**
  * Реалниот број записи во базата по општина (спојот од getLibrariesForMunicipality).
- * Се разликува од coverage.publicCount — тој е класификација од изворните податоци.
+ * Се разликува од coverage.publicCount - тој е класификација од изворните податоци.
  */
 export const recordCountsBySlug: Record<string, number> = Object.fromEntries(
   coverage.map((c) => [c.slug, getLibrariesForMunicipality(c.name).length]),

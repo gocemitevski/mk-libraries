@@ -10,7 +10,7 @@ import type { TypeGroup } from '@/src/lib/taxonomy';
  * (534 kB). Намалените полиња се пренесуваат како обични props, па
  * serialization-от во RSC payload останува ~10 пати помал.
  *
- * Исклучок: SearchBox на почетната страница — таму брзото пребарување е
+ * Исклучок: SearchBox на почетната страница - таму брзото пребарување е
  * вредно од 58 kB payload. На 404 страницата индексот се вчитува по барање
  * од /data/search-index.json.
  */
@@ -33,7 +33,7 @@ export interface DirectoryRecord {
 /** Индекс за SearchBox на почетната страница. */
 export const searchIndex: SearchRecord[] = publicLibraries.map(toSearchRecord);
 
-/** Индекс за /biblioteki/ — ги содржи полињата на филтерите, сортирањето и картичката. */
+/** Индекс за /biblioteki/ - ги содржи полињата на филтерите, сортирањето и картичката. */
 export const directoryIndex: DirectoryRecord[] = publicLibraries.map((l) => ({
   slug: l.slug,
   name: l.name,

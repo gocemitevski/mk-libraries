@@ -6,8 +6,8 @@ deployment notes.
 
 ## Non-negotiables
 
-- **Macedonian in the product.** Every user-facing string — pages, metadata, alt text, error
-  messages, empty states — is in Macedonian. Use **„адресар“**, never „директориум“. Developer
+- **Macedonian in the product.** Every user-facing string - pages, metadata, alt text, error
+  messages, empty states - is in Macedonian. Use **„адресар“**, never „директориум“. Developer
   docs (`README.md`, this file) are English; code comments are Macedonian, so match the file
   you are editing.
 - **The workbook is read-only.** `master_biblioteki_mk.xlsx` is the single source of truth.
@@ -30,7 +30,7 @@ Requires Node.js >= 20.9 (CI uses Node 24).
 ```bash
 npm install
 npm run dev          # http://localhost:3000
-npm run check        # data:check + tests + typecheck — run before every commit
+npm run check        # data:check + tests + typecheck - run before every commit
 npm run build        # data:build + static export to out/
 ```
 
@@ -45,9 +45,9 @@ rendering, metadata, styles or generated output.
 
 Outputs:
 
-- `src/data/` — `libraries.json`, `coverage.json`, `candidates.json`, `provenance.json`,
+- `src/data/` - `libraries.json`, `coverage.json`, `candidates.json`, `provenance.json`,
   `stats.json`, `methodology.md`, `place-centroids.json`
-- `public/data/` — the same downloads plus `search-index.json`, `biblioteki.csv`,
+- `public/data/` - the same downloads plus `search-index.json`, `biblioteki.csv`,
   `municipalities.geojson`
 
 Rules:
@@ -55,7 +55,7 @@ Rules:
 - `npm run data:build` rewrites tracked files. Inspect the diff and commit regenerated data in
   its own commit, separate from code changes.
 - `npm run data:check` and `tests/data.test.ts` both compare committed data against a fresh run.
-  If they fail, regenerate — do not patch the JSON.
+  If they fail, regenerate - do not patch the JSON.
 - The suite currently pins 152 master records (144 public, 8 excluded), 69 candidates, 81
   municipalities and 42 settlements. Intentional data changes must update the data and the
   tests together.
@@ -78,9 +78,10 @@ Rules:
   `scripts/lib/translit.ts`).
 - Contact people may be published by name and role, but private phone numbers must be
   stripped (`stripPhoneNumbers`). Do not add them to the data or UI.
-- Keep typography consistent with the existing copy: Macedonian quotation marks („…“), en/em
-  dashes and the existing terminology. The pipeline normalises quotes in aliases — fix the
-  pipeline, not the generated file.
+- Keep typography consistent with the existing copy: Macedonian quotation marks („…“), a plain
+  hyphen with spaces („ - “) as the dash, en dashes only for ranges, and the existing
+  terminology. The pipeline normalises quotes in aliases - fix the pipeline, not the generated
+  file.
 
 ## Architecture
 
@@ -112,13 +113,13 @@ Rules:
 - Use the helpers in `lib/seo.tsx`: `libraryDescription`, `libraryMetaDescription`,
   `JsonLd`, `libraryJsonLd`, `itemListJsonLd`, `datasetJsonLd`, `SITE_URL`.
 - Descriptions must fit the ~155-character snippet limit. `libraryMetaDescription` already
-  drops template parts and trims separators before the ellipsis — reuse it instead of writing
+  drops template parts and trims separators before the ellipsis - reuse it instead of writing
   a raw description for a library page.
 - Social images: the shared card is the static `app/opengraph-image.png` (1200×630), with
   `app/opengraph-image.alt.txt` next to it. Routes that return their own `openGraph` from
-  `generateMetadata` must attach it as `images: [OG_IMAGE]` (`lib/seo.tsx`) — Next replaces a
+  `generateMetadata` must attach it as `images: [OG_IMAGE]` (`lib/seo.tsx`) - Next replaces a
   parent's `openGraph` instead of merging it, so the file-convention image is not inherited.
-  `assets/social/card-background.webp` is the artwork plate — photograph, scrim, gold rule and
+  `assets/social/card-background.webp` is the artwork plate - photograph, scrim, gold rule and
   the wordmark; the copy below the wordmark is drawn by `scripts/gen-social-card.py`, which
   writes `assets/social/facebook-post-2400x1260.png` and `app/opengraph-image.png` in one go
   (`npm run social:build`, `--check` to verify the committed files). Change the copy in the
@@ -166,7 +167,7 @@ not in this repo. Do not add cookie logic here, and keep `/za-proektot` copy non
 
 - `.github/deploy.yml` is **not** under `.github/workflows/`, so GitHub does not run it as-is.
   Do not describe CI as active unless the file is moved.
-- `next/image` is effectively unusable here (`images.unoptimized`) — use `<img>`.
+- `next/image` is effectively unusable here (`images.unoptimized`) - use `<img>`.
 - `useSearchParams` in the directory breaks the static HTML; keep the URL-state pattern.
 - `out/`, `.next/`, `node_modules/`, `*.tsbuildinfo` and logs are ignored build artifacts.
 - The 8 non-library records still have pages; they need `noindex` and must not appear in the

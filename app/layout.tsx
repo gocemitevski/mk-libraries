@@ -10,7 +10,7 @@ import { SiteFooter } from '@/components/site-footer';
 export const metadata: Metadata = {
   metadataBase: new URL('https://biblioteki.mk'),
   title: {
-    default: 'Библиотеки во Северна Македонија — адресар',
+    default: 'Библиотеки во Северна Македонија - адресар',
     template: '%s | Библиотеки.мк',
   },
   description:

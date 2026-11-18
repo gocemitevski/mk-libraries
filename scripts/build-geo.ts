@@ -12,7 +12,7 @@ import type { CoverageEntry } from '../src/lib/schema';
 
 /**
  * Поранешни општини споени во Кичево (2013). Изворот ги уште ги носи како засебни
- * полиња, а „Kichevo“ е само стариот урбано јадро (0.005°²) — па ако тие четири
+ * полиња, а „Kichevo“ е само стариот урбано јадро (0.005°²) - па ако тие четири
  * едноставно се отстранат, од денешната општина остануваат 6% од површината и на
  * мапата останува дупка од ~750 km². Затоа се здружуваат со Кичево, а не се бришат.
  */
@@ -128,7 +128,7 @@ function collectRings(f: Feature): Ring[] {
  * се низаат во затворен прстен.
  *
  * Бара работите на изворот да се совпаѓаат точка-во-точка, што ADM2-податоците
- * го прават — проверено: 245 уникатни работи, 87 внатрешни, ниту една работа
+ * го прават - проверено: 245 уникатни работи, 87 внатрешни, ниту една работа
  * зафаќа повеќе од два прстени, а остататото се затвора во еден прстен.
  */
 function unionRings(rings: Ring[]): Ring[] {
@@ -257,14 +257,14 @@ function main(): void {
     matched.push(c.name);
   }
 
-  // Општината на која ѝ припаѓаат записите без утврдена општина нема полигон —
+  // Општината на која ѝ припаѓаат записите без утврдена општина нема полигон -
   // ќе се прикаже само во табелата.
   const withoutPolygon = coverage.filter((c) => !matched.includes(c.name));
 
   const out = {
     type: 'FeatureCollection',
     license:
-      'geoBoundaries MKD-ADM2 (CC BY 4.0) — EuroGeographics / NTES, year represented 2016; simplified for web use.',
+      'geoBoundaries MKD-ADM2 (CC BY 4.0) - EuroGeographics / NTES, year represented 2016; simplified for web use.',
     generated: 'via scripts/build-geo.ts',
     features,
   };

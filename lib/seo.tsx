@@ -6,7 +6,7 @@ import { websiteHref } from '@/lib/links';
 
 const SITE = 'https://biblioteki.mk';
 
-/** Го вметнува JSON-LD како скрипт — го користат сите страници. */
+/** Го вметнува JSON-LD како скрипт - го користат сите страници. */
 export function JsonLd({ data }: { data: Record<string, unknown> | Record<string, unknown>[] }) {
   return (
     <script
@@ -59,7 +59,7 @@ export function libraryJsonLd(library: Library, url: string): Record<string, unk
   if (website) data.mainEntityOfPage = website;
   if (sameAs.length) data.sameAs = sameAs;
 
-  // „Mo-Fr 08:30-16:30“ — ја чита и Google. Суровиот македонски текст
+  // „Mo-Fr 08:30-16:30“ - ја чита и Google. Суровиот македонски текст
   // („Пон–Пет 08:30–16:30“) не се разбира како OpeningHours, па овде го
   // претвораме во машинскиот формат; приказот кон човекот останува македонски.
   const hours = schemaOrgOpeningHours(library.contacts.hours);
@@ -71,7 +71,7 @@ export function libraryJsonLd(library: Library, url: string): Record<string, unk
     data.numberOfItems = library.cobiss.stats2024.fund;
   }
 
-  // Свежина за пребарувачот: проверката на самиот запис, а кога ја нема —
+  // Свежина за пребарувачот: проверката на самиот запис, а кога ја нема -
   // проверката на базата. Истиот редослед како во sitemap.xml, за двата
   // сигнали да не се разидат.
   data.dateModified = library.lastVerified ?? stats.dataVerifiedOn ?? undefined;
@@ -86,21 +86,21 @@ function descriptionBits(library: Library): string[] {
   );
 }
 
-/** Редот за фондот — го додава само записот што го има. */
+/** Редот за фондот - го додава само записот што го има. */
 function fundLine(library: Library): string {
   return library.cobiss.stats2024.fund !== null
     ? ` Фонд според COBISS 2024: ${formatNumber(library.cobiss.stats2024.fund)} примероци.`
     : '';
 }
 
-/** Мета-описот без името — основа по која се бараат повторувања. */
+/** Мета-описот без името - основа по која се бараат повторувања. */
 function baseMetaDescription(library: Library): string {
   return `${descriptionBits(library).join(' · ')}.${fundLine(library)} Податоци и извори.`;
 }
 
 /** Страниците чиј мета-опис се повторува со друга: 30 записи од ист тип во
  *  истото место и без адреса (18 скопски факултети, 8 институти, 2 училишта,
- *  2 ограноци). Тие го додаваат и името — единственото поле што ги разликува —
+ *  2 ограноци). Тие го додаваат и името - единственото поле што ги разликува -
  *  а останатите 122 остануваат како што се. Сетот се пресметува од базата,
  *  па ако се смени записот, описот го следи. */
 const metaCounts = new Map<string, number>();
@@ -112,7 +112,7 @@ const repeatedMetaDescriptions = new Set(
   libraries.filter((l) => (metaCounts.get(baseMetaDescription(l)) ?? 0) > 1).map((l) => l.slug),
 );
 
-/** Мета-опис на библиотека: тип, адреса, место — го користат и деталната
+/** Мета-опис на библиотека: тип, адреса, место - го користат и деталната
  *  страница и листовите со записи, за описите да се совпаѓаат. */
 export function libraryDescription(library: Library): string {
   const bits = descriptionBits(library);
@@ -123,7 +123,7 @@ export function libraryDescription(library: Library): string {
 /** Колку знаци собира описот во резултатот од пребарувачот (~155). */
 const META_DESCRIPTION_LIMIT = 155;
 
-/** Го сече описот на граница на збор — подобро ние да го скратиме
+/** Го сече описот на граница на збор - подобро ние да го скратиме
  *  уредно, отколку пребарувачот да го пресече среде збор. Последните
  *  одделувачи („ /“, „–“, „·“) исто паѓаат: „…ентериер /…“ не е опис. */
 function fitMetaDescription(text: string): string {
@@ -131,7 +131,7 @@ function fitMetaDescription(text: string): string {
   const cut = text.slice(0, META_DESCRIPTION_LIMIT - 1);
   const lastSpace = cut.lastIndexOf(' ');
   const head = (lastSpace > 0 ? cut.slice(0, lastSpace) : cut).trimEnd();
-  return `${head.replace(/[\s/,·–—-]+$/u, '')}…`;
+  return `${head.replace(/[\s/,·–-]+$/u, '')}…`;
 }
 
 /** Мета-опис за <meta name="description"> на страницата на библиотеката. */
@@ -141,8 +141,8 @@ export function libraryMetaDescription(library: Library): string {
   if (full.length <= META_DESCRIPTION_LIMIT) return full;
 
   // Наместо да ја сечеме опашката, ги отфрламе шаблонските делови: прво
-  // фондот, потоа „Податоци и извори.“. Така името — единственото што ги
-  // разликува повторените описи — останува цело.
+  // фондот, потоа „Податоци и извори.“. Така името - единственото што ги
+  // разликува повторените описи - останува цело.
   const noFund = `${bits}. Податоци и извори.`;
   if (noFund.length <= META_DESCRIPTION_LIMIT) return noFund;
 
@@ -165,7 +165,7 @@ export function websiteJsonLd(): Record<string, unknown> {
   };
 }
 
-/** ItemList за листови со записи — му дава на пребарувачот структура на резултатите. */
+/** ItemList за листови со записи - му дава на пребарувачот структура на резултатите. */
 export function itemListJsonLd(items: { name: string; url: string; description?: string }[], name: string) {
   return {
     '@context': 'https://schema.org',
@@ -182,7 +182,7 @@ export function itemListJsonLd(items: { name: string; url: string; description?:
   };
 }
 
-/** Dataset за /statistika — го прави материјалот цитабилен. */
+/** Dataset за /statistika - го прави материјалот цитабилен. */
 export function datasetJsonLd(stats: { totals: { records: number }; dataVerifiedOn: string | null }) {
   return {
     '@context': 'https://schema.org',
@@ -219,6 +219,6 @@ export const OG_IMAGE = {
   url: `${SITE}/opengraph-image.png`,
   width: 1200,
   height: 630,
-  // истиот текст како app/opengraph-image.alt.txt — менувај ги двете заедно
-  alt: 'Библиотеки.мк — адресар на библиотеки во Северна Македонија',
+  // истиот текст како app/opengraph-image.alt.txt - менувај ги двете заедно
+  alt: 'Библиотеки.мк - адресар на библиотеки во Северна Македонија',
 };

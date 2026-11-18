@@ -9,7 +9,7 @@ import { searchIndex } from '@/lib/search';
 import { formatNumber } from '@/lib/format';
 
 export const metadata: Metadata = {
-  title: 'Библиотеки во Северна Македонија — адресар',
+  title: 'Библиотеки во Северна Македонија - адресар',
   description:
     `${stats.totals.public} библиотеки во ${stats.geography.places} населени места. Пребарајте по име, населено место или тип и најдете адреса, телефон, мрежно место и податоци од COBISS.`,
   alternates: { canonical: '/' },
@@ -26,7 +26,7 @@ export default function HomePage() {
           Лентата оди од крај до крај на прозорецот и се придружува на
           header-от; внатрешниот container ја држи содржината усогласена
           со остатокот од страницата. Затоа нема нит агли, нит надворешен
-          padding — тоа го прави container-от. */}
+          padding - тоа го прави container-от. */}
       <section className="hero py-lg-4">
         <div className="container py-4 py-md-5">
           <div className="row align-items-center g-lg-5">
@@ -64,7 +64,7 @@ export default function HomePage() {
                       </div>
                       {/* `.text-opacity-75`, не deprecated `.text-white-50`: на 14px
                           белиот текст на полупроѕирната плочка мора да ја помине
-                          AA-границата од 4.5:1 — со `.50` меревме 3.7:1, а со `.75`
+                          AA-границата од 4.5:1 - со `.50` меревме 3.7:1, а со `.75`
                           одиме на 6.3:1. Двете се standard Bootstrap utilities; самата
                           `.text-white-50` е deprecated во Bootstrap 5.3.
                           Иконата ја следи ознаката, иста непроѕирност. */}

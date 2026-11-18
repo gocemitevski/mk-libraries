@@ -5,7 +5,7 @@ import { SearchBox } from '@/components/search-box';
 import { places, typeGroups } from '@/lib/data';
 
 // 404-ката е статична датотека што ја служи секој непознат URL, па не може
-// да има свој canonical — и не треба: Next сам става noindex. Сопствениот
+// да има свој canonical - и не треба: Next сам става noindex. Сопствениот
 // наслов и опис само ја вадат од групата што ги повторуваше насловните.
 export const metadata: Metadata = {
   title: 'Страницата не е пронајдена',

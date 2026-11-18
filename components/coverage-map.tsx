@@ -8,14 +8,14 @@ import Link from 'next/link';
 import type { CoverageEntry } from '@/src/lib/schema';
 import { NOUNS, plural } from '@/lib/format';
 
-/** Боја по приоритет — истите три вредности низ целата страница. */
+/** Боја по приоритет - истите три вредности низ целата страница. */
 const PRIORITY_COLOR: Record<string, string> = {
   high: '#b3402f', // нема јавна библиотека
   medium: '#a86a12', // нема потврдена јавна библиотека
   none: '#2f7d4f', // има јавна библиотека
 };
 
-/** Редослед во легендата — истиот што го следи табелата на /opstini/. */
+/** Редослед во легендата - истиот што го следи табелата на /opstini/. */
 const PRIORITY_LEGEND = [
   ['none', 'Има јавна библиотека'],
   ['medium', 'Нема потврдена'],
@@ -32,7 +32,7 @@ interface PlacePoint {
 
 interface Props {
   coverage: CoverageEntry[];
-  /** Центроиди по населено место — приближни (план §6). */
+  /** Центроиди по населено место - приближни (план §6). */
   places: PlacePoint[];
   /** Клуч → број на записи; клучевите на општините се нивните slug-ови. */
   counts: Record<string, number>;
@@ -53,7 +53,7 @@ export function CoverageMap({ coverage, places, counts }: Props) {
   const [geo, setGeo] = useState<GeoJSON.FeatureCollection | null>(null);
   const [activeSlug, setActiveSlug] = useState<string | null>(null);
 
-  // GeoJSON се вчитува само откако мапата е монтирана — почетната страница не чека на него.
+  // GeoJSON се вчитува само откако мапата е монтирана - почетната страница не чека на него.
   useEffect(() => {
     let cancelled = false;
     fetch('/data/municipalities.geojson')
@@ -72,7 +72,7 @@ export function CoverageMap({ coverage, places, counts }: Props) {
   const bySlug = useMemo(() => new Map(coverage.map((c) => [c.slug, c])), [coverage]);
 
   // Бројките во легендата се пресметуваат од истиот `coverage` што ја полни табелата
-  // — два пати истите бројки рачно би можеле да се разидат.
+  // - два пати истите бројки рачно би можеле да се разидат.
   const legendCounts = useMemo(() => {
     const counts = new Map<string, number>();
     for (const entry of coverage) counts.set(entry.priority, (counts.get(entry.priority) ?? 0) + 1);
@@ -145,7 +145,7 @@ export function CoverageMap({ coverage, places, counts }: Props) {
             </>
           )}
 
-          {/* Центроиди по населено место — приближни, со потпис во легендата */}
+          {/* Центроиди по населено место - приближни, со потпис во легендата */}
           {places.map((p) => (
             <CircleMarker
               key={p.slug}
@@ -170,7 +170,7 @@ export function CoverageMap({ coverage, places, counts }: Props) {
         </MapContainer>
       </div>
 
-      {/* Легенда — ја објаснува бојата без интеракција */}
+      {/* Легенда - ја објаснува бојата без интеракција */}
       <div
         className="position-absolute bottom-0 start-0 m-2 bg-white border rounded-3 p-2 small shadow-sm"
         style={{ zIndex: 500, lineHeight: 1.5 }}

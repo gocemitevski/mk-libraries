@@ -37,7 +37,7 @@ export const LegalSchema = z.object({
   registerName: z.string().nullable(),
   relation: z.string().nullable(),
   crStatus: z.string().nullable(),
-  /** Број на вработени според CompanyWall — индикативно. */
+  /** Број на вработени според CompanyWall - индикативно. */
   employees: z.number().int().nonnegative().nullable(),
 });
 
@@ -46,15 +46,15 @@ export const LibrarySchema = z.object({
   slug: z.string().regex(/^[a-z0-9]+(?:-[a-z0-9]+)*$/),
   name: z.string().min(1),
   shortName: z.string().nullable(),
-  /** Имиња од други извори — се користат во пребарувањето, не како наслов. */
+  /** Имиња од други извори - се користат во пребарувањето, не како наслов. */
   aliases: z.array(z.string().min(1)),
-  /** Шифра на типот — од таксономијата; невалидната вредност ја фаќа build-от. */
+  /** Шифра на типот - од таксономијата; невалидната вредност ја фаќа build-от. */
   type: z.enum([
     'nacionalna-ustanova', 'javna', 'visokoskolska', 'specijalizirana', 'ogranok',
     'ucilisna', 'stranski-centar', 'zdruzenie', 'nepoznato', 'ne-e-biblioteka',
   ]),
   typeLabel: z.string(),
-  /** Групата за /tipovi/[slug] — 6 индексирани страници. */
+  /** Групата за /tipovi/[slug] - 6 индексирани страници. */
   typeGroup: z.enum(['nacionalni', 'javni', 'visokoskolski', 'specijalizirani', 'ogranoci', 'ostanati']),
   dzsCategory: z.string(),
   dzsLabel: z.string(),
@@ -86,7 +86,7 @@ export const LibrarySchema = z.object({
     website: z.url().nullable(),
     otherWebsites: z.array(z.url()),
     hours: z.array(SourceVariantSchema),
-    /** Име и функција на контактното лице — БЕЗ приватни телефони (види §4.7). */
+    /** Име и функција на контактното лице - БЕЗ приватни телефони (види §4.7). */
     contactPerson: z.string().nullable(),
     director: z.string().nullable(),
   }),

@@ -55,7 +55,7 @@ npm run dev          # http://localhost:3000
 | `npm run data:check` | Fail if the committed derived data is out of date. |
 | `npm run data:test` | Run the data tests (`node:test`). |
 | `npm run typecheck` | `tsc --noEmit`. |
-| `npm run check` | `data:check` + tests + typecheck — the suite CI runs. |
+| `npm run check` | `data:check` + tests + typecheck - the suite CI runs. |
 | `npm run social:build` | Regenerate the social card: `assets/social/facebook-post-2400x1260.png` and `app/opengraph-image.png`. |
 | `npm run social:check` | Fail if those two PNGs are out of date with the plate and the copy. |
 
@@ -73,7 +73,7 @@ edited by the scripts. Everything else is derived from it:
 3. Tests in `tests/data.test.ts` assert counts, taxonomy, verification levels, URL schemes,
    coordinates, provenance and that the committed files match a fresh run.
 
-Do not hand-edit `src/data/` or `public/data/` — change the workbook or the pipeline and run
+Do not hand-edit `src/data/` or `public/data/` - change the workbook or the pipeline and run
 `npm run data:build`.
 
 ## Project structure

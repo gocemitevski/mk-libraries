@@ -6,7 +6,7 @@ import { useEffect, useMemo, useRef, useState } from 'react';
 import type { SearchRecord } from '@/src/lib/search-index';
 import { Icon } from '@/components/icon';
 
-/** Стабилна празна листа — го држи useMemo-то на SearchBox без непотребни градења. */
+/** Стабилна празна листа - го држи useMemo-то на SearchBox без непотребни градења. */
 const EMPTY: SearchRecord[] = [];
 
 /**
@@ -20,7 +20,7 @@ const EMPTY: SearchRecord[] = [];
  * Маркап, според документацијата на Bootstrap:
  *  - иконата седи во `.input-group-text`, не позиционирана над полето;
  *  - предлозите се `.list-group` + `.list-group-item-action`;
- *  - секој предлог е `role="option"` **без фокусирачки потомок** — фокусот
+ *  - секој предлог е `role="option"` **без фокусирачки потомок** - фокусот
  *    останува во полето, а `aria-activedescendant` ја означува активната
  *    опција. Затоа редот е кликликав `<li>`, а не внатрешен `<button>`.
  */
@@ -123,7 +123,7 @@ export function SearchBox({
     }
   };
 
-  /** Боја на потписот под името — на активниот ред (темна подлога) светол. */
+  /** Боја на потписот под името - на активниот ред (темна подлога) светол. */
   const subline = (isSelected: boolean) => (isSelected ? 'text-white-50' : 'text-secondary');
 
   return (
@@ -132,7 +132,7 @@ export function SearchBox({
         Пребарај библиотека по име, краток назив, алијас или населено место
       </label>
 
-      {/* Иконата во input-group-text — документираниот начин за знаме во поле */}
+      {/* Иконата во input-group-text - документираниот начин за знаме во поле */}
       <div className="input-group rounded shadow">
         <span className="input-group-text border-0 text-secondary" aria-hidden="true">
           <Icon name="search" size={18} />

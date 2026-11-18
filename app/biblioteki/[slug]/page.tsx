@@ -55,7 +55,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     description,
     alternates: { canonical: `/biblioteki/${library.slug}/` },
     // 8-те „не е библиотека“ записи остануваат во податоците и во URL-от
-    // (сликовите ги има), но не смеат да влегуваат во индексот — се исклучени
+    // (сликовите ги има), но не смеат да влегуваат во индексот - се исклучени
     // и од sitemap.xml.
     ...(library.public ? {} : { robots: { index: false, follow: false } }),
     openGraph: {
@@ -88,13 +88,13 @@ export default async function LibraryPage({ params }: Props) {
   const website = websiteHref(library.contacts.website);
 
   // „•“ во `notes` е набројување, не интерпункција: првиот дел е воведен
-  // текст, останатите се ставки. Делиме при приказот — податокот во
+  // текст, останатите се ставки. Делиме при приказот - податокот во
   // workbook-от останува како што е.
   const noteParts = (library.notes ?? '').split('•').map((part) => part.trim());
   const notesIntro = noteParts[0];
   const notesItems = noteParts.slice(1).filter(Boolean);
 
-  // Commons колоната содржи страници, не слики — претвораме само File: во
+  // Commons колоната содржи страници, не слики - претвораме само File: во
   // директен линк; Category: нема еквивалент и останува како линк.
   const commonsImageSrc = commonsImageUrl(library.links.commonsImage);
 
@@ -127,7 +127,7 @@ export default async function LibraryPage({ params }: Props) {
 
   return (
     <div className="container py-4">
-      {/* JSON-LD само за записите во индексот — noindex-страниците не смеат да излегуваат во структурирани податоци. */}
+      {/* JSON-LD само за записите во индексот - noindex-страниците не смеат да излегуваат во структурирани податоци. */}
       {library.public && <JsonLd data={libraryJsonLd(library, url)} />}
 
       <Breadcrumbs
@@ -237,14 +237,14 @@ export default async function LibraryPage({ params }: Props) {
                 <span>Работно време</span>
               </h2>
               {/* Секој запис е верзија на еден извор, па секој извор добива свој
-                  list-group, а секоја деновска група внатре — свој list-group-item,
+                  list-group, а секоја деновска група внатре - свој list-group-item,
                   за да се скенира ред по ред. Цитатот за изворот е последен ред во
                   групата, тивок и со икона: внатре, за да не се натпреварува со
                   насловот над групата, и еднаш по извор, бидејќи 43 од 69 реда би
                   го повториле. Кај 4 библиотеки два извора се разликуваат, па
                   секоја група носи свој цитат и не може да се замени кој што тврди.
                   Изворот пишува „Пон–Пет 08:00–19:00“, а прикажуваме целосни имиња
-                  и правописен македонски часовник „понеделник–петок 8.00–19:00“ —
+                  и правописен македонски часовник „понеделник–петок 8.00–19:00“ -
                   двоеточието и скратените зборови остануваат во JSON-LD, каде ги
                   бара schema.org. Непознат формат се прикажува суров, за да не се
                   изгуби податок. */}
@@ -265,7 +265,7 @@ export default async function LibraryPage({ params }: Props) {
                         </li>
                       ),
                     )}
-                    {/* Цитат: еднаш по извор, внатре во групата како тивок ред — не
+                    {/* Цитат: еднаш по извор, внатре во групата како тивок ред - не
                         над неа, за да не се натпреварува со насловот, и не по секој
                         ред, бидејќи 43 од 69 реда би го повториле (loc.mk има 6 реда
                         на една страница). Иконата го означува како фуснота, а не како
